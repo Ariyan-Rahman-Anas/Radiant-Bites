@@ -49,10 +49,13 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="w-full h-80 sm:h-96 md:h-[84vh] fle flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bgblack/50 before:inset0 transform duration-1000 ease-linear"
-        style={{
-          backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url(${sliders[currentSlider].img})`,
-        }}
+        style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}
+        className="w-full h-80 sm:h-96 md:h-[84vh] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/60 before:inset-0 transform duration-1000 ease-linear"
+
+        // className="w-full h-80 sm:h-96 md:h-[84vh] fle flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute transform duration-1000 ease-linear"
+        // style={{
+        //   backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url(${sliders[currentSlider].img})`,
+        // }}
       >
         {/* text container here */}
         <div className="absolute bottom-2 lg:left-[20%] lg:right-[20%] drop-shadow-lg text-white text-center px-5">
@@ -70,8 +73,10 @@ const Banner = () => {
             onClick={() => setCurrentSlider(inx)}
             key={inx}
             src={slide.img}
-            className={`w-10 md:w-20 h-6 sm:h-8 md:h-12 bg-black/20 ${
-              currentSlider === inx ? "border-[.09rem] border-primary p-px" : ""
+            className={`w-10 md:w-20 h-6 sm:h-8 md:h-12 border-[.09rem] ${
+              currentSlider === inx
+                ? "border-[.09rem] border-primary duration-1000 "
+                : ""
             } rounded-md md:rounded-lg box-content cursor-pointer`}
             alt={slide.title}
           />
