@@ -60,7 +60,7 @@ export const OnlineOrder = () => {
           {/* arrow left */}
           <button
             onClick={prevSlider}
-            className="flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
+            className="flex justify-center items-center bg-black rounded-full w-6 h-6 md:w-8 md:h-8"
           >
             <svg
               viewBox="0 0 1024 1024"
@@ -76,7 +76,7 @@ export const OnlineOrder = () => {
               ></g>
               <g id="SVGRepo_iconCarrier">
                 <path
-                  fill="#0095FF"
+                  fill="#fff"
                   d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"
                 ></path>
               </g>
@@ -85,7 +85,7 @@ export const OnlineOrder = () => {
           {/* arrow right */}
           <button
             onClick={nextSlider}
-            className="flex justify-center items-center bg-white rounded-full w-6 h-6 md:w-8 md:h-8"
+            className="flex justify-center items-center bg-black rounded-full w-6 h-6 md:w-8 md:h-8"
           >
             <svg
               viewBox="0 0 1024 1024"
@@ -102,7 +102,7 @@ export const OnlineOrder = () => {
               ></g>
               <g id="SVGRepo_iconCarrier">
                 <path
-                  fill="#0095FF"
+                  fill="#fFF"
                   d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"
                 ></path>
               </g>
