@@ -15,6 +15,7 @@ export default {
       colors: {
         // Adding custom color
         primary: '#40b93c',
+        danger: '#ff3811'
       },
     },
   },

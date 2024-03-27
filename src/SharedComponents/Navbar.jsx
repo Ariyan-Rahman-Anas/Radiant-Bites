@@ -6,11 +6,17 @@ import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => {
     setMenu(!menu);
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+    .catch(()=>{})
   };
 
   return (
@@ -62,15 +68,15 @@ const Navbar = () => {
               </NavLink>
             </li>
             {user ? (
-              <li className="tex-white relative group">
+              <li onClick={handleLogOut} className="tex-white relative group">
                 <NavLink to={"/"} className="group-hover:text-primary">
-                  Dashboard
+                  Log out
                   <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
                 </NavLink>
               </li>
             ) : (
               <li className="tex-white relative group">
-                <NavLink to={"/"} className="group-hover:text-primary">
+                <NavLink to={"/login"} className="group-hover:text-primary">
                   Sign in
                   <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
                 </NavLink>

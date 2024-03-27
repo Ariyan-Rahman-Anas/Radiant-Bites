@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "foodCategory": "appetizers",
+    "name": "Garlic Bread",
+    "price": 7.99,
+    "recipe": "Toasted bread with garlic, butter, and herbs.",
+    "details": "A classic appetizer featuring warm, crispy bread infused with aromatic garlic, rich butter, and fragrant herbs.",
+    "image": "https://example.com/garlic_bread.jpg"
+  },
+  {
+    "id": 2,
+    "foodCategory": "chicken",
+    "name": "Grilled Chicken Caesar Salad",
+    "price": 12.99,
+    "recipe": "Grilled chicken breast served over crisp romaine lettuce, tossed with Caesar dressing, croutons, and Parmesan cheese.",
+    "details": "Savor the flavors of our Grilled Chicken Caesar Salad, featuring tender grilled chicken breast served atop crisp romaine lettuce, tossed with our signature Caesar dressing, crunchy croutons, and savory Parmesan cheese, a satisfying and delicious meal.",
+    "image": "https://example.com/grilled_chicken_caesar_salad.jpg"
+  },
+  {
+    "id": 3,
+    "foodCategory": "desserts",
+    "name": "Chocolate Lava Cake",
+    "price": 9.99,
+    "recipe": "Decadent chocolate cake with a molten chocolate center.",
+    "details": "Indulge in pure decadence with our signature chocolate lava cake, a rich and moist chocolate cake with a gooey, molten center, served warm and paired perfectly with creamy vanilla ice cream and a drizzle of luxurious chocolate sauce.",
+    "image": "https://example.com/chocolate_lava_cake.jpg"
+  },
+  {
+    "id": 4,
+    "foodCategory": "salads",
+    "name": "Caesar Salad",
+    "price": 12.99,
+    "recipe": "Fresh romaine lettuce tossed with Caesar dressing, croutons, and Parmesan cheese.",
+    "details": "Savor the crisp, refreshing crunch of our classic Caesar salad, made with fresh romaine lettuce, crunchy croutons, savory Parmesan cheese, and our signature Caesar dressing, a zesty blend of garlic, anchovies, and Parmesan.",
+    "image": "https://example.com/caesar_salad.jpg"
+  },
+  {
+    "id": 5,
+    "foodCategory": "fast food",
+    "name": "Cheeseburger",
+    "price": 8.99,
+    "recipe": "Juicy beef patty topped with melted cheese, lettuce, tomato, onion, pickles, and special sauce on a toasted bun.",
+    "details": "Sink your teeth into our mouthwatering Cheeseburger, featuring a juicy beef patty, melted cheese, crisp lettuce, ripe tomato, sliced onion, tangy pickles, and our special sauce, all sandwiched between a perfectly toasted bun, a classic favorite that hits the spot every time.",
+    "image": "https://example.com/cheeseburger.jpg"
+  },
+  {
+    "id": 6,
+    "foodCategory": "seafood",
+    "name": "Grilled Salmon",
+    "price": 18.99,
+    "recipe": "Fresh salmon fillet seasoned and grilled to perfection.",
+    "details": "Savor the delicate flavors of our Grilled Salmon, featuring a fresh fillet of salmon, seasoned with our special blend of spices and grilled to perfection, served with your choice of side dishes for a wholesome and satisfying meal.",
+    "image": "https://example.com/grilled_salmon.jpg"
+  }
+]

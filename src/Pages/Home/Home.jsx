@@ -1,5 +1,6 @@
 import RadiantAds from "../../SharedComponents/RadiantAds";
 import Banner from "./Banner";
+import FromOurMenu from "./FromOurMenu";
 import { OnlineOrder } from "./OnlineOrder";
 
 const Home = () => {
@@ -7,7 +8,8 @@ const Home = () => {
     <div>
       <Banner></Banner>
           <OnlineOrder></OnlineOrder>
-          <RadiantAds></RadiantAds>
+      <RadiantAds></RadiantAds>
+      <FromOurMenu></FromOurMenu>
     </div>
   );
 };
