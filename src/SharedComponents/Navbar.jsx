@@ -4,6 +4,8 @@ import useAuth from "../Hooks/useAuth";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
+import { FaRegUser } from "react-icons/fa";
+import PrimaryButton from "./PrimaryButton";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -15,8 +17,8 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
-    .catch(()=>{})
+      .then(() => {})
+      .catch(() => {});
   };
 
   return (
@@ -51,29 +53,64 @@ const Navbar = () => {
             </li>
             <li className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
-                Shop
+                About Us
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
-                Contact
+                Specials
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
-                Dashboard
+                Blogs
+                <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
+              </NavLink>
+            </li>
+            <li className="tex-white relative group">
+              <NavLink to={"/"} className="group-hover:text-primary">
+                Reservation
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             {user ? (
-              <li onClick={handleLogOut} className="tex-white relative group">
-                <NavLink to={"/"} className="group-hover:text-primary">
-                  Log out
-                  <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
-                </NavLink>
-              </li>
+              <div className="group relative ">
+                <div>
+                  {user.photoURL ? (
+                    <img
+                      src={user?.photoURL}
+                      alt="user picture"
+                      className="w-10 h-10 rounded-full "
+                    />
+                  ) : (
+                    <FaRegUser className="text-4xl border-[.09rem] rounded p-1 border-primary "></FaRegUser>
+                  )}
+                </div>
+                <div className="hidden group-hover:flex items-center justify-center h-36 w-72 rounded-md bg-black/50 text-white text-center text-sm absolute right-0 top-10 z-50 border-primary border-[.09rem] ">
+                  <div>
+                    <h1 className="text-xl">
+                      {user.displayName !== null
+                        ? user.displayName
+                        : "Mr. Not Given"}
+                    </h1>
+                    <h2>{user ? user.email : "mrNotGiven@email.com"}</h2>
+                    <button onClick={handleLogOut} className="mt-5">
+                      <PrimaryButton
+                        value={"Logout"}
+                        link={"/login"}
+                      ></PrimaryButton>
+                    </button>
+                  </div>
+                </div>
+                {/* <li onClick={handleLogOut} className="tex-white relative group">
+                  <NavLink to={"/"} className="group-hover:text-primary">
+                    Log out
+                    <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
+                  </NavLink>
+                </li> */}
+              </div>
             ) : (
               <li className="tex-white relative group">
                 <NavLink to={"/login"} className="group-hover:text-primary">

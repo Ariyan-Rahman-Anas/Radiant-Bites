@@ -10,7 +10,7 @@ import useAuth from "../../Hooks/useAuth";
 // import axios from "axios";
 
 const LogIn = () => {
-  const { signIn, googleSignIn } = useAuth();
+  const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [logInError, setLogInError] = useState("");
@@ -20,7 +20,7 @@ const LogIn = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    signIn(data.email, data.password)
+    signInUser(data.email, data.password)
       .then(() => {
         //getting access token from jwt
         // fetch("https://car-doctor-server-sigma-ruby.vercel.app/jwt", {
