@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "foodCategory": "fast food",
+    "foodCategory": "fastFood",
     "name": "Cheeseburger",
     "price": 8.99,
     "recipe": "Juicy beef patty topped with melted cheese, lettuce, tomato, onion, pickles, and special sauce on a toasted bun.",

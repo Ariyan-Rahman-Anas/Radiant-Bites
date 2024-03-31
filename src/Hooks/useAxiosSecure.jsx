@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  // baseURL: "https://car-doctor-server-sigma-ruby.vercel.app",
+  // baseURL: "https://radiant-bites-back-end.vercel.app",
   baseURL: "http://localhost:5000",
   withCredentials: true,
 });
@@ -18,7 +18,7 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
-        console.log("error tracked in the interceptor", error.response);
+        console.log("error tracked in the interceptor", error);
         if (error.response.status === 401 || error.response.status === 403) {
           console.log("logout the user");
           logOut()

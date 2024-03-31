@@ -15,6 +15,10 @@ const Navbar = () => {
     setMenu(!menu);
   };
 
+  const hidingMenu = () => {
+    setMenu(!menu);
+  };
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -39,37 +43,37 @@ const Navbar = () => {
                 : "-left-[69rem]"
             }  duration-700 z-10 `}
           >
-            <li className="tex-white relative group">
+            <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary ">
                 Home
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300 "></span>
               </NavLink>
             </li>
-            <li className="tex-white relative group">
+            <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/menu"} className="group-hover:text-primary">
                 Menu
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            <li className="tex-white relative group">
-              <NavLink to={"/"} className="group-hover:text-primary">
+            <li onClick={hidingMenu} className="tex-white relative group">
+              <NavLink to={"/about"} className="group-hover:text-primary">
                 About Us
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            <li className="tex-white relative group">
+            <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
                 Specials
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            <li className="tex-white relative group">
+            <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
                 Blogs
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            <li className="tex-white relative group">
+            <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
                 Reservation
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
@@ -113,7 +117,7 @@ const Navbar = () => {
               </div>
             ) : (
               <li className="tex-white relative group">
-                <NavLink to={"/login"} className="group-hover:text-primary">
+                <NavLink to={"/logIn"} className="group-hover:text-primary">
                   Sign in
                   <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
                 </NavLink>
