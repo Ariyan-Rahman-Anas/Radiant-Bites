@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import DishCard from "../../../SharedComponents/DishCard";
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
-import bannerImg from "./../../../assets/images/Chicken.png";
+import bannerImg from "./../../../assets/images/Traditional.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
-const Chicken = () => {
+
+const BDTraditional = () => {
   const axiosSecure = useAxiosSecure();
-  const url = `/allItems/menu/chicken`;
-  const [chickenDishes, setChickenDishes] = useState([]);
+  const url = `/allItems/menu/bdTraditional`;
+  const [traditionalDishes, setTraditionalDishes] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => setChickenDishes(res.data));
+    axiosSecure.get(url).then((res) => setTraditionalDishes(res.data));
   }, [axiosSecure, url]);
 
   return (
@@ -25,14 +26,14 @@ const Chicken = () => {
 
       <div className="my-20 px-2 w-full md:w-[85vw] mx-auto ">
         <div className="mt-5">
-          {chickenDishes.length >= 1 ? (
+          {traditionalDishes.length >= 1 ? (
             <div>
               <SectionTitle
                 heading={"Chicken Delights"}
                 subHeading={"Savor a variety of mouthwatering chicken dishes."}
               ></SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {chickenDishes.map((dish) => (
+                {traditionalDishes.map((dish) => (
                   <DishCard key={dish._id} dish={dish}></DishCard>
                 ))}
               </div>
@@ -56,4 +57,4 @@ const Chicken = () => {
     </div>
   );
 };
-export default Chicken;
+export default BDTraditional;

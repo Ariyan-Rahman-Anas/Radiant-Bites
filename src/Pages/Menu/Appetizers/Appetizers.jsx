@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import DishCard from "../../../SharedComponents/DishCard";
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
-import bannerImg from "./../../../assets/images/Chicken.png";
+import bannerImg from "./../../../assets/images/Appetizers.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
-const Chicken = () => {
+
+const Appetizers = () => {
   const axiosSecure = useAxiosSecure();
-  const url = `/allItems/menu/chicken`;
+  const url = `/allItems/menu/appetizers`;
   const [chickenDishes, setChickenDishes] = useState([]);
 
   useEffect(() => {
@@ -56,4 +57,4 @@ const Chicken = () => {
     </div>
   );
 };
-export default Chicken;
+export default Appetizers;

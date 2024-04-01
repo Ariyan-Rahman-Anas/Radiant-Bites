@@ -2,37 +2,38 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import DishCard from "../../../SharedComponents/DishCard";
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
-import bannerImg from "./../../../assets/images/Chicken.png";
+import bannerImg from "./../../../assets/images/Offer.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
-const Chicken = () => {
+
+const TodayOffer = () => {
   const axiosSecure = useAxiosSecure();
-  const url = `/allItems/menu/chicken`;
-  const [chickenDishes, setChickenDishes] = useState([]);
+  const url = `/allItems/menu/todayOffer`;
+  const [todayOfferDishes, setTodayOfferDishes] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => setChickenDishes(res.data));
+    axiosSecure.get(url).then((res) => setTodayOfferDishes(res.data));
   }, [axiosSecure, url]);
 
   return (
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Chicken's World"}
-        subHeading={"Let's dive into the deep of Chicken's World!"}
+        heading={"Our Special Offer"}
+        subHeading={"Here is our all items of Today's Offer"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 
       <div className="my-20 px-2 w-full md:w-[85vw] mx-auto ">
         <div className="mt-5">
-          {chickenDishes.length >= 1 ? (
+          {todayOfferDishes.length >= 1 ? (
             <div>
               <SectionTitle
                 heading={"Chicken Delights"}
                 subHeading={"Savor a variety of mouthwatering chicken dishes."}
               ></SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {chickenDishes.map((dish) => (
+                {todayOfferDishes.map((dish) => (
                   <DishCard key={dish._id} dish={dish}></DishCard>
                 ))}
               </div>
@@ -41,7 +42,7 @@ const Chicken = () => {
             <RenderedEmptyMessage
               heading={"Oops!"}
               subHeading={
-                "There is nothing available right now in the Chicken's World!"
+                "There is nothing available right now in the Today's Offer!"
               }
               message={
                 "Attention Food Connoisseurs! Share your culinary creations and influence our menu with your culinary artistry. Let your signature dish shine and delight taste buds everywhere!"
@@ -56,4 +57,4 @@ const Chicken = () => {
     </div>
   );
 };
-export default Chicken;
+export default TodayOffer;
