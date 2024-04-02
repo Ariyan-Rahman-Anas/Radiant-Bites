@@ -5,13 +5,14 @@ import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import bannerImg from "./../../../assets/images/Chicken.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+
 const Chicken = () => {
+  const [chickenDishes, setChickenDishes] = useState([]);
   const axiosSecure = useAxiosSecure();
   const url = `/allItems/menu/chicken`;
-  const [chickenDishes, setChickenDishes] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => setChickenDishes(res.data));
+    axiosSecure.get(url).then((res) => setChickenDishes(res.data.data));
   }, [axiosSecure, url]);
 
   return (
@@ -31,7 +32,7 @@ const Chicken = () => {
                 heading={"Chicken Delights"}
                 subHeading={"Savor a variety of mouthwatering chicken dishes."}
               ></SectionTitle>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
                 {chickenDishes.map((dish) => (
                   <DishCard key={dish._id} dish={dish}></DishCard>
                 ))}

@@ -12,7 +12,7 @@ const Appetizers = () => {
   const [chickenDishes, setChickenDishes] = useState([]);
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => setChickenDishes(res.data));
+    axiosSecure.get(url).then((res) => setChickenDishes(res.data.data));
   }, [axiosSecure, url]);
 
   return (

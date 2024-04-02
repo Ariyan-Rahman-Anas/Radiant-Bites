@@ -5,8 +5,8 @@ import PrimaryButton from "./../../SharedComponents/PrimaryButton";
 
 const FromOurMenu = () => {
   const [allItems, setAllItems] = useState([]);
-  const axiosSecure = useAxiosSecure()
-  const url = `/allItems`
+  const axiosSecure = useAxiosSecure();
+  const url = `/allItems`;
 
   //fetching items for home page using axios secure
   useEffect(() => {
@@ -22,7 +22,7 @@ const FromOurMenu = () => {
 
       {/* fetching some items for the mongodb */}
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-start mb-8 ">
-        {allItems?.data?.map((item) => (
+        {allItems?.data?.slice(0,6)?.map((item) => (
           <div
             key={item._id}
             className="shadow-md rounded-md p-4 grid md:grid-cols-10 gap-5  "
