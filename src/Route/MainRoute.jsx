@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import Registration from "./../Pages/Registration/Registration";
@@ -10,11 +9,12 @@ import Chicken from "../Pages/Menu/Chicken/Chicken";
 import TodayOffer from "../Pages/Menu/Today Offer/TodayOffer";
 import BDTraditional from "../Pages/Menu/BD Traditional/BDTraditional";
 import Appetizers from "../Pages/Menu/Appetizers/Appetizers";
+import App from "../App";
 
 const MainRoute = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <App></App>,
     children: [
       {
         path: "/",

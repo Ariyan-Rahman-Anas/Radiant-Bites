@@ -1,9 +1,59 @@
 import { useState } from "react";
 import PrimaryButton from "./PrimaryButton";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
 
 const DishCard = ({ dish }) => {
-  const { name, image, price, recipe, details } = dish || {};
+  const { user } = useAuth()
+  const loggedUserEmail = user.email
+  console.log("email is:", loggedUserEmail)
+  const {_id, name, image, price, recipe, details } = dish || {};
   const [openModal, setOpenModal] = useState(false);
+  const [plusItem, setPlusItems] = useState(1);
+  const [itemsPrice, setItemsPrice] = useState(price);
+  const axiosSecure = useAxiosSecure()
+  const url = ""
+
+  const handlePlusItem = () => {
+    setPlusItems(plusItem + 1);
+    setItemsPrice(itemsPrice + price);
+  };
+
+  const handleMinusItem = () => {
+    setPlusItems(plusItem - 1);
+    setItemsPrice(itemsPrice - price);
+  };
+
+  const handleConfirmOrder = () => {
+    setOpenModal(false);
+    // e.preventDefault()
+    const totalItems = plusItem;
+    const totalPrice = itemsPrice;
+
+    const confirmAnOrder = {
+      _id,
+      image,
+      name,
+      totalItems,
+      totalPrice,
+      loggedUserEmail
+    };
+    console.log("ordered is: ", confirmAnOrder);
+    console.log("orrrrrrrr");
+
+    axiosSecure
+      .post(url, confirmAnOrder, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.data.insertedId) {
+          console.log("yahhhhhhhhhhhh, item posted!");
+        }
+      });
+
+  };
 
   return (
     <div className="shadow-md bg-white p-4 rounded-md ">
@@ -26,7 +76,7 @@ const DishCard = ({ dish }) => {
             >
               <div
                 onClick={(e_) => e_.stopPropagation()}
-                className={`text- absolute max-w-md rounded-md p-6 drop-shadow-md mx-2 bg-black text-gray-300 ${
+                className={`text- absolute max-w-md rounded-lg p-6 drop-shadow-md mx-2 bg-black text-gray-300 ${
                   openModal
                     ? "scale-1 opacity-1 duration-700"
                     : "scale-0 opacity-0 duration-700"
@@ -43,10 +93,33 @@ const DishCard = ({ dish }) => {
                   <span className="text-white font-semibold">Details: </span>
                   {details}
                 </p>
-                <p className="mb-4">
-                  <span className="font-semibold text-white">Price: </span>$
-                  {price}
-                </p>
+                <div className="my-4 flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-5">
+                    <p>
+                      <span className="font-semibold text-white">Items: </span>
+                      {plusItem}
+                    </p>
+                    <div className="text-4xl mx-auto text-center flex items-center text-black justify-between gap-3 ">
+                      <div
+                        onClick={handleMinusItem}
+                        id="minusBtn"
+                        className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
+                      >
+                        <button disabled={plusItem == 1}>-</button>
+                      </div>
+                      <div
+                        onClick={handlePlusItem}
+                        className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
+                      >
+                        <button>+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mb-4">
+                    <span className="font-semibold text-white">Price: </span>$
+                    {itemsPrice}
+                  </p>
+                </div>
                 <div className="flex justify-between">
                   <button
                     onClick={() => setOpenModal(false)}
@@ -54,10 +127,12 @@ const DishCard = ({ dish }) => {
                   >
                     Cancel
                   </button>
-                  <PrimaryButton
-                    value={"Confirm"}
-                    onClickFunc={() => setOpenModal(false)}
-                  ></PrimaryButton>
+                  <button
+                    onClick={handleConfirmOrder}
+                    className="px-[1.2rem] py-1 rounded-full w-fit text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white duration-500 "
+                  >
+                    Confirm
+                  </button>
                 </div>
               </div>
             </div>

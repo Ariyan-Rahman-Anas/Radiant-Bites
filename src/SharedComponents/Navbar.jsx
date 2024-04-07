@@ -3,13 +3,17 @@ import logo1 from "./../assets/Logos/1.svg";
 import useAuth from "../Hooks/useAuth";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton";
+import { ThemeContext } from "../useContext/allContext";
+import { BsMoonStars, BsSun } from "react-icons/bs";
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [menu, setMenu] = useState(false);
+  const {darkMode, setDarkMode} = useContext(ThemeContext);
 
   const handleMenu = () => {
     setMenu(!menu);
@@ -123,9 +127,15 @@ const Navbar = () => {
                 </NavLink>
               </li>
             )}
+            <li onClick={() => setDarkMode(!darkMode)} className="text-2xl cursor-pointer hidden md:block ">
+              {darkMode ? <BsSun className="text-primary" ></BsSun> : <BsMoonStars></BsMoonStars>}
+            </li>
           </ul>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center justify-center gap-4 ">
+          <li onClick={() => setDarkMode(!darkMode)} className="text-xl list-none ">
+            {darkMode ? <BsSun className="text-primary"></BsSun> : <BsMoonStars></BsMoonStars>}
+          </li>
           {menu ? (
             <button onClick={handleMenu}>
               <RxCross2 className="text-4xl text-primary"></RxCross2>{" "}

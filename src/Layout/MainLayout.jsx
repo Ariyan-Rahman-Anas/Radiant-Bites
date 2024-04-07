@@ -7,6 +7,7 @@ const MainLayout = () => {
   const noHeaderFooter =
     location.pathname.includes("logIn") ||
     location.pathname.includes("registration");
+  
   return (
     <div>
       {noHeaderFooter || <Navbar></Navbar>}
