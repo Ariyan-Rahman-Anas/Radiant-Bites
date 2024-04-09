@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import DishCard from "../../../SharedComponents/DishCard";
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import bannerImg from "./../../../assets/images/Chicken.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+import { getData } from "../../../Hooks/apiUtils";
+import Spinner from "../../../SharedComponents/Spinner";
 
 const Chicken = () => {
-  const [chickenDishes, setChickenDishes] = useState([]);
-  const axiosSecure = useAxiosSecure();
-  const url = `/allItems/menu/chicken`;
+  const [dishes, setDishes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => setChickenDishes(res.data.data));
-  }, [axiosSecure, url]);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const responseData = await getData("allItems/menu/chicken");
+        setDishes(responseData);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData(); // Call the function to fetch data when the component mounts
+  }, []);
 
   return (
     <div>
@@ -26,14 +38,18 @@ const Chicken = () => {
 
       <div className="my-20 px-2 w-full md:w-[85vw] mx-auto ">
         <div className="mt-5">
-          {chickenDishes.length >= 1 ? (
+          {loading ? (
+          <Spinner></Spinner>
+          ) : error ? (
+            <h1>{error.message}</h1>
+          ) : dishes.length >= 1 ? (
             <div>
               <SectionTitle
                 heading={"Chicken Delights"}
                 subHeading={"Savor a variety of mouthwatering chicken dishes."}
               ></SectionTitle>
               <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
-                {chickenDishes.map((dish) => (
+                {dishes.map((dish) => (
                   <DishCard key={dish._id} dish={dish}></DishCard>
                 ))}
               </div>

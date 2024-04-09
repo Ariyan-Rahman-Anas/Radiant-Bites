@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../SharedComponents/Navbar";
 import Footer from "../SharedComponents/Footer";
+import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -13,6 +14,7 @@ const MainLayout = () => {
       {noHeaderFooter || <Navbar></Navbar>}
       <Outlet></Outlet>
       {noHeaderFooter || <Footer></Footer>}
+      <Toaster position="top-right" reverseOrder={false}></Toaster>
     </div>
   );
 };

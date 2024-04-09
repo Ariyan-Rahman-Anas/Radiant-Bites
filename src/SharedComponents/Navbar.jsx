@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import logo1 from "./../assets/Logos/1.svg";
+import logo2 from "./../assets/Logos/2.svg";
 import useAuth from "../Hooks/useAuth";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
@@ -8,6 +9,7 @@ import { FaRegUser } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton";
 import { ThemeContext } from "../useContext/allContext";
 import { BsMoonStars, BsSun } from "react-icons/bs";
+import { PiShoppingCart } from "react-icons/pi";
 
 
 const Navbar = () => {
@@ -31,19 +33,31 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="flex md:flex-row items-center justify-between bg-gradient-to-b from-green-200 to-green-50 bg-opacity-50 p-2 ">
+      <nav
+        className={`${
+          darkMode
+            ? ""
+            : "bg-gradient-to-b from-green-200 to-green-50 bg-opacity-50"
+        } flex md:flex-row items-center justify-between p-2 `}
+      >
         <div className="navbar-start">
           <div className="w-[8rem] ">
             <Link to={"/"}>
-              <img src={logo1} alt="Radiant Bites's Logo" className="w-full" />
+              <img
+                src={darkMode ? logo2 : logo1}
+                alt="Radiant Bites's Logo"
+                className="w-full"
+              />
             </Link>
           </div>
         </div>
         <div className="navbar-center">
           <ul
-            className={`flex flex-col md:flex-row items-center justify-center gap-x-8 gap-y-4 absolute md:static ${
+            className={`${
+              darkMode ? "text-gray-400" : "text-gray-400 md:text-black "
+            } flex flex-col md:flex-row items-center justify-center gap-x-8 gap-y-4 absolute md:static ${
               menu
-                ? "left-0 top-[5.5rem] right-0 bg-black md:bg-transparent rounded-md text-white md:text-black w-full h-full "
+                ? "left-0 top-[5.5rem] right-0 bg-black md:bg-transparent rounded-md w-full h-full "
                 : "-left-[69rem]"
             }  duration-700 z-10 `}
           >
@@ -67,12 +81,6 @@ const Navbar = () => {
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
               <NavLink to={"/"} className="group-hover:text-primary">
-                Specials
-                <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
-              </NavLink>
-            </li>
-            <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/"} className="group-hover:text-primary">
                 Blogs
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
@@ -82,6 +90,27 @@ const Navbar = () => {
                 Reservation
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
+            </li>
+            <li>
+              {user ? (
+                <NavLink to={"/shoppingCart"}>
+                  <PiShoppingCart className="text-xl"></PiShoppingCart>
+                </NavLink>
+              ) : (
+                <NavLink to={"logIn"}>
+                  <PiShoppingCart className="text-xl"></PiShoppingCart>
+                </NavLink>
+              )}
+            </li>
+            <li
+              onClick={() => setDarkMode(!darkMode)}
+              className="text-xl cursor-pointer hidden md:block "
+            >
+              {darkMode ? (
+                <BsSun className="text-white"></BsSun>
+              ) : (
+                <BsMoonStars></BsMoonStars>
+              )}
             </li>
             {user ? (
               <div className="group relative ">
@@ -127,14 +156,18 @@ const Navbar = () => {
                 </NavLink>
               </li>
             )}
-            <li onClick={() => setDarkMode(!darkMode)} className="text-2xl cursor-pointer hidden md:block ">
-              {darkMode ? <BsSun className="text-primary" ></BsSun> : <BsMoonStars></BsMoonStars>}
-            </li>
           </ul>
         </div>
         <div className="md:hidden flex items-center justify-center gap-4 ">
-          <li onClick={() => setDarkMode(!darkMode)} className="text-xl list-none ">
-            {darkMode ? <BsSun className="text-primary"></BsSun> : <BsMoonStars></BsMoonStars>}
+          <li
+            onClick={() => setDarkMode(!darkMode)}
+            className="text-xl list-none "
+          >
+            {darkMode ? (
+              <BsSun className="text-white"></BsSun>
+            ) : (
+              <BsMoonStars></BsMoonStars>
+            )}
           </li>
           {menu ? (
             <button onClick={handleMenu}>

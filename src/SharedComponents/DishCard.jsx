@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import { ThemeContext } from "../useContext/allContext";
+import { postData } from "../Hooks/apiUtils";
 
 const DishCard = ({ dish }) => {
-  const { user } = useAuth()
-  const loggedUserEmail = user.email
-  console.log("email is:", loggedUserEmail)
-  const {_id, name, image, price, recipe, details } = dish || {};
+  const { user } = useAuth();
+  const loggedUserEmail = user?.email;
+  // console.log("email is:", loggedUserEmail)
+  const { _id, name, image, price, recipe, details } = dish || {};
   const [openModal, setOpenModal] = useState(false);
   const [plusItem, setPlusItems] = useState(1);
   const [itemsPrice, setItemsPrice] = useState(price);
-  const axiosSecure = useAxiosSecure()
-  const url = ""
+  const { darkMode } = useContext(ThemeContext);
+
+  const axiosSecure = useAxiosSecure();
+  const url = "";
 
   const handlePlusItem = () => {
     setPlusItems(plusItem + 1);
@@ -24,9 +28,35 @@ const DishCard = ({ dish }) => {
     setItemsPrice(itemsPrice - price);
   };
 
-  const handleConfirmOrder = () => {
+  // const handleConfirmOrder = async () => {
+  //   setOpenModal(false);
+  //   const totalItems = plusItem;
+  //   const totalPrice = itemsPrice;
+
+  //   const confirmAnOrder = {
+  //     _id,
+  //     image,
+  //     name,
+  //     totalItems,
+  //     totalPrice,
+  //     loggedUserEmail,
+  //   };
+
+  //   try {
+  //     confirmAnOrder;
+  //     const response = await postData("items", confirmAnOrder);
+  //     // if (response.data.insertedId) {
+  //     //   console.log("data posted: ", confirmAnOrder);
+  //     // }
+  //     console.log("data posted: ", response);
+  //   } catch (error) {
+  //     console.log("ordering err isl: ", error);
+  //   }
+  // };
+
+
+  const handleConfirmOrder = async () => {
     setOpenModal(false);
-    // e.preventDefault()
     const totalItems = plusItem;
     const totalPrice = itemsPrice;
 
@@ -36,28 +66,54 @@ const DishCard = ({ dish }) => {
       name,
       totalItems,
       totalPrice,
-      loggedUserEmail
+      loggedUserEmail,
     };
-    console.log("ordered is: ", confirmAnOrder);
-    console.log("orrrrrrrr");
 
-    axiosSecure
-      .post(url, confirmAnOrder, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        if (res.data.insertedId) {
-          console.log("yahhhhhhhhhhhh, item posted!");
-        }
-      });
-
+    try {
+      // Pass the correct endpoint for posting orders
+      const response = await postData("orderedItems", confirmAnOrder);
+      console.log("Order confirmation response:", response);
+    } catch (error) {
+      console.error("Error confirming order:", error);
+    }
   };
 
+
+  // axiosSecure
+  //   .post(url, confirmAnOrder, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //   .then((res) => {
+  //     if (res.data.insertedId) {
+  //       console.log("yahhhhhhhhhhhh, item posted!");
+  //     }
+  //   });
+
+  // const handlePostData = async (endPoint, orderingItem) => {
+  //   try {
+  //     const response = await postData("", confirmAnOrder);
+  //     if (response.data.insertedId) {
+  //       console.log("data posted: ", orderingItem);
+  //     }
+  //   } catch (error) {
+  //     console.log("ordering err isl: ", error);
+  //   }
+  // };
+  // handlePostData();
+
   return (
-    <div className="shadow-md bg-white p-4 rounded-md ">
-      <div className="p-4 rounded-md bg-gray-100 shadow-md mb-3 ">
+    <div
+      className={` ${
+        darkMode ? "bg-gray-700" : ""
+      } shadow-md bgwhite dark:bg-primary p-4 rounded-md `}
+    >
+      <div
+        className={`${
+          darkMode ? "bg-gray-800" : "bg-gray-100"
+        } p-4 rounded-md shadow-md mb-3 `}
+      >
         <img src={image} alt="dish image" className="w-full rounded-md" />
       </div>
       <div>
@@ -137,7 +193,7 @@ const DishCard = ({ dish }) => {
               </div>
             </div>
           </div>
-          <p className="font-semibold text-gray-500 ">${price}</p>
+          <p className="font-semibold text-gray-400 ">${price}</p>
         </div>
       </div>
     </div>

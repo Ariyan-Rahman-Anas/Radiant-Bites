@@ -10,6 +10,8 @@ import TodayOffer from "../Pages/Menu/Today Offer/TodayOffer";
 import BDTraditional from "../Pages/Menu/BD Traditional/BDTraditional";
 import Appetizers from "../Pages/Menu/Appetizers/Appetizers";
 import App from "../App";
+import PrivateRoute from './PrivateRoute';
+import ShoppingCart from "../Pages/Shopping Cart/ShoppingCart";
 
 const MainRoute = createBrowserRouter([
   {
@@ -26,23 +28,43 @@ const MainRoute = createBrowserRouter([
       },
       {
         path: "/menu/chefSpecial",
-        element: <ChefSpecial></ChefSpecial>,
+        element: (
+          <PrivateRoute>
+            <ChefSpecial></ChefSpecial>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/menu/todayOffer",
-        element: <TodayOffer></TodayOffer>,
+        element: (
+          <PrivateRoute>
+            <TodayOffer></TodayOffer>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/menu/bdTraditional",
-        element:<BDTraditional></BDTraditional>
+        element: (
+          <PrivateRoute>
+            <BDTraditional></BDTraditional>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/menu/appetizer",
-        element:<Appetizers></Appetizers>
+        element: (
+          <PrivateRoute>
+            <Appetizers></Appetizers>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/menu/chicken",
-        element: <Chicken></Chicken>,
+        element: (
+          <PrivateRoute>
+            <Chicken></Chicken>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",
@@ -55,6 +77,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/shoppingCart",
+        element:<ShoppingCart></ShoppingCart>
       },
     ],
   },

@@ -6,7 +6,7 @@ function App() {
     const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <div className={` ${darkMode ? "bg-gray-800 text-gray-500 " : ""}`}>
+    <div className={` ${darkMode ? "bg-gray-800 text-gray-400 " : "bg-green-50"}`}>
       <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
         <MainLayout></MainLayout>
       </ThemeContext.Provider>

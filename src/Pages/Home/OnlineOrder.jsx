@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import { Link } from "react-router-dom";
 import PrimaryButton from "./../../SharedComponents/PrimaryButton";
+import { ThemeContext } from "../../useContext/allContext";
 
 export const OnlineOrder = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
+  const { darkMode} = useContext(ThemeContext);
 
   const sliders = [
     {
@@ -48,14 +50,14 @@ export const OnlineOrder = () => {
       currentSlider === sliders.length - 1 ? 0 : currentSlider + 1
     );
   return (
-    <div className="my-24 px-2 ">
+    <div className={`${darkMode ? "bg-gray-900" : "bg-green-100 shadow-md " } my-24 pt-12 pb-8 px-2 `}>
       <SectionTitle
         heading={"---From 11:00am to 10:00pm---"}
         subHeading={"ORDER ONLINE"}
       ></SectionTitle>
 
       {/* slider starts from here */}
-      <div className="max-w-6xl mx-auto h-[45vh] md:h-full flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative">
+      <div className="max-w-6x mx-auto h-[45vh] md:h-full flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative">
         <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
           {/* arrow left */}
           <button
