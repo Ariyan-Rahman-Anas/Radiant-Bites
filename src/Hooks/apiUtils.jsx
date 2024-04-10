@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000"; // Your API base URL
+const BASE_URL = "http://localhost:3000"; 
+// const BASE_URL = "https://radiant-bites-back-end.vercel.app";
 
 // Function to fetch data
 export const getData = async (endpoint) => {

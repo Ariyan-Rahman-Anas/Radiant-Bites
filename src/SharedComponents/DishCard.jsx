@@ -4,6 +4,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { ThemeContext } from "../useContext/allContext";
 import { postData } from "../Hooks/apiUtils";
+import {toast} from "react-hot-toast"
 
 const DishCard = ({ dish }) => {
   const { user } = useAuth();
@@ -73,6 +74,7 @@ const DishCard = ({ dish }) => {
       // Pass the correct endpoint for posting orders
       const response = await postData("orderedItems", confirmAnOrder);
       console.log("Order confirmation response:", response);
+      toast.success("Successfully ordered!")
     } catch (error) {
       console.error("Error confirming order:", error);
     }
@@ -107,7 +109,7 @@ const DishCard = ({ dish }) => {
     <div
       className={` ${
         darkMode ? "bg-gray-700" : ""
-      } shadow-md bgwhite dark:bg-primary p-4 rounded-md `}
+      } shadow-md p-4 rounded-md `}
     >
       <div
         className={`${

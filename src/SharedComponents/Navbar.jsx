@@ -57,7 +57,7 @@ const Navbar = () => {
               darkMode ? "text-gray-400" : "text-gray-400 md:text-black "
             } flex flex-col md:flex-row items-center justify-center gap-x-8 gap-y-4 absolute md:static ${
               menu
-                ? "left-0 top-[5.5rem] right-0 bg-black md:bg-transparent rounded-md w-full h-full "
+                ? "left-0 top-[4rem] right-0 bg-black md:bg-transparent rounded-md w-full h-full "
                 : "-left-[69rem]"
             }  duration-700 z-10 `}
           >
@@ -91,7 +91,7 @@ const Navbar = () => {
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
-            <li>
+            <li className="hidden md:block">
               {user ? (
                 <NavLink to={"/shoppingCart"}>
                   <PiShoppingCart className="text-xl"></PiShoppingCart>
@@ -113,7 +113,7 @@ const Navbar = () => {
               )}
             </li>
             {user ? (
-              <div className="group relative ">
+              <div className="group relative bg-gray-500 rounded-md md:bg-transparent ">
                 <div>
                   {user.photoURL ? (
                     <img
@@ -125,7 +125,7 @@ const Navbar = () => {
                     <FaRegUser className="text-4xl border-[.09rem] rounded p-1 border-primary "></FaRegUser>
                   )}
                 </div>
-                <div className="hidden group-hover:flex items-center justify-center h-36 w-72 rounded-md bg-black/50 text-white text-center text-sm absolute right-0 top-10 z-50 border-primary border-[.09rem] ">
+                <div className="md:hidden group-hover:flex items-center justify-center h-36 w-72 rounded-md bg-black/50 text-white text-center text-sm md:absolute md:right-0 md:top-10 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 ">
                   <div>
                     <h1 className="text-xl">
                       {user.displayName !== null
@@ -141,12 +141,6 @@ const Navbar = () => {
                     </button>
                   </div>
                 </div>
-                {/* <li onClick={handleLogOut} className="tex-white relative group">
-                  <NavLink to={"/"} className="group-hover:text-primary">
-                    Log out
-                    <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
-                  </NavLink>
-                </li> */}
               </div>
             ) : (
               <li className="tex-white relative group">
@@ -158,7 +152,7 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <div className="md:hidden flex items-center justify-center gap-4 ">
+        <div className="md:hidden flex items-center justify-center gap-6">
           <li
             onClick={() => setDarkMode(!darkMode)}
             className="text-xl list-none "
@@ -167,6 +161,17 @@ const Navbar = () => {
               <BsSun className="text-white"></BsSun>
             ) : (
               <BsMoonStars></BsMoonStars>
+            )}
+          </li>
+          <li className="list-none">
+            {user ? (
+              <NavLink to={"/shoppingCart"}>
+                <PiShoppingCart className="text-xl"></PiShoppingCart>
+              </NavLink>
+            ) : (
+              <NavLink to={"logIn"}>
+                <PiShoppingCart className="text-xl"></PiShoppingCart>
+              </NavLink>
             )}
           </li>
           {menu ? (

@@ -12,11 +12,19 @@ import Appetizers from "../Pages/Menu/Appetizers/Appetizers";
 import App from "../App";
 import PrivateRoute from './PrivateRoute';
 import ShoppingCart from "../Pages/Shopping Cart/ShoppingCart";
+import Dessert from "../Pages/Menu/Dessert/Dessert";
+import Beef from "../Pages/Menu/Beef/Beef";
+import Mutton from "../Pages/Menu/Mutton/Mutton";
+import Salad from "../Pages/Menu/Salad/Salad";
+import FastFood from "../Pages/Menu/Fast Food/FastFood";
+import SeaFood from "../Pages/Menu/Sea Food/SeaFood";
+import ErrorPage from "../Pages/Error Page/ErrorPage";
 
 const MainRoute = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -59,12 +67,56 @@ const MainRoute = createBrowserRouter([
         ),
       },
       {
+        path: "/menu/dessert",
+        element: (
+          <PrivateRoute>
+            <Dessert></Dessert>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/menu/beef",
+        element: (
+          <PrivateRoute>
+            <Beef></Beef>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/menu/mutton",
+        element: (
+          <PrivateRoute>
+            <Mutton></Mutton>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/menu/chicken",
         element: (
           <PrivateRoute>
             <Chicken></Chicken>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/menu/salad",
+        element: (
+          <PrivateRoute>
+            <Salad></Salad>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/menu/fastFood",
+        element: <PrivateRoute>
+          <FastFood></FastFood>
+        </PrivateRoute>
+      },
+      {
+        path: "/menu/seaFood",
+        element: <PrivateRoute>
+          <SeaFood></SeaFood>
+        </PrivateRoute>
       },
       {
         path: "/about",
@@ -80,7 +132,7 @@ const MainRoute = createBrowserRouter([
       },
       {
         path: "/shoppingCart",
-        element:<ShoppingCart></ShoppingCart>
+        element: <ShoppingCart></ShoppingCart>,
       },
     ],
   },
