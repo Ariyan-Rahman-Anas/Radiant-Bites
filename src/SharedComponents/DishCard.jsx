@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { ThemeContext } from "../useContext/allContext";
 import { postData } from "../Hooks/apiUtils";
@@ -16,8 +15,6 @@ const DishCard = ({ dish }) => {
   const [itemsPrice, setItemsPrice] = useState(price);
   const { darkMode } = useContext(ThemeContext);
 
-  const axiosSecure = useAxiosSecure();
-  const url = "";
 
   const handlePlusItem = () => {
     setPlusItems(plusItem + 1);
@@ -74,7 +71,7 @@ const DishCard = ({ dish }) => {
       // Pass the correct endpoint for posting orders
       const response = await postData("orderedItems", confirmAnOrder);
       console.log("Order confirmation response:", response);
-      toast.success("Successfully ordered!")
+      toast.success("Order Confirmed!")
     } catch (error) {
       console.error("Error confirming order:", error);
     }

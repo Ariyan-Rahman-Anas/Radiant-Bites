@@ -10,7 +10,7 @@ import PrimaryButton from "./PrimaryButton";
 import { ThemeContext } from "../useContext/allContext";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { PiShoppingCart } from "react-icons/pi";
-
+import {toast} from "react-hot-toast"
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -27,7 +27,9 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        toast.success("Logged out Successfully!")
+      })
       .catch(() => {});
   };
 
@@ -92,15 +94,9 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="hidden md:block">
-              {user ? (
-                <NavLink to={"/shoppingCart"}>
-                  <PiShoppingCart className="text-xl"></PiShoppingCart>
-                </NavLink>
-              ) : (
-                <NavLink to={"logIn"}>
-                  <PiShoppingCart className="text-xl"></PiShoppingCart>
-                </NavLink>
-              )}
+              <NavLink to={"/shoppingCart"}>
+                <PiShoppingCart className="text-xl"></PiShoppingCart>
+              </NavLink>
             </li>
             <li
               onClick={() => setDarkMode(!darkMode)}
@@ -136,7 +132,7 @@ const Navbar = () => {
                     <button onClick={handleLogOut} className="mt-5">
                       <PrimaryButton
                         value={"Logout"}
-                        link={"/login"}
+                        link={"/logIn"}
                       ></PrimaryButton>
                     </button>
                   </div>

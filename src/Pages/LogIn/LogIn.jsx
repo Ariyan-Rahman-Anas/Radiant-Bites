@@ -1,19 +1,21 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginMedia from "./../../assets/images/loginBG.svg";
 import Logo from "./../../assets/Logos/1.svg";
+import Logo2 from "./../../assets/Logos/2.svg";
 import { FaGoogle, FaLinkedin, FaFacebookF } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { PiWarningCircle } from "react-icons/pi";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
-// import axios from "axios";
+import { ThemeContext } from "../../useContext/allContext";
 
 const LogIn = () => {
   const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [logInError, setLogInError] = useState("");
+  const {darkMode} = useContext(ThemeContext)
   const {
     register,
     handleSubmit,
@@ -22,21 +24,6 @@ const LogIn = () => {
   const onSubmit = (data) => {
     signInUser(data.email, data.password)
       .then(() => {
-        //getting access token from jwt
-        // fetch("https://car-doctor-server-sigma-ruby.vercel.app/jwt", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify({ email: data?.email }),
-        //   credentials: "include",
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     if (data.success) {
-        //       navigate(location?.state ? location?.state : "/");
-        //     }
-        //   });
         navigate(location?.state ? location?.state : "/");
         toast.success("Log in Successful!");
         setLogInError("");
@@ -60,9 +47,13 @@ const LogIn = () => {
   return (
     <div className="p-2">
       <div className="lg:w-[85vw] mx-auto  ">
-        <div className="nav-start w-[5rem] ">
+        <div className="nav-start w-[7rem] pt-4 ">
           <Link to={"/"}>
-            <img src={Logo} alt="The Website Logo" className="w-full" />
+            <img
+              src={`${darkMode ? Logo2 : Logo}`}
+              alt="The Website Logo"
+              className="w-full"
+            />
           </Link>
         </div>
         <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-6">
@@ -81,7 +72,9 @@ const LogIn = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="placeholder:text-gray-600 p-2 bg-white rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary "
+                className={`${
+                  darkMode ? "bg-gray-700" : "bg-white"
+                } p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                 {...register("email", { required: true })}
               ></input>
               {errors.email && (
@@ -94,7 +87,9 @@ const LogIn = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className=" placeholder:text-gray-600 p-2 bg-white rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary "
+                className={`${
+                  darkMode ? "bg-gray-700" : "bg-white"
+                } p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                 {...register("password", { required: true })}
               ></input>
               {errors.password && (
@@ -112,9 +107,9 @@ const LogIn = () => {
                 className="text-white bg-primary p-2 rounded-md border-[.09rem] border-primary hover:text-primary hover:bg-white font-semibold duration-500 cursor-pointer "
               />
             </form>
-            <div className="flex items-center justify-between text-white mt-6 ">
+            <div className="flex items-center justify-between mt-6 ">
               <hr className="border-[.09rem] border-primary rounded-full w-[35%] " />
-              <p className="font-normal text-black">or Sign in with</p>
+              <p>or Sign in with</p>
               <hr className="border-[.09rem] border-primary rounded-full w-[35%] " />
             </div>
             <div className="socials flex items-center justify-center text-primary gap-6 mt-3 ">
@@ -135,7 +130,7 @@ const LogIn = () => {
               <p>Don't have an account?</p>
               <Link
                 to={"/registration"}
-                className="text-primary font-semibold hover:underline hover:text-black "
+                className={`${darkMode ? "hover:text-gray-300" : "hover:text-black" } text-primary font-semibold hover:underline duration-500`}
               >
                 Registration
               </Link>

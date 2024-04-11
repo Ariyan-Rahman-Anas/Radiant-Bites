@@ -16,7 +16,8 @@ import PrimaryButton from "../../SharedComponents/PrimaryButton";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useRef } from "react";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { postData } from "../../Hooks/apiUtils";
+import {toast} from "react-hot-toast"
 
 const Menu = () => {
   const allMenu = [
@@ -90,18 +91,17 @@ const Menu = () => {
 
   const { user } = useAuth();
   const formRef = useRef(null);
-  const axiosSecure = useAxiosSecure();
-  const url = `/allItems`;
 
-  const handleUploadItem = (e) => {
+  const handleUploadItem = async(e) => {
     e.preventDefault();
     const form = e.target;
     const foodCategory = form.foodCategory.value;
     const name = form.name.value;
-    const price = form.price.value;
+    const priceInStr = form.price.value;
     const recipe = form.recipe.value;
     const details = form.details.value;
     const image = form.image.value;
+    const price = parseInt(priceInStr)
 
     const anItem = {
       foodCategory,
@@ -111,16 +111,27 @@ const Menu = () => {
       details,
       image,
     };
+    console.log("items is: ", anItem)
 
     //posting an item
-    axiosSecure.post(url, anItem).then((res) => {
-      if (res?.data?.insertedId) {
-        console.log("An item posted successfully!");
-    formRef.current.reset();
-      }
-    });
-    console.log("the uploading item is: ", anItem);
+    try {
+      const response = await postData("allItems", anItem);
+      console.log("Posting item is: ", response)
+      toast.success("Successfully ordered!");
+    } catch (error) {
+      console.error("Error confirming order:", error);
+      
+    }
+
   };
+
+  // axiosSecure.post(url, anItem).then((res) => {
+  //   if (res?.data?.insertedId) {
+  //     console.log("An item posted successfully!");
+  //     formRef.current.reset();
+  //   }
+  // });
+  // console.log("the uploading item is: ", anItem);
 
   return (
     <div>
