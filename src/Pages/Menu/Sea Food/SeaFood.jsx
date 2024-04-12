@@ -1,9 +1,10 @@
+import usePageTitle from "../../../Hooks/usePageTitle";
+
 const SeaFood = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  //updating the page title
+  usePageTitle("Sea Food - Menu");
+
+  return <div></div>;
 };
 
 export default SeaFood;

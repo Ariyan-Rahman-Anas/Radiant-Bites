@@ -9,13 +9,18 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import { ThemeContext } from "../../useContext/allContext";
+import usePageTitle from './../../Hooks/usePageTitle';
 
 const LogIn = () => {
+
+  //updating the page title
+  usePageTitle("Login");
+
   const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [logInError, setLogInError] = useState("");
-  const {darkMode} = useContext(ThemeContext)
+  const { darkMode } = useContext(ThemeContext);
   const {
     register,
     handleSubmit,
@@ -130,7 +135,9 @@ const LogIn = () => {
               <p>Don't have an account?</p>
               <Link
                 to={"/registration"}
-                className={`${darkMode ? "hover:text-gray-300" : "hover:text-black" } text-primary font-semibold hover:underline duration-500`}
+                className={`${
+                  darkMode ? "hover:text-gray-300" : "hover:text-black"
+                } text-primary font-semibold hover:underline duration-500`}
               >
                 Registration
               </Link>

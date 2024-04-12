@@ -5,8 +5,13 @@ import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import bannerImg from "./../../../assets/images/Offer.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const TodayOffer = () => {
+  
+  //updating the page title
+  usePageTitle("Today Offer - Menu");
+
   const axiosSecure = useAxiosSecure();
   const url = `/allItems/menu/todayOffer`;
   const [todayOfferDishes, setTodayOfferDishes] = useState([]);

@@ -1,9 +1,10 @@
+import usePageTitle from "../../../Hooks/usePageTitle";
+
 const FastFood = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  //updating the page title
+  usePageTitle("Fast Food - Menu");
+
+  return <div></div>;
 };
 
 export default FastFood;

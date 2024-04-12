@@ -1,9 +1,10 @@
+import usePageTitle from "../../../Hooks/usePageTitle";
+
 const Mutton = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  //updating the page title
+  usePageTitle("Mutton - Menu");
+
+  return <div></div>;
 };
 
 export default Mutton;

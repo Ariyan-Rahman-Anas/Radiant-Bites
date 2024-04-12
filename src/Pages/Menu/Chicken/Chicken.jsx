@@ -6,8 +6,13 @@ import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
 import { getData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const Chicken = () => {
+
+  //updating the page title
+  usePageTitle("Chicken - Menu");
+
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -39,7 +44,7 @@ const Chicken = () => {
       <div className="my-20 px-2 w-full md:w-[85vw] mx-auto ">
         <div className="mt-5">
           {loading ? (
-          <Spinner></Spinner>
+            <Spinner></Spinner>
           ) : error ? (
             <h1>{error.message}</h1>
           ) : dishes.length >= 1 ? (

@@ -1,9 +1,10 @@
+import usePageTitle from "../../../Hooks/usePageTitle";
+
 const Salad = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  //updating the page title
+  usePageTitle("Salads - Menu");
+
+  return <div></div>;
 };
 
 export default Salad;

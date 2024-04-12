@@ -6,8 +6,13 @@ import PageHeadBanner from "./../../../SharedComponents/PageHeadBanner";
 import bannerImg from "./../../../assets/images/ChefSpecial.png";
 import { getData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const ChefSpecial = () => {
+
+  //updating the page title
+  usePageTitle("Chef Specials - Menu");
+
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -15,17 +20,17 @@ const ChefSpecial = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
-        const responseData = await getData("allItems/menu/chefSpecial")
-        setDishes(responseData)
+        setLoading(true);
+        const responseData = await getData("allItems/menu/chefSpecial");
+        setDishes(responseData);
       } catch (error) {
-        setError(error)
+        setError(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchData()
-  },[])
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>

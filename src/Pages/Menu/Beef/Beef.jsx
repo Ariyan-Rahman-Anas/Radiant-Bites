@@ -1,9 +1,11 @@
+import usePageTitle from "./../../../Hooks/usePageTitle";
+
 const Beef = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+
+    //updating the page title
+  usePageTitle("Beef - Menu");
+
+  return <div></div>;
 };
 
 export default Beef;

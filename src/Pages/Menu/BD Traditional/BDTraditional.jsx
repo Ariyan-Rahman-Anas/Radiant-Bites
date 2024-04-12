@@ -5,8 +5,13 @@ import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import bannerImg from "./../../../assets/images/Traditional.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+import usePageTitle from './../../../Hooks/usePageTitle';
 
 const BDTraditional = () => {
+
+  //updating the page title
+  usePageTitle("BD Traditional - Menu");
+
   const axiosSecure = useAxiosSecure();
   const url = `/allItems/menu/bdTraditional`;
   const [traditionalDishes, setTraditionalDishes] = useState([]);

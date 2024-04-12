@@ -16,6 +16,18 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [menu, setMenu] = useState(false);
   const {darkMode, setDarkMode} = useContext(ThemeContext);
+  const [toggleOpen, setToggleOpen] = useState(false);
+  
+  // const handleClickAnywhere = () => {
+  // };
+  // window.addEventListener("click", handleClickAnywhere);
+
+  const handleToggleClick = () => {
+    setToggleOpen(true)
+      setTimeout(() => {
+        setToggleOpen(false);
+      }, 3000); 
+  };
 
   const handleMenu = () => {
     setMenu(!menu);
@@ -110,7 +122,7 @@ const Navbar = () => {
             </li>
             {user ? (
               <div className="group relative bg-gray-500 rounded-md md:bg-transparent ">
-                <div>
+                <div onClick={handleToggleClick}>
                   {user.photoURL ? (
                     <img
                       src={user?.photoURL}
@@ -121,7 +133,7 @@ const Navbar = () => {
                     <FaRegUser className="text-4xl border-[.09rem] rounded p-1 border-primary "></FaRegUser>
                   )}
                 </div>
-                <div className="md:hidden group-hover:flex items-center justify-center h-36 w-72 rounded-md bg-black/50 text-white text-center text-sm md:absolute md:right-0 md:top-10 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 ">
+                <div className={`${toggleOpen ? "md:flex" : "md:hidden"} items-center justify-center h-36 w-72 rounded-md bg-black text-white text-center text-sm md:absolute md:right-0 md:top-12 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 `}>
                   <div>
                     <h1 className="text-xl">
                       {user.displayName !== null

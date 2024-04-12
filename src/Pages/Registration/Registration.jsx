@@ -9,11 +9,15 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import { ThemeContext } from "../../useContext/allContext";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const Registration = () => {
+  //updating the page title
+  usePageTitle("Registration - Menu");
+
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
-  const {darkMode} = useContext(ThemeContext)
+  const { darkMode } = useContext(ThemeContext);
 
   //creatingUser
   const { createUser, googleSignIn } = useAuth();

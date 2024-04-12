@@ -6,15 +6,18 @@ import SectionTitle from "../../../SharedComponents/SectionTitle";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
 import { getData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
+import usePageTitle from "../../../Hooks/usePageTitle";
 
 const Appetizers = () => {
+  //updating the page title
+  usePageTitle("Appetizers - Menu");
+
   const [appetizer, setAppetizer] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   // localhost:3000
 
-  
   // useEffect(() => {
   //   const fetchingAppetizersData = async () => {
   //     try {
@@ -53,7 +56,6 @@ const Appetizers = () => {
 
     fetchData(); // Call the function to fetch data when the component mounts
   }, []);
-
 
   return (
     <div>

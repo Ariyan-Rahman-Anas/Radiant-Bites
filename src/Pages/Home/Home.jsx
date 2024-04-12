@@ -7,8 +7,8 @@ import Review from "./Review";
 import usePageTitle from './../../Hooks/usePageTitle';
 
 const Home = () => {
-  //updating the page title
-  usePageTitle("Home");
+  //updating the page title, here title is default title for home page
+  usePageTitle("");
 
   return (
     <div>

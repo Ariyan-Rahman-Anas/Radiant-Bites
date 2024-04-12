@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 import aboutImg from "./../../assets/images/About.png";
 import PageHeadBanner from "./../../SharedComponents/PageHeadBanner";
 import SectionTitle from "./../../SharedComponents/SectionTitle";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const About = () => {
+  //updating the page title
+  usePageTitle("About Us");
+
+  //owner ariyan rahman anas's website url
   const founderInfo = `https://ariyanrahmananas.netlify.app/`;
+  
   return (
     <div>
       <PageHeadBanner

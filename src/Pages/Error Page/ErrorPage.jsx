@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import errorBG from "./../../assets/images/errorPage.png";
+import usePageTitle from './../../Hooks/usePageTitle';
 const ErrorPage = () => {
+
+  //updating the page title
+  usePageTitle("404 Error-Page Not Found");
+
   return (
     <div
       style={{

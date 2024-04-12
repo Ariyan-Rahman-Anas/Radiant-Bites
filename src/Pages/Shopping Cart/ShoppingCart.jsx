@@ -15,7 +15,7 @@ import usePageTitle from "../../Hooks/usePageTitle";
 
 const ShoppingCart = () => {
   //updating the page title
-  usePageTitle("Shopping Cart");
+  usePageTitle("Cart");
 
   // managing states
   const [items, setItems] = useState([]);
