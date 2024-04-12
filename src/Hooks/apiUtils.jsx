@@ -16,10 +16,28 @@ export const getData = async (endpoint) => {
 };
 
 // Function to post data
+// export const postData = async (endpoint, data) => {
+//   try {
+//     const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
+//     console.log(response?.data)
+//     return response?.data;
+//   } catch (error) {
+//     console.error("Error posting data:", error);
+//     throw error;
+//   }
+// };
 export const postData = async (endpoint, data) => {
   try {
-    const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
-    return response.data;
+    const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
+      headers: {
+        // Add your headers here
+        // Example:
+        // 'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(response?.data);
+    return response?.data;
   } catch (error) {
     console.error("Error posting data:", error);
     throw error;

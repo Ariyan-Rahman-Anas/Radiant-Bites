@@ -18,8 +18,12 @@ import useAuth from "../../Hooks/useAuth";
 import { useEffect, useRef } from "react";
 import { postData } from "../../Hooks/apiUtils";
 import {toast} from "react-hot-toast"
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const Menu = () => {
+  //updating the page title
+  usePageTitle("Menu");
+
   const allMenu = [
     {
       image: chefSpecials,
@@ -92,7 +96,7 @@ const Menu = () => {
   const { user } = useAuth();
   const formRef = useRef(null);
 
-  const handleUploadItem = async(e) => {
+  const handleUploadItem = async (e) => {
     e.preventDefault();
     const form = e.target;
     const foodCategory = form.foodCategory.value;
@@ -100,38 +104,27 @@ const Menu = () => {
     const priceInStr = form.price.value;
     const recipe = form.recipe.value;
     const details = form.details.value;
-    const image = form.image.value;
-    const price = parseInt(priceInStr)
+    const image = form.image.files[0];
+    const price = parseInt(priceInStr);
+    console.log(image);
 
-    const anItem = {
-      foodCategory,
-      name,
-      price,
-      recipe,
-      details,
-      image,
-    };
-    console.log("items is: ", anItem)
-
-    //posting an item
+    //creating a new item
     try {
+      const anItem = {
+        foodCategory,
+        name,
+        price,
+        recipe,
+        details,
+        image,
+      };
       const response = await postData("allItems", anItem);
-      console.log("Posting item is: ", response)
+      console.log("Posting item is: ", response);
       toast.success("Successfully ordered!");
     } catch (error) {
       console.error("Error confirming order:", error);
-      
     }
-
   };
-
-  // axiosSecure.post(url, anItem).then((res) => {
-  //   if (res?.data?.insertedId) {
-  //     console.log("An item posted successfully!");
-  //     formRef.current.reset();
-  //   }
-  // });
-  // console.log("the uploading item is: ", anItem);
 
   return (
     <div>
@@ -233,6 +226,7 @@ const Menu = () => {
                     <input
                       type="file"
                       name="image"
+                      accept="image/*"
                       required
                       className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
                       placeholder="Food Picture"
@@ -240,11 +234,10 @@ const Menu = () => {
                   </div>
                 </div>
                 {/* // */}
-
                 <input
                   type="submit"
                   value={"Upload"}
-                  className="block mx-auto w-fit px-[1.2rem] py-1 rounded-full text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white duration-500 "
+                  className="block mx-auto w-fit px-[1.2rem] py-1 rounded-full text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white cursor-pointer duration-500 "
                 />
               </form>
             </div>

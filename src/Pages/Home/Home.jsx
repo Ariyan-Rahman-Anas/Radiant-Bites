@@ -4,8 +4,12 @@ import FromOurMenu from "./FromOurMenu";
 import { OnlineOrder } from "./OnlineOrder";
 import ReadMore from "./ReadMore";
 import Review from "./Review";
+import usePageTitle from './../../Hooks/usePageTitle';
 
 const Home = () => {
+  //updating the page title
+  usePageTitle("Home");
+
   return (
     <div>
       <Banner></Banner>

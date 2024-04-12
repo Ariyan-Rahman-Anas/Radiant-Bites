@@ -11,8 +11,13 @@ import RenderedEmptyMessage from "./../../SharedComponents/RenderedEmptyMessage"
 import { LuDelete } from "react-icons/lu";
 import {toast} from "react-hot-toast"
 import PrimaryButton from "../../SharedComponents/PrimaryButton";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 const ShoppingCart = () => {
+  //updating the page title
+  usePageTitle("Shopping Cart");
+
+  // managing states
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -89,7 +94,7 @@ const ShoppingCart = () => {
                   <div
                     className={`${
                       darkMode ? "bg-gray-700 my-[.22rem] mb-0 " : ""
-                    }  shadow-md py-5 md:py-0 rounded-md pr-2  md:pr-5 `}
+                    }  shadow-md py-5 md:py-0 rounded-md pr-2 md:pr-5 hover:shadow-lg duration-300 `}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex flex-co md: flex-row items-center gap-3 w-fit ">
