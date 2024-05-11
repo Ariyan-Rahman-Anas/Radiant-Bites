@@ -2,7 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import loginMedia from "./../../assets/images/loginBG.svg";
 import Logo from "./../../assets/Logos/1.svg";
 import Logo2 from "./../../assets/Logos/2.svg";
-import { FaGoogle, FaLinkedin, FaFacebookF } from "react-icons/fa";
+import {
+  FaGoogle,
+  FaLinkedin,
+  FaFacebookF,
+  FaRegEyeSlash,
+} from "react-icons/fa";
+import { IoEyeOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { PiWarningCircle } from "react-icons/pi";
 import { useContext, useState } from "react";
@@ -16,6 +22,9 @@ const Registration = () => {
   usePageTitle("Registration - Menu");
 
   const [registerError, setRegisterError] = useState("");
+  const [showEye, setShowEye] = useState(false)
+  const [showPass, setShowPass] = useState(false)
+
   const navigate = useNavigate();
   const { darkMode } = useContext(ThemeContext);
 
@@ -49,6 +58,15 @@ const Registration = () => {
       });
   };
 
+  const handlePassInputChange = (e) => {
+    const value = e.target.value
+    if (value !== '') {
+      setShowEye(true)
+    } else {
+      setShowEye(false)
+    }
+  }
+
   return (
     <div className="p-2">
       <div className="lg:w-[85vw] mx-auto  ">
@@ -76,7 +94,7 @@ const Registration = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Your name"
+                placeholder="Name"
                 {...register("name", { required: true })}
                 className={`${
                   darkMode ? "bg-gray-700" : "bg-white"
@@ -91,7 +109,7 @@ const Registration = () => {
               <input
                 type="number"
                 name="number"
-                placeholder="Phone number"
+                placeholder="Number"
                 {...register("number", { required: true })}
                 className={`${
                   darkMode ? "bg-gray-700" : "bg-white"
@@ -106,7 +124,7 @@ const Registration = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="Your email"
+                placeholder="Email"
                 {...register("email", { required: true })}
                 className={`${
                   darkMode ? "bg-gray-700" : "bg-white"
@@ -118,15 +136,30 @@ const Registration = () => {
                   <span className="font-normal text-sm">Email required</span>
                 </div>
               )}
-              <input
-                type="password"
-                name="password"
-                placeholder="Strong password"
-                {...register("password", { required: true })}
-                className={`${
-                  darkMode ? "bg-gray-700" : "bg-white"
-                } p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
-              ></input>
+              <div className="relative">
+                <input
+                  onKeyUp={handlePassInputChange}
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  {...register("password", { required: true })}
+                  className={`${
+                    darkMode ? "bg-gray-700" : "bg-white"
+                  } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+                ></input>
+                {showEye && (
+                  <div
+                    onClick={() => setShowPass(!showPass)}
+                    className="absolute top-1/3 right-2 cursor-pointer "
+                  >
+                    {showPass ? (
+                      <FaRegEyeSlash></FaRegEyeSlash>
+                    ) : (
+                      <IoEyeOutline></IoEyeOutline>
+                    )}
+                  </div>
+                )}
+              </div>
               {errors.password && (
                 <div className="flex items-center justify-start gap-1 text-danger">
                   <PiWarningCircle className="text-2xl"></PiWarningCircle>
