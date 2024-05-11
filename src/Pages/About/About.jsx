@@ -3,16 +3,21 @@ import aboutImg from "./../../assets/images/About.png";
 import PageHeadBanner from "./../../SharedComponents/PageHeadBanner";
 import SectionTitle from "./../../SharedComponents/SectionTitle";
 import usePageTitle from "../../Hooks/usePageTitle";
+import { useContext } from "react";
+import { ThemeContext } from "../../useContext/allContext";
+import Review from "../Home/Review";
 
 const About = () => {
   //updating the page title
   usePageTitle("About Us");
 
+  const {darkMode} = useContext(ThemeContext)
+
   //owner ariyan rahman anas's website url
   const founderInfo = `https://ariyanrahmananas.netlify.app/`;
   
   return (
-    <div>
+    <div> 
       <PageHeadBanner
         sectionImg={aboutImg}
         heading={"About Us"}
@@ -21,12 +26,12 @@ const About = () => {
       ></PageHeadBanner>
 
       <div className="px-2">
-        <div className="my-20 p-2 md:p-8 shadow-md rounded-md w-full md:w-[85vw] mx-auto text-sm bg-white ">
+        <div className={`${darkMode ? "text-gray-400 bg-gray-700" : "text-gray-500 bg-white"} my-20 p-2 md:p-8 shadow-md rounded-md w-full md:w-[85vw] mx-auto text-sm`}>
           <SectionTitle
             heading={"Our Story"}
             subHeading={"From Passion to Plate: The Birth of Radiant Bites"}
           ></SectionTitle>
-          <div className="text-gray-500">
+          <div>
             <p>
               <span className="text-6xl font-light text-primary ">A</span>t
               Radiant Bites, our story begins with a shared passion for creating
@@ -48,7 +53,7 @@ const About = () => {
               beloved culinary destination in the heart of Chattogram at
               Nasirabad, Khulshi-4225
             </p>
-            <p className="text-xl mt-5 mb-1 text-black ">
+            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
               A Culinary Journey: Milestones and Memories
             </p>
             <p>
@@ -59,7 +64,7 @@ const About = () => {
               our journey has been guided by a commitment to excellence and a
               dedication to delighting our guests.
             </p>
-            <p className="text-xl mt-5 mb-1 text-black ">
+            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
               Crafting Culinary Excellence: Our Approach to Food
             </p>
             <p>
@@ -71,7 +76,7 @@ const About = () => {
               classic comfort foods to innovative culinary creations, each item
               on our menu is thoughtfully crafted with care and creativity.
             </p>
-            <p className="text-xl mt-5 mb-1 text-black ">
+            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
               Building Connections: A Place for Community and Connection
             </p>
             <p>
@@ -81,7 +86,7 @@ const About = () => {
               families, and food lovers alike, where laughter fills the air and
               every meal is an opportunity to create lasting moments together.
             </p>
-            <p className="text-xl mt-5 mb-1 text-black ">
+            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
               Looking Ahead: Our Vision for the Future
             </p>
             <p>
@@ -95,6 +100,7 @@ const About = () => {
             </p>
           </div>
         </div>
+        <Review></Review>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { OnlineOrder } from "./OnlineOrder";
 import ReadMore from "./ReadMore";
 import Review from "./Review";
 import usePageTitle from './../../Hooks/usePageTitle';
+import WriteAReview from "./WriteAReview";
 
 const Home = () => {
   //updating the page title, here title is default title for home page
@@ -17,7 +18,8 @@ const Home = () => {
       <RadiantAds></RadiantAds>
       <FromOurMenu></FromOurMenu>
       <ReadMore></ReadMore>
-      <Review></Review>
+      {/* <Review></Review> */}
+      <WriteAReview></WriteAReview>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const FromOurMenu = () => {
   return (
     <div className="my-20 px-2 text-center ">
       <SectionTitle
-        heading={"---Check it out---"}
+        heading={"Check it out"}
         subHeading={"FROM OUR MENU"}
       ></SectionTitle>
 

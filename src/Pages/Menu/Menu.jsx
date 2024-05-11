@@ -15,14 +15,17 @@ import seaFood from "./../../assets/Menu Card/27.png";
 import PrimaryButton from "../../SharedComponents/PrimaryButton";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { postData } from "../../Hooks/apiUtils";
 import {toast} from "react-hot-toast"
 import usePageTitle from "../../Hooks/usePageTitle";
+import { ThemeContext } from "../../useContext/allContext";
 
 const Menu = () => {
   //updating the page title
   usePageTitle("Menu");
+
+  const {darkMode} = useContext(ThemeContext)
 
   const allMenu = [
     {
@@ -164,7 +167,11 @@ const Menu = () => {
         </div>
 
         {/* // */}
-        <div className="my-20 bg-white shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto">
+        <div
+          className={`${
+            darkMode ? "bg-gray-700" : "bg-white"
+          } my-20 shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto`}
+        >
           {user ? (
             <div>
               <SectionTitle
@@ -172,13 +179,15 @@ const Menu = () => {
                 subHeading={"Showcase Your Culinary Delights"}
               ></SectionTitle>
               {/* form starts for uploading a food */}
-              <form onSubmit={handleUploadItem} ref={formRef} className="mt-6 ">
+              <form onSubmit={handleUploadItem} ref={formRef} className="mt-6">
                 {/* // */}
                 <div className="mb-5 flex flex-col gap-4">
                   <div className="flex items-center justify-between gap-4 ">
                     <select
                       name="foodCategory"
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary"
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                     >
                       <option value="chefSpecial">Chef Special</option>
                       <option value="bdTraditional">BD Traditional</option>
@@ -195,7 +204,9 @@ const Menu = () => {
                       type="text"
                       name="name"
                       required
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Name"
                     />
                   </div>
@@ -204,14 +215,18 @@ const Menu = () => {
                       type="text"
                       name="recipe"
                       required
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Recipe"
                     />
                     <input
                       type="text"
                       name="details"
                       required
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Details"
                     />
                   </div>
@@ -220,7 +235,9 @@ const Menu = () => {
                       type="number"
                       name="price"
                       required
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Price"
                     />
                     <input
@@ -228,7 +245,9 @@ const Menu = () => {
                       name="image"
                       accept="image/*"
                       required
-                      className="p-1.5 rounded-md w-full border-y-2 border-transparent bg-gray-200 placeholder-gray-500 focus:outline-none focus:bg-gray-300 focus:border-b-primary "
+                      className={`${
+                        darkMode ? "bg-gray-600" : "bg-green-50"
+                      } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Picture"
                     />
                   </div>

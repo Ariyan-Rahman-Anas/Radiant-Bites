@@ -19,6 +19,8 @@ import Salad from "../Pages/Menu/Salad/Salad";
 import FastFood from "../Pages/Menu/Fast Food/FastFood";
 import SeaFood from "../Pages/Menu/Sea Food/SeaFood";
 import ErrorPage from "../Pages/Error Page/ErrorPage";
+import Blog from "../Pages/Blog/Blog";
+import Reservation from "../Pages/Reservation/Reservation";
 
 const MainRoute = createBrowserRouter([
   {
@@ -121,6 +123,14 @@ const MainRoute = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/blog",
+        element:<Blog></Blog>
+      },
+      {
+        path: "/reservation",
+        element:<Reservation></Reservation>
       },
       {
         path: "/logIn",

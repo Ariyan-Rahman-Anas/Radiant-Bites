@@ -2,7 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginMedia from "./../../assets/images/loginBG.svg";
 import Logo from "./../../assets/Logos/1.svg";
 import Logo2 from "./../../assets/Logos/2.svg";
-import { FaGoogle, FaLinkedin, FaFacebookF } from "react-icons/fa";
+import { FaGoogle, FaLinkedin, FaFacebookF, FaRegEyeSlash } from "react-icons/fa";
+import { IoEyeOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { PiWarningCircle } from "react-icons/pi";
 import { useContext, useState } from "react";
@@ -12,15 +13,19 @@ import { ThemeContext } from "../../useContext/allContext";
 import usePageTitle from './../../Hooks/usePageTitle';
 
 const LogIn = () => {
-
   //updating the page title
   usePageTitle("Login");
 
   const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
   const [logInError, setLogInError] = useState("");
+  const [showEye, setShowEye] = useState(false)
+  const [showPass, setShowPass] = useState(false);
+
   const { darkMode } = useContext(ThemeContext);
+
   const {
     register,
     handleSubmit,
@@ -48,6 +53,15 @@ const LogIn = () => {
         setLogInError(error.message);
       });
   };
+
+  const handlePassInputChange = (e) => {
+    const value = e.target.value
+    if (value !== '') {
+      setShowEye(true)
+    } else {
+      setShowEye(false)
+    }
+  }
 
   return (
     <div className="p-2">
@@ -88,15 +102,31 @@ const LogIn = () => {
                   <span className="font-normal text-sm">Email required</span>
                 </div>
               )}
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={`${
-                  darkMode ? "bg-gray-700" : "bg-white"
-                } p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
-                {...register("password", { required: true })}
-              ></input>
+              <div className="relative ">
+                <input
+                  onKeyUp={handlePassInputChange}
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  className={`${
+                    darkMode ? "bg-gray-700" : "bg-white"
+                  } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+                  {...register("password", { required: true })}
+                ></input>
+                {showEye && (
+                  <div
+                    onClick={() => setShowPass(!showPass)}
+                    className="absolute top-1/3 right-2 cursor-pointer "
+                  >
+                    {showPass ? (
+                      <FaRegEyeSlash></FaRegEyeSlash>
+                    ) : (
+                      <IoEyeOutline></IoEyeOutline>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {errors.password && (
                 <div className="flex items-center justify-start gap-1 text-danger">
                   <PiWarningCircle className="text-2xl"></PiWarningCircle>
@@ -112,6 +142,7 @@ const LogIn = () => {
                 className="text-white bg-primary p-2 rounded-md border-[.09rem] border-primary hover:text-primary hover:bg-white font-semibold duration-500 cursor-pointer "
               />
             </form>
+
             <div className="flex items-center justify-between mt-6 ">
               <hr className="border-[.09rem] border-primary rounded-full w-[35%] " />
               <p>or Sign in with</p>

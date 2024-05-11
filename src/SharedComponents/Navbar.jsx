@@ -94,13 +94,13 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/"} className="group-hover:text-primary">
+              <NavLink to={"/blog"} className="group-hover:text-primary">
                 Blogs
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/"} className="group-hover:text-primary">
+              <NavLink to={"/reservation"} className="group-hover:text-primary">
                 Reservation
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>

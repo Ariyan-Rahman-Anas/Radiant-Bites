@@ -52,7 +52,7 @@ export const OnlineOrder = () => {
   return (
     <div className={`${darkMode ? "bg-gray-900" : "bg-green-100 shadow-md " } my-24 pt-12 pb-8 px-2 `}>
       <SectionTitle
-        heading={"---From 11:00am to 10:00pm---"}
+        heading={"From 11:00 AM to 10:00 PM"}
         subHeading={"ORDER ONLINE"}
       ></SectionTitle>
 

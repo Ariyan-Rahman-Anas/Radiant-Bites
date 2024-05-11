@@ -4,7 +4,7 @@ const Review = () => {
   return (
     <div className="my-20 px-2">
       <SectionTitle
-        heading={"---What Our Clients Say---"}
+        heading={"What Our Clients Say"}
         subHeading={"TESTIMONIALS"}
       ></SectionTitle>
     </div>
