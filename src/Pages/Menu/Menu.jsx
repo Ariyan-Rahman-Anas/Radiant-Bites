@@ -20,6 +20,7 @@ import { postData } from "../../Hooks/apiUtils";
 import {toast} from "react-hot-toast"
 import usePageTitle from "../../Hooks/usePageTitle";
 import { ThemeContext } from "../../useContext/allContext";
+import { Modal } from "../../SharedComponents/Modal";
 
 const Menu = () => {
   //updating the page title
@@ -155,10 +156,14 @@ const Menu = () => {
                 <div className="hidden group-hover:flex items-center justify-center h-full rounded-md bg-black/70 absolute top-0 duration-500 ">
                   <div>
                     <p className="mb-3 px-2">{item.details}</p>
-                    <PrimaryButton
-                      value={"See All"}
-                      link={item.routeLink}
-                    ></PrimaryButton>
+                    {user ? (
+                      <PrimaryButton
+                        value={"See All"}
+                        link={item.routeLink}
+                      ></PrimaryButton>
+                    ) : (
+                      <Modal modalOpenValue={"Explore"}></Modal>
+                    )}
                   </div>
                 </div>
               </Link>
