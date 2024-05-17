@@ -1,12 +1,12 @@
 import { useState } from "react";
 import usePageTitle from "../../../Hooks/usePageTitle";
-import bannerImg from "./../../../assets/images/Offer.png";
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
 import { useEffect } from "react";
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import DishCard from "../../../SharedComponents/DishCard";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+import bannerImg from "./../../../assets/images/Desserts.png";
 
 const Dessert = () => {
   //updating the page title
@@ -24,8 +24,8 @@ const Dessert = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Sweet Desserts"}
+        subHeading={"Here is our all items of dry desserts!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

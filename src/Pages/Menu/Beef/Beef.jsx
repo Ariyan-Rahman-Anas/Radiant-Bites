@@ -5,7 +5,7 @@ import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import DishCard from "../../../SharedComponents/DishCard";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
-import bannerImg from "./../../../assets/images/Offer.png";
+import bannerImg from "./../../../assets/images/Beef.png";
 
 const Beef = () => {
 
@@ -24,8 +24,8 @@ const Beef = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Beef the King"}
+        subHeading={"Here is our all items of beef the king of meat!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

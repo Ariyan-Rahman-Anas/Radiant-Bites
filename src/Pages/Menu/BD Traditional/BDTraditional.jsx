@@ -25,7 +25,7 @@ const BDTraditional = () => {
       <PageHeadBanner
         sectionImg={bannerImg}
         heading={"Traditional Foods"}
-        subHeading={"Let's explore Bangladeshi Traditional Foods"}
+        subHeading={"Let's explore Bangladeshi Traditional Foods!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

@@ -25,7 +25,7 @@ const TodayOffer = () => {
       <PageHeadBanner
         sectionImg={bannerImg}
         heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        subHeading={"Here is our all items of Today's Offer!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

@@ -5,7 +5,7 @@ import PageHeadBanner from './../../../SharedComponents/PageHeadBanner';
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import DishCard from './../../../SharedComponents/DishCard';
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
-import bannerImg from "./../../../assets/images/Offer.png";
+import bannerImg from "./../../../assets/images/Mutton.png";
 
 const Mutton = () => {
   //updating the page title
@@ -23,8 +23,8 @@ const Mutton = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Mutton"}
+        subHeading={"Here is our all items of Mutton the king of test!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

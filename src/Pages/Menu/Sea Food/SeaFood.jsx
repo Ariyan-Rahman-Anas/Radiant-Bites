@@ -5,7 +5,7 @@ import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
-import bannerImg from "./../../../assets/images/Offer.png";
+import bannerImg from "./../../../assets/images/SeaFood.png";
 
 const SeaFood = () => {
   //updating the page title
@@ -26,8 +26,8 @@ const SeaFood = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Sea Food"}
+        subHeading={"Here is our all items of Sea Food the king of food!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

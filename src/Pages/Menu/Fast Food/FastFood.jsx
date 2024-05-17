@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import usePageTitle from "../../../Hooks/usePageTitle";
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
 import PageHeadBanner from "../../../SharedComponents/PageHeadBanner";
-import bannerImg from "./../../../assets/images/Offer.png";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
 import DishCard from "../../../SharedComponents/DishCard";
 import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage";
+import bannerImg from "./../../../assets/images/FastFood.png";
 
 const FastFood = () => {
   //updating the page title
@@ -23,8 +23,8 @@ const FastFood = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Fast Food"}
+        subHeading={"Here is our all items of yummy fast food!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

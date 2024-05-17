@@ -5,7 +5,7 @@ import RenderedEmptyMessage from "../../../SharedComponents/RenderedEmptyMessage
 import DishCard from './../../../SharedComponents/DishCard';
 import SectionTitle from './../../../SharedComponents/SectionTitle';
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
-import bannerImg from "./../../../assets/images/Offer.png";
+import bannerImg from "./../../../assets/images/Salad.png";
 
 const Salad = () => {
   //updating the page title
@@ -23,8 +23,8 @@ const Salad = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Our Special Offer"}
-        subHeading={"Here is our all items of Today's Offer"}
+        heading={"Salads"}
+        subHeading={"Here is our all items of healthy-wealthy salad!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 

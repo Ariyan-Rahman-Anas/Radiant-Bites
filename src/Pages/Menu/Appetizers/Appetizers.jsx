@@ -61,8 +61,8 @@ const Appetizers = () => {
     <div>
       <PageHeadBanner
         sectionImg={bannerImg}
-        heading={"Chicken's World"}
-        subHeading={"Let's dive into the deep of Chicken's World!"}
+        heading={"Appetizers"}
+        subHeading={"Let's dive into the deep of wet and cool!"}
         subHeadingColor={"white"}
       ></PageHeadBanner>
 
