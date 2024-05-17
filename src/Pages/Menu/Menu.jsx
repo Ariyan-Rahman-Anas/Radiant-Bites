@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useContext, useRef } from "react";
+import { toast } from "react-hot-toast";
+
 import PageHeadBanner from "../../SharedComponents/PageHeadBanner";
 import menuImg from "./../../assets/images//Menu.png";
 import chefSpecials from "./../../assets/Menu Card/17.png";
@@ -15,19 +18,19 @@ import seaFood from "./../../assets/Menu Card/27.png";
 import PrimaryButton from "../../SharedComponents/PrimaryButton";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
-import { useContext, useEffect, useRef } from "react";
 import { postData } from "../../Hooks/apiUtils";
-import {toast} from "react-hot-toast"
 import usePageTitle from "../../Hooks/usePageTitle";
 import { ThemeContext } from "../../useContext/allContext";
 import { Modal } from "../../SharedComponents/Modal";
 
 const Menu = () => {
+
   //updating the page title
   usePageTitle("Menu");
 
   const {darkMode} = useContext(ThemeContext)
 
+  //static data for managing the full menu
   const allMenu = [
     {
       image: chefSpecials,
@@ -100,6 +103,7 @@ const Menu = () => {
   const { user } = useAuth();
   const formRef = useRef(null);
 
+  //handling uploading new dish for a authentic user. A user can share his dish in our menu
   const handleUploadItem = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -112,7 +116,7 @@ const Menu = () => {
     const price = parseInt(priceInStr);
     console.log(image);
 
-    //creating a new item
+    //creating the dish
     try {
       const anItem = {
         foodCategory,
@@ -171,7 +175,6 @@ const Menu = () => {
           ))}
         </div>
 
-        {/* // */}
         <div
           className={`${
             darkMode ? "bg-gray-700" : "bg-white"
@@ -183,7 +186,8 @@ const Menu = () => {
                 heading={"Upload Your Dishes"}
                 subHeading={"Showcase Your Culinary Delights"}
               ></SectionTitle>
-              {/* form starts for uploading a food */}
+
+              {/* The form is starts for uploading a dish */}
               <form onSubmit={handleUploadItem} ref={formRef} className="mt-6">
                 {/* // */}
                 <div className="mb-5 flex flex-col gap-4">
@@ -257,17 +261,16 @@ const Menu = () => {
                     />
                   </div>
                 </div>
-                {/* // */}
                 <input
                   type="submit"
                   value={"Upload"}
                   className="block mx-auto w-fit px-[1.2rem] py-1 rounded-full text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white cursor-pointer duration-500 "
                 />
               </form>
+              {/* The form is ends in here */}
             </div>
           ) : (
-            // adding a dish form ends here
-            // if user does not exist then it will inform the user that the user can add a dish to our menu
+            // if user does not exist then it will inform the user that the user can add a dish in our menu
             <div className="text-center ">
               <SectionTitle
                 heading={"Exciting News!"}
@@ -283,7 +286,6 @@ const Menu = () => {
             </div>
           )}
         </div>
-        {/* add ends here */}
       </div>
     </div>
   );

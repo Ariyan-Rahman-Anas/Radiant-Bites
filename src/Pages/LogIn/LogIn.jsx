@@ -13,24 +13,24 @@ import { ThemeContext } from "../../useContext/allContext";
 import usePageTitle from './../../Hooks/usePageTitle';
 
 const LogIn = () => {
+  
   //updating the page title
   usePageTitle("Login");
 
   const { signInUser, googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
   const [logInError, setLogInError] = useState("");
-  const [showEye, setShowEye] = useState(false)
+  const [showEye, setShowEye] = useState(false);
   const [showPass, setShowPass] = useState(false);
-
   const { darkMode } = useContext(ThemeContext);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  //submitting data for log in with existing user
   const onSubmit = (data) => {
     signInUser(data.email, data.password)
       .then(() => {
@@ -43,6 +43,7 @@ const LogIn = () => {
       });
   };
 
+  //handling google log in
   const handleGoogleLogIn = () => {
     googleSignIn()
       .then(() => {
@@ -54,14 +55,15 @@ const LogIn = () => {
       });
   };
 
+  //managing password showing icon in password input field
   const handlePassInputChange = (e) => {
-    const value = e.target.value
-    if (value !== '') {
-      setShowEye(true)
+    const value = e.target.value;
+    if (value !== "") {
+      setShowEye(true);
     } else {
-      setShowEye(false)
+      setShowEye(false);
     }
-  }
+  };
 
   return (
     <div className="p-2">
@@ -83,6 +85,8 @@ const LogIn = () => {
             <h1 className="text-3xl text-[#ff381] font-semibold mb-6 text-center underline ">
               Login
             </h1>
+
+            {/* log in form is starts from here */}
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-4"
@@ -142,6 +146,7 @@ const LogIn = () => {
                 className="text-white bg-primary p-2 rounded-md border-[.09rem] border-primary hover:text-primary hover:bg-white font-semibold duration-500 cursor-pointer "
               />
             </form>
+            {/* log in form is ends here */}
 
             <div className="flex items-center justify-between mt-6 ">
               <hr className="border-[.09rem] border-primary rounded-full w-[35%] " />

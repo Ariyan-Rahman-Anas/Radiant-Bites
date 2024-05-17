@@ -1,40 +1,41 @@
 import { Link, useNavigate } from "react-router-dom";
-import loginMedia from "./../../assets/images/loginBG.svg";
-import Logo from "./../../assets/Logos/1.svg";
-import Logo2 from "./../../assets/Logos/2.svg";
+import { IoEyeOutline } from "react-icons/io5";
+import { useForm } from "react-hook-form";
+import { PiWarningCircle } from "react-icons/pi";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import {
   FaGoogle,
   FaLinkedin,
   FaFacebookF,
   FaRegEyeSlash,
 } from "react-icons/fa";
-import { IoEyeOutline } from "react-icons/io5";
-import { useForm } from "react-hook-form";
-import { PiWarningCircle } from "react-icons/pi";
-import { useContext, useState } from "react";
-import toast from "react-hot-toast";
+
 import useAuth from "../../Hooks/useAuth";
 import { ThemeContext } from "../../useContext/allContext";
 import usePageTitle from "../../Hooks/usePageTitle";
+import loginMedia from "./../../assets/images/loginBG.svg";
+import Logo from "./../../assets/Logos/1.svg";
+import Logo2 from "./../../assets/Logos/2.svg";
 
 const Registration = () => {
+
   //updating the page title
   usePageTitle("Registration - Menu");
 
   const [registerError, setRegisterError] = useState("");
   const [showEye, setShowEye] = useState(false)
   const [showPass, setShowPass] = useState(false)
-
   const navigate = useNavigate();
   const { darkMode } = useContext(ThemeContext);
-
-  //creatingUser
   const { createUser, googleSignIn } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  // submitting data for registration
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then(() => {
@@ -47,6 +48,7 @@ const Registration = () => {
       });
   };
 
+  // handling google registration
   const handleGoogleSignUp = () => {
     googleSignIn()
       .then(() => {
@@ -58,6 +60,7 @@ const Registration = () => {
       });
   };
 
+  // managing the password showing icon in password input field
   const handlePassInputChange = (e) => {
     const value = e.target.value
     if (value !== '') {
@@ -87,6 +90,8 @@ const Registration = () => {
             <h1 className="text-3xl font-semibold mb-6 text-center underline ">
               Registration
             </h1>
+
+            {/* Registration form is starts in here */}
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-4"
@@ -175,6 +180,8 @@ const Registration = () => {
                 className="text-white bg-primary p-2 rounded-md border-[.09rem] border-primary hover:text-primary hover:bg-white font-semibold duration-500 cursor-pointer "
               />
             </form>
+            {/* Registration form is ends here */}
+
             <div className="flex items-center justify-between mt-6 ">
               <hr className="border-[.09rem] border-primary rounded-full w-[35%] " />
               <p>or Sign up with</p>
