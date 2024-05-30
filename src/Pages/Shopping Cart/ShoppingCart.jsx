@@ -118,8 +118,7 @@ const ShoppingCart = () => {
                               {item?.totalItems}
                             </p>
                             <p>
-                              <span>Price: </span>$
-                              {item?.totalPrice}
+                              <span>Price: </span>${item?.totalPrice}
                             </p>
                           </div>
                         </div>
@@ -161,7 +160,7 @@ const ShoppingCart = () => {
                 <h1>{error}</h1>
               ) : items?.length >= 1 ? (
                 <div className="w-full mb-3">
-                  <div className="text-start m-5 p-3 shadow-md rounded-md ">
+                  <div className="text-start m-5 mb-6 p-3 shadow-md rounded-md ">
                     <div className="border-b-2 pb-1 mb-2 ">
                       {items?.map((item) => (
                         <div
@@ -188,8 +187,10 @@ const ShoppingCart = () => {
                       <p> ${cartPayable}.00 </p>
                     </div>
                   </div>
-                  <p>STAY WITH US</p>
-                  <strong>Thank You!</strong>
+                  <PrimaryButton
+                    link={"payment"}
+                    value={"Proceed to Payment"}
+                  ></PrimaryButton>
                 </div>
               ) : (
                 <div>

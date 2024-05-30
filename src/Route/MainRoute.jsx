@@ -21,12 +21,15 @@ import SeaFood from "../Pages/Menu/Sea Food/SeaFood";
 import ErrorPage from "../Pages/Error Page/ErrorPage";
 import Blog from "../Pages/Blog/Blog";
 import Reservation from "../Pages/Reservation/Reservation";
+import Payment from "../Pages/Payment/Payment";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import DashBoardCart from "../Pages/Dashboard/Pages/DashBoardCart";
 
 const MainRoute = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -110,15 +113,19 @@ const MainRoute = createBrowserRouter([
       },
       {
         path: "/menu/fastFood",
-        element: <PrivateRoute>
-          <FastFood></FastFood>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <FastFood></FastFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/menu/seaFood",
-        element: <PrivateRoute>
-          <SeaFood></SeaFood>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <SeaFood></SeaFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",
@@ -126,11 +133,11 @@ const MainRoute = createBrowserRouter([
       },
       {
         path: "/blog",
-        element:<Blog></Blog>
+        element: <Blog></Blog>,
       },
       {
         path: "/reservation",
-        element:<Reservation></Reservation>
+        element: <Reservation></Reservation>,
       },
       {
         path: "/logIn",
@@ -143,6 +150,24 @@ const MainRoute = createBrowserRouter([
       {
         path: "/shoppingCart",
         element: <ShoppingCart></ShoppingCart>,
+      },
+      {
+        path: "/shoppingCart/payment",
+        element: <Payment></Payment>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "cart",
+        element: <DashBoardCart></DashBoardCart>,
       },
     ],
   },

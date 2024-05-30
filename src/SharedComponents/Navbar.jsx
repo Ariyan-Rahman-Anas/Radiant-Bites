@@ -1,16 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-import logo1 from "./../assets/Logos/1.svg";
-import logo2 from "./../assets/Logos/2.svg";
-import useAuth from "../Hooks/useAuth";
+import { BsMoonStars, BsSun } from "react-icons/bs";
+import { PiShoppingCart } from "react-icons/pi";
+import { toast } from "react-hot-toast";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton";
+import logo1 from "./../assets/Logos/1.svg";
+import logo2 from "./../assets/Logos/2.svg";
+import useAuth from "../Hooks/useAuth";
 import { CartContext, ThemeContext } from "../useContext/allContext";
-import { BsMoonStars, BsSun } from "react-icons/bs";
-import { PiShoppingCart } from "react-icons/pi";
-import {toast} from "react-hot-toast"
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -153,7 +154,8 @@ const Navbar = () => {
                         ? user.displayName
                         : "Mr. Not Given"}
                     </h1>
-                    <h2>{user ? user.email : "mrNotGiven@email.com"}</h2>
+                    <h2 className="mb-3">{user ? user.email : "mrNotGiven@email.com"}</h2>
+                    <NavLink to={"/dashboard"}>Dashboard</NavLink> <br />
                     <button onClick={handleLogOut} className="mt-5">
                       <PrimaryButton
                         value={"Logout"}

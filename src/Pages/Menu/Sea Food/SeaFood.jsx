@@ -11,9 +11,6 @@ const SeaFood = () => {
   //updating the page title
   usePageTitle("Sea Food - Menu");
 
-    //updating the page title
-  usePageTitle("Today Offer - Menu");
-
   const axiosSecure = useAxiosSecure();
   const url = `/allItems/menu/todayOffer`;
   const [todayOfferDishes, setTodayOfferDishes] = useState([]);
