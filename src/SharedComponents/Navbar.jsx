@@ -7,7 +7,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton";
-import { ThemeContext } from "../useContext/allContext";
+import { CartContext, ThemeContext } from "../useContext/allContext";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { PiShoppingCart } from "react-icons/pi";
 import {toast} from "react-hot-toast"
@@ -15,32 +15,32 @@ import {toast} from "react-hot-toast"
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [menu, setMenu] = useState(false);
-  const {darkMode, setDarkMode} = useContext(ThemeContext);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [toggleOpen, setToggleOpen] = useState(false);
-  
-  // const handleClickAnywhere = () => {
-  // };
-  // window.addEventListener("click", handleClickAnywhere);
+  const { cartItems } = useContext(CartContext);
 
   const handleToggleClick = () => {
-    setToggleOpen(true)
-      setTimeout(() => {
-        setToggleOpen(false);
-      }, 3000); 
+    setToggleOpen(true);
+    setTimeout(() => {
+      setToggleOpen(false);
+    }, 3000);
   };
 
+  //for small devices, menu opening and closing
   const handleMenu = () => {
     setMenu(!menu);
   };
 
+  //for small devices, when user clicked on an nav items the whole nav menu will hide automatically
   const hidingMenu = () => {
     setMenu(!menu);
   };
 
+  //log out the user
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success("Logged out Successfully!")
+        toast.success("Logged out Successfully!");
       })
       .catch(() => {});
   };
@@ -107,7 +107,16 @@ const Navbar = () => {
             </li>
             <li className="hidden md:block">
               <NavLink to={"/shoppingCart"}>
-                <PiShoppingCart className="text-xl"></PiShoppingCart>
+                <div
+                  className={`${
+                    darkMode ? "bg-gray-700 " : "bg-white"
+                  } p-1.5 rounded-md flex items-center gap-2`}
+                >
+                  <PiShoppingCart className="text-xl"></PiShoppingCart>
+                  <p className="bg-primary text-white text-sm font-semibold px-1 rounded-md ">
+                    {`+${cartItems.length}`}
+                  </p>
+                </div>
               </NavLink>
             </li>
             <li
@@ -133,7 +142,11 @@ const Navbar = () => {
                     <FaRegUser className="text-4xl border-[.09rem] rounded p-1 border-primary "></FaRegUser>
                   )}
                 </div>
-                <div className={`${toggleOpen ? "md:flex" : "md:hidden"} items-center justify-center h-36 w-72 rounded-md bg-black text-white text-center text-sm md:absolute md:right-0 md:top-12 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 `}>
+                <div
+                  className={`${
+                    toggleOpen ? "md:flex" : "md:hidden"
+                  } items-center justify-center h-36 w-72 rounded-md bg-black text-white text-center text-sm md:absolute md:right-0 md:top-12 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 `}
+                >
                   <div>
                     <h1 className="text-xl">
                       {user.displayName !== null
@@ -174,11 +187,33 @@ const Navbar = () => {
           <li className="list-none">
             {user ? (
               <NavLink to={"/shoppingCart"}>
-                <PiShoppingCart className="text-xl"></PiShoppingCart>
+                <NavLink to={"/shoppingCart"}>
+                  <div
+                    className={`${
+                      darkMode ? "bg-gray-700 " : "bg-white"
+                    } p-1.5 rounded-md flex items-center gap-2`}
+                  >
+                    <PiShoppingCart className="text-xl"></PiShoppingCart>
+                    <p className="bg-primary text-white text-sm font-semibold px-1 rounded-md ">
+                      {`+${cartItems.length}`}
+                    </p>
+                  </div>
+                </NavLink>
               </NavLink>
             ) : (
               <NavLink to={"logIn"}>
-                <PiShoppingCart className="text-xl"></PiShoppingCart>
+                <NavLink to={"/shoppingCart"}>
+                  <div
+                    className={`${
+                      darkMode ? "bg-gray-700 " : "bg-white"
+                    } p-1.5 rounded-md flex items-center gap-2`}
+                  >
+                    <PiShoppingCart className="text-xl"></PiShoppingCart>
+                    <p className="bg-primary text-white text-sm font-semibold px-1 rounded-md ">
+                      {`+${cartItems.length}`}
+                    </p>
+                  </div>
+                </NavLink>
               </NavLink>
             )}
           </li>

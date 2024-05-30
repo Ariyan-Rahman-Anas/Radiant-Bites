@@ -1,4 +1,6 @@
 import { createContext } from "react";
 
 const ThemeContext = createContext()
-export { ThemeContext }
+const CartContext = createContext();
+
+export { ThemeContext, CartContext }
