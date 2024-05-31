@@ -17,6 +17,7 @@ import usePageTitle from "../../Hooks/usePageTitle";
 import loginMedia from "./../../assets/images/loginBG.svg";
 import Logo from "./../../assets/Logos/1.svg";
 import Logo2 from "./../../assets/Logos/2.svg";
+import { postData } from "../../Hooks/apiUtils";
 
 const Registration = () => {
 
@@ -38,8 +39,16 @@ const Registration = () => {
   // submitting data for registration
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then(() => {
+      .then(async () => {
         navigate("/");
+
+        //storing user data in DB
+        const aNewUser = {
+          name: data.name,
+          email: data.email,
+        };
+        await postData("allUser", aNewUser);
+
         toast.success("Registration Successful!");
         setRegisterError("");
       })
