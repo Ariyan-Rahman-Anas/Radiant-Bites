@@ -57,10 +57,16 @@ const Registration = () => {
       });
   };
 
+  
   // handling google registration
   const handleGoogleSignUp = () => {
     googleSignIn()
-      .then(() => {
+      .then(async(result) => {
+        const newUserOrNot = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        await postData("allUser", newUserOrNot);
         navigate("/");
         toast.success("Registration Successful!");
       })

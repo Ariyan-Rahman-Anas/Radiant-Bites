@@ -1,19 +1,25 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import {
+  FaGoogle,
+  FaLinkedin,
+  FaFacebookF,
+  FaRegEyeSlash,
+} from "react-icons/fa";
+import { IoEyeOutline } from "react-icons/io5";
+import { PiWarningCircle } from "react-icons/pi";
+import { useContext, useState } from "react";
 import loginMedia from "./../../assets/images/loginBG.svg";
 import Logo from "./../../assets/Logos/1.svg";
 import Logo2 from "./../../assets/Logos/2.svg";
-import { FaGoogle, FaLinkedin, FaFacebookF, FaRegEyeSlash } from "react-icons/fa";
-import { IoEyeOutline } from "react-icons/io5";
-import { useForm } from "react-hook-form";
-import { PiWarningCircle } from "react-icons/pi";
-import { useContext, useState } from "react";
-import toast from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import { ThemeContext } from "../../useContext/allContext";
 import usePageTitle from './../../Hooks/usePageTitle';
+import { postData } from './../../Hooks/apiUtils';
+
 
 const LogIn = () => {
-  
   //updating the page title
   usePageTitle("Login");
 
@@ -46,7 +52,12 @@ const LogIn = () => {
   //handling google log in
   const handleGoogleLogIn = () => {
     googleSignIn()
-      .then(() => {
+      .then(async(result) => {
+        const newUserOrNot = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+        };
+        await postData("allUser", newUserOrNot);
         navigate(location?.state ? location?.state : "/");
         toast.success("Login Successfully!");
       })
