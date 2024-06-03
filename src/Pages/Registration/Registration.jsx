@@ -20,13 +20,12 @@ import Logo2 from "./../../assets/Logos/2.svg";
 import { postData } from "../../Hooks/apiUtils";
 
 const Registration = () => {
-
   //updating the page title
   usePageTitle("Registration - Menu");
 
   const [registerError, setRegisterError] = useState("");
-  const [showEye, setShowEye] = useState(false)
-  const [showPass, setShowPass] = useState(false)
+  const [showEye, setShowEye] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const { darkMode } = useContext(ThemeContext);
   const { createUser, googleSignIn } = useAuth();
@@ -57,11 +56,10 @@ const Registration = () => {
       });
   };
 
-  
   // handling google registration
   const handleGoogleSignUp = () => {
     googleSignIn()
-      .then(async(result) => {
+      .then(async (result) => {
         const newUserOrNot = {
           name: result?.user?.displayName,
           email: result?.user?.email,
@@ -77,13 +75,13 @@ const Registration = () => {
 
   // managing the password showing icon in password input field
   const handlePassInputChange = (e) => {
-    const value = e.target.value
-    if (value !== '') {
-      setShowEye(true)
+    const value = e.target.value;
+    if (value !== "") {
+      setShowEye(true);
     } else {
-      setShowEye(false)
+      setShowEye(false);
     }
-  }
+  };
 
   return (
     <div className="p-2">

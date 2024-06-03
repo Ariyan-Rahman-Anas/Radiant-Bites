@@ -20,6 +20,10 @@ const Navbar = () => {
   const [toggleOpen, setToggleOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
 
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
   const handleToggleClick = () => {
     setToggleOpen(true);
     setTimeout(() => {
@@ -47,13 +51,17 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div
+      className={`${
+        darkMode ? "bg-gray-900 shadow-gray-700" : ""
+      } sticky top-0 w-full z-[1000] shadow-md `}
+    >
       <nav
         className={`${
           darkMode
             ? ""
             : "bg-gradient-to-b from-green-200 to-green-50 bg-opacity-50"
-        } flex md:flex-row items-center justify-between p-2 `}
+        } flex md:flex-row items-center justify-between p-2  `}
       >
         <div className="navbar-start">
           <div className="w-[8rem] ">
@@ -72,7 +80,7 @@ const Navbar = () => {
               darkMode ? "text-gray-400" : "text-gray-400 md:text-black "
             } flex flex-col md:flex-row items-center justify-center gap-x-8 gap-y-4 absolute md:static ${
               menu
-                ? "left-0 top-[4rem] right-0 bg-black md:bg-transparent rounded-md w-full h-full "
+                ? "left-0 top-[3.8rem] py-10 md:py-0 right-0 bg-black md:bg-transparent rounded-md w-full min-h-screen md:min-h-0 "
                 : "-left-[69rem]"
             }  duration-700 z-10 `}
           >
@@ -121,7 +129,8 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li
-              onClick={() => setDarkMode(!darkMode)}
+              // onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="text-xl cursor-pointer hidden md:block "
             >
               {darkMode ? (
@@ -154,7 +163,9 @@ const Navbar = () => {
                         ? user.displayName
                         : "Mr. Not Given"}
                     </h1>
-                    <h2 className="mb-3">{user ? user.email : "mrNotGiven@email.com"}</h2>
+                    <h2 className="mb-3">
+                      {user ? user.email : "mrNotGiven@email.com"}
+                    </h2>
                     <NavLink to={"/dashboard"}>Dashboard</NavLink> <br />
                     <button onClick={handleLogOut} className="mt-5">
                       <PrimaryButton

@@ -52,7 +52,7 @@ const LogIn = () => {
   //handling google log in
   const handleGoogleLogIn = () => {
     googleSignIn()
-      .then(async(result) => {
+      .then(async (result) => {
         const newUserOrNot = {
           name: result?.user?.displayName,
           email: result?.user?.email,

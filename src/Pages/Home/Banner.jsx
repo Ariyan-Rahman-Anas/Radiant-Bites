@@ -50,7 +50,7 @@ const Banner = () => {
     <div>
       <div
         style={{ backgroundImage: `url(${sliders[currentSlider].img})` }}
-        className="w-full h-80 sm:h-96 md:h-[84vh] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/60 before:inset-0 transform duration-1000 ease-linear"
+        className="w-full min-h-[85vh] md:min-h-0 md:h-[84vh] flex flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute before:bg-black/60 before:inset-0 transform duration-1000 ease-linear"
 
         // className="w-full h-80 sm:h-96 md:h-[84vh] fle flex-col items-center justify-center gap-5 lg:gap-10 bg-cover bg-center before:absolute transform duration-1000 ease-linear"
         // style={{
