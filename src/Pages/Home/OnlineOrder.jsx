@@ -5,8 +5,8 @@ import PrimaryButton from "./../../SharedComponents/PrimaryButton";
 import { ThemeContext } from "../../useContext/allContext";
 
 export const OnlineOrder = () => {
-  const [currentSlider, setCurrentSlider] = useState(0);
-  const { darkMode} = useContext(ThemeContext);
+  const [currentSlider, setCurrentSlider] = useState(0);      
+  const { darkMode } = useContext(ThemeContext);
 
   const sliders = [
     {
@@ -45,12 +45,18 @@ export const OnlineOrder = () => {
     setCurrentSlider((currentSlider) =>
       currentSlider === 0 ? sliders.length - 1 : currentSlider - 1
     );
+
   const nextSlider = () =>
     setCurrentSlider((currentSlider) =>
       currentSlider === sliders.length - 1 ? 0 : currentSlider + 1
     );
+
   return (
-    <div className={`${darkMode ? "bg-gray-900" : "bg-green-100 shadow-md " } my-24 pt-12 pb-8 px-2 `}>
+    <div
+      className={`${
+        darkMode ? "bg-gray-900" : "bg-green-100 shadow-md "
+      } my-24 pt-12 pb-8 px-2 `}
+    >
       <SectionTitle
         heading={"From 11:00 AM to 10:00 PM"}
         subHeading={"ORDER ONLINE"}

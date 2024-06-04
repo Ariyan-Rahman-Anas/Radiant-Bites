@@ -2,10 +2,11 @@ import { useContext, useRef } from "react";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import { ThemeContext } from "../../useContext/allContext";
 import useAuth from "../../Hooks/useAuth";
+import { postData } from "../../Hooks/apiUtils";
 
 const WriteAReview = () => {
   const { darkMode } = useContext(ThemeContext);
-  
+
   const { user } = useAuth();
   const userImage = user?.photoURL;
 
@@ -13,26 +14,30 @@ const WriteAReview = () => {
   const date = todayIs.getDate();
   const month = todayIs.getMonth() + 1;
   const year = todayIs.getFullYear();
-  const todayDateIs = `${date}/${month}/${year}`;
+  const reviewingDateIs = `${date}-${month}-${year}`;
 
   const formRef = useRef(null);
 
-  const handleSubmitReview = (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const profession = form.profession.value;
+    const email = form.email.value;
+    const rate = form.rate.value;
     const comment = form.comment.value;
 
     try {
       const aReview = {
         name,
         profession,
-        todayDateIs,
         comment,
         userImage,
+        email,
+        rate,
+        reviewingDateIs,
       };
-      console.log(aReview);
+      await postData("reviews", aReview);
     } catch (error) {
       console.error("Error giving review:", error);
     }
@@ -51,31 +56,56 @@ const WriteAReview = () => {
         ref={formRef}
         className="flex flex-col gap-4 mt-6 w-full md:w-2/3  mx-auto"
       >
-        <div className="flex flex-col md:flex-row gap-5">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            className={`${
-              darkMode ? "bg-gray-700" : "bg-white"
-            } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
-          ></input>
-          <input
-            type="text"
-            name="profession"
-            placeholder="Your Profession"
-            required
-            className={`${
-              darkMode ? "bg-gray-700" : "bg-white"
-            } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
-          ></input>
+        <div className="">
+          <div className="mb-5 flex items-center justify-between gap-5">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              defaultValue={user?.displayName}
+              className={`${
+                darkMode ? "bg-gray-700" : "bg-white"
+              } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+            ></input>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              required
+              defaultValue={user?.email}
+              className={`${
+                darkMode ? "bg-gray-700" : "bg-white"
+              } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+            ></input>
+          </div>
+
+          <div className="flex items-center justify-between gap-5">
+            <input
+              type="text"
+              name="profession"
+              placeholder="Profession"
+              required
+              className={`${
+                darkMode ? "bg-gray-700" : "bg-white"
+              } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+            ></input>
+            <input
+              type="number"
+              name="rate"
+              placeholder="Rate us 1 to 5"
+              required
+              className={`${
+                darkMode ? "bg-gray-700" : "bg-white"
+              } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
+            ></input>
+          </div>
         </div>
         <textarea
           name="comment"
           cols="30"
           rows="4"
-          placeholder="Your comment"
+          placeholder="Write your comment..."
           required
           className={`${
             darkMode ? "bg-gray-700" : "bg-white"

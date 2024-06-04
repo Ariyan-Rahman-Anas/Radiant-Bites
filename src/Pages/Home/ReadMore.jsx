@@ -28,7 +28,7 @@ const ReadMore = () => {
             with us and discover the essence of gourmet cuisine.
           </p>
           <h2 className="mt-1 mb-6 ">March 20, 2023</h2>
-          <PrimaryButton value={"Read more..."} link={"/"}></PrimaryButton>
+          <PrimaryButton value={"Read more..."} link={"/menu"}></PrimaryButton>
         </div>
       </div>
     </div>

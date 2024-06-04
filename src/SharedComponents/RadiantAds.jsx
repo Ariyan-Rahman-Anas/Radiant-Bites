@@ -21,7 +21,7 @@ const RadiantAds = () => {
             unforgettable dining escapade amidst an ambiance exuding warmth,
             elegance, and culinary artistry.
           </p>
-          <PrimaryButton value={"Know about us"} link={"/"}></PrimaryButton>
+          <PrimaryButton value={"Know about us"} link={"/about"}></PrimaryButton>
         </div>
       </div>
     </div>

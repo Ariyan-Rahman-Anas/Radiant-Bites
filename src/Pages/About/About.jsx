@@ -5,7 +5,7 @@ import SectionTitle from "./../../SharedComponents/SectionTitle";
 import usePageTitle from "../../Hooks/usePageTitle";
 import { useContext } from "react";
 import { ThemeContext } from "../../useContext/allContext";
-import Review from "../Home/Review";
+import WriteAReview from "../Home/WriteAReview";
 
 const About = () => {
   //updating the page title
@@ -100,7 +100,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        <Review></Review>
+        <WriteAReview></WriteAReview>
       </div>
     </div>
   );
