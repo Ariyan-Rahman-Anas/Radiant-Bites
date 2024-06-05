@@ -85,8 +85,8 @@ const Registration = () => {
 
   return (
     <div className="p-2">
-      <div className="lg:w-[85vw] mx-auto  ">
-        <div className="nav-start w-[7rem] pt-4 ">
+      <div className="lg:w-[85vw] min-h-screen mx-auto  ">
+        <div className="app-logo w-[7rem] pt-4 ">
           <Link to={"/"}>
             <img
               src={`${darkMode ? Logo2 : Logo}`}

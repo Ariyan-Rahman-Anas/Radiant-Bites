@@ -78,8 +78,8 @@ const LogIn = () => {
 
   return (
     <div className="p-2">
-      <div className="lg:w-[85vw] mx-auto  ">
-        <div className="nav-start w-[7rem] pt-4 ">
+      <div className="lg:w-[85vw] min-h-screen mx-auto  ">
+        <div className="app-logo w-[7rem] pt-4 ">
           <Link to={"/"}>
             <img
               src={`${darkMode ? Logo2 : Logo}`}
@@ -179,7 +179,7 @@ const LogIn = () => {
               </div>
             </div>
             <div className="flex items-center justify-center gap-2 mt-7 font-normal ">
-              <p>Don't have an account?</p>
+              <p>{`Don't have an account?`}</p>
               <Link
                 to={"/registration"}
                 className={`${

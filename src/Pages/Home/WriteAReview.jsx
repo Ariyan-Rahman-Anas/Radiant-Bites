@@ -50,10 +50,15 @@ const WriteAReview = () => {
   };
 
   return (
-    <div className="my-20 px-2">
+    <div className="my-20"
+    >
       <div>
         {user ? (
-          <>
+          <div
+            className={`
+          ${darkMode ? "bg-gray-700" : "bg-white"} 
+          my20 shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto`}
+          >
             <SectionTitle
               heading={"We are exited to hear from you"}
               subHeading={"Your Feedback"}
@@ -62,10 +67,10 @@ const WriteAReview = () => {
             <form
               onSubmit={handleSubmitReview}
               ref={formRef}
-              className="flex flex-col gap-4 mt-6 w-full md:w-2/3  mx-auto"
+              className="flex flex-col gap-4 mt-6 min-w-full border- md:w-2/3  mx-auto"
             >
-              <div className="">
-                <div className="mb-5 flex items-center justify-between gap-5">
+              <div>
+                <div className="mb-5 flex flex-col md:flex-row items-center justify-between gap-4">
                   <input
                     type="text"
                     name="name"
@@ -73,7 +78,7 @@ const WriteAReview = () => {
                     required
                     defaultValue={user?.displayName}
                     className={`${
-                      darkMode ? "bg-gray-700" : "bg-white"
+                      darkMode ? "bg-gray-600" : "bg-green-100"
                     } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                   ></input>
                   <input
@@ -83,19 +88,19 @@ const WriteAReview = () => {
                     required
                     defaultValue={user?.email}
                     className={`${
-                      darkMode ? "bg-gray-700" : "bg-white"
+                      darkMode ? "bg-gray-600" : "bg-green-100"
                     } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                   ></input>
                 </div>
 
-                <div className="flex items-center justify-between gap-5">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <input
                     type="text"
                     name="profession"
                     placeholder="Profession"
                     required
                     className={`${
-                      darkMode ? "bg-gray-700" : "bg-white"
+                      darkMode ? "bg-gray-600" : "bg-green-100"
                     } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                   ></input>
                   <input
@@ -104,7 +109,7 @@ const WriteAReview = () => {
                     placeholder="Rate us 1 to 5"
                     required
                     className={`${
-                      darkMode ? "bg-gray-700" : "bg-white"
+                      darkMode ? "bg-gray-600" : "bg-green-100"
                     } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                   ></input>
                 </div>
@@ -116,7 +121,7 @@ const WriteAReview = () => {
                 placeholder="Write your comment..."
                 required
                 className={`${
-                  darkMode ? "bg-gray-700" : "bg-white"
+                  darkMode ? "bg-gray-600" : "bg-green-100"
                 } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
               ></textarea>
               <input
@@ -126,7 +131,7 @@ const WriteAReview = () => {
               />
             </form>
             {/* review writing form ends here */}
-          </>
+          </div>
         ) : (
           <RenderedEmptyMessage
             heading={"Your Feedback"}

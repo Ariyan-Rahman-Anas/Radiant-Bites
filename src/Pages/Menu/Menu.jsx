@@ -193,11 +193,11 @@ const Menu = () => {
               <form onSubmit={handleUploadItem} ref={formRef} className="mt-6">
                 {/* // */}
                 <div className="mb-5 flex flex-col gap-4">
-                  <div className="flex items-center justify-between gap-4 ">
+                  <div className="flex flex-col md:flex-row  items-center justify-between gap-4 ">
                     <select
                       name="foodCategory"
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                     >
                       <option value="chefSpecial">Chef Special</option>
@@ -216,18 +216,18 @@ const Menu = () => {
                       name="name"
                       required
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Name"
                     />
                   </div>
-                  <div className="flex items-center justify-between gap-4 ">
+                  <div className="flex flex-col md:flex-row  items-center justify-between gap-4 ">
                     <input
                       type="text"
                       name="recipe"
                       required
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Recipe"
                     />
@@ -236,18 +236,18 @@ const Menu = () => {
                       name="details"
                       required
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Details"
                     />
                   </div>
-                  <div className="flex items-center justify-between gap-4 ">
+                  <div className="flex flex-col md:flex-row  items-center justify-between gap-4 ">
                     <input
                       type="number"
                       name="price"
                       required
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Price"
                     />
@@ -257,7 +257,7 @@ const Menu = () => {
                       accept="image/*"
                       required
                       className={`${
-                        darkMode ? "bg-gray-600" : "bg-green-50"
+                        darkMode ? "bg-gray-600" : "bg-green-100"
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                       placeholder="Food Picture"
                     />
@@ -266,7 +266,7 @@ const Menu = () => {
                 <input
                   type="submit"
                   value={"Upload"}
-                  className="block mx-auto w-fit px-[1.2rem] py-1 rounded-full text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white cursor-pointer duration-500 "
+                  className="text-white bg-primary p-2 rounded-md border-[.09rem] border-primary hover:text-primary hover:bg-white font-semibold duration-500 cursor-pointer min-w-full "
                 />
               </form>
               {/* The form is ends in here */}

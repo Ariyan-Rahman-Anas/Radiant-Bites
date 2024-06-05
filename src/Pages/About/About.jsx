@@ -17,7 +17,7 @@ const About = () => {
   const founderInfo = `https://ariyanrahmananas.netlify.app/`;
   
   return (
-    <div> 
+    <div>
       <PageHeadBanner
         sectionImg={aboutImg}
         heading={"About Us"}
@@ -26,18 +26,22 @@ const About = () => {
       ></PageHeadBanner>
 
       <div className="px-2">
-        <div className={`${darkMode ? "text-gray-400 bg-gray-700" : "text-gray-500 bg-white"} my-20 p-2 md:p-8 shadow-md rounded-md w-full md:w-[85vw] mx-auto text-sm`}>
+        <div
+          className={`${
+            darkMode ? "text-gray-400 bg-gray-700" : "text-gray-500 bg-white"
+          } my-20 p-2 md:p-8 shadow-md rounded-md w-full md:w-[85vw] mx-auto text-sm`}
+        >
           <SectionTitle
             heading={"Our Story"}
             subHeading={"From Passion to Plate: The Birth of Radiant Bites"}
           ></SectionTitle>
-          <div>
+          <div className="bg-red-00 p-3">
             <p>
               <span className="text-6xl font-light text-primary ">A</span>t
               Radiant Bites, our story begins with a shared passion for creating
               exceptional culinary experiences. It all started when{" "}
               <Link to={founderInfo} className="font-semibold text-primary ">
-                Ariyan Rahman Anas's
+                {`Ariyan Rahman Anas's`}
               </Link>{" "}
               had a vision of bringing together delicious flavors, warm
               hospitality, and a vibrant dining atmosphere under one roof.
@@ -47,13 +51,17 @@ const About = () => {
                 to={"https://ariyanrahmananas.netlify.app"}
                 className="font-semibold text-primary "
               >
-                Ariyan Rahman Anas's
+                {`Ariyan Rahman Anas's`}
               </Link>{" "}
               embarked on a journey to create a restaurant that would become a
               beloved culinary destination in the heart of Chattogram at
               Nasirabad, Khulshi-4225
             </p>
-            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
+            <p
+              className={`${
+                darkMode ? "text-gray-300" : "text-black"
+              } text-xl mt-5 mb-1`}
+            >
               A Culinary Journey: Milestones and Memories
             </p>
             <p>
@@ -64,7 +72,11 @@ const About = () => {
               our journey has been guided by a commitment to excellence and a
               dedication to delighting our guests.
             </p>
-            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
+            <p
+              className={`${
+                darkMode ? "text-gray-300" : "text-black"
+              } text-xl mt-5 mb-1`}
+            >
               Crafting Culinary Excellence: Our Approach to Food
             </p>
             <p>
@@ -76,7 +88,11 @@ const About = () => {
               classic comfort foods to innovative culinary creations, each item
               on our menu is thoughtfully crafted with care and creativity.
             </p>
-            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
+            <p
+              className={`${
+                darkMode ? "text-gray-300" : "text-black"
+              } text-xl mt-5 mb-1`}
+            >
               Building Connections: A Place for Community and Connection
             </p>
             <p>
@@ -86,7 +102,11 @@ const About = () => {
               families, and food lovers alike, where laughter fills the air and
               every meal is an opportunity to create lasting moments together.
             </p>
-            <p className={`${darkMode ? "text-gray-300" : "text-black" } text-xl mt-5 mb-1`}>
+            <p
+              className={`${
+                darkMode ? "text-gray-300" : "text-black"
+              } text-xl mt-5 mb-1`}
+            >
               Looking Ahead: Our Vision for the Future
             </p>
             <p>

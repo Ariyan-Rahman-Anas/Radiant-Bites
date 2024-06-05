@@ -5,12 +5,12 @@ import { toast } from "react-hot-toast";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useContext, useState } from "react";
-import { FaRegUser } from "react-icons/fa";
 import PrimaryButton from "./PrimaryButton";
 import logo1 from "./../assets/Logos/1.svg";
 import logo2 from "./../assets/Logos/2.svg";
 import useAuth from "../Hooks/useAuth";
 import { CartContext, ThemeContext } from "../useContext/allContext";
+import Avatar from "./../assets/images/Avatar.png";
 
 
 const Navbar = () => {
@@ -91,14 +91,14 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/menu"} className="group-hover:text-primary">
-                Menu
+              <NavLink to={"/about"} className="group-hover:text-primary">
+                About Us
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/about"} className="group-hover:text-primary">
-                About Us
+              <NavLink to={"/menu"} className="group-hover:text-primary">
+                Menu
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
@@ -129,7 +129,6 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li
-              // onClick={() => setDarkMode(!darkMode)}
               onClick={toggleDarkMode}
               className="text-xl cursor-pointer hidden md:block "
             >
@@ -141,21 +140,17 @@ const Navbar = () => {
             </li>
             {user ? (
               <div className="group relative bg-gray-500 rounded-md md:bg-transparent ">
-                <div onClick={handleToggleClick}>
-                  {user.photoURL ? (
-                    <img
-                      src={user?.photoURL}
-                      alt="user picture"
-                      className="w-10 h-10 rounded-full "
-                    />
-                  ) : (
-                    <FaRegUser className="text-4xl border-[.09rem] rounded p-1 border-primary "></FaRegUser>
-                  )}
+                <div onClick={handleToggleClick} className="py-2 md:py-0">
+                  <img
+                    src={user.photoURL ? user.photoURL : Avatar}
+                    alt="user picture"
+                    className="w-16 md:w-10 h-16 md:h-10 rounded-full mx-auto border-[.09rem] border-primary  "
+                  />
                 </div>
                 <div
                   className={`${
                     toggleOpen ? "md:flex" : "md:hidden"
-                  } items-center justify-center h-36 w-72 rounded-md bg-black text-white text-center text-sm md:absolute md:right-0 md:top-12 z-50 border-b-[.16rem] border-b-primary pt-5 md:pt-0 `}
+                  } items-center justify-center h-36 w-72 rounded-md bg-black text-white text-center text-sm md:absolute md:right-0 md:top-12 z-50 border-b-[.16rem] border-b-primary pt-2 md:py-0 `}
                 >
                   <div>
                     <h1 className="text-xl">

@@ -5,6 +5,7 @@ const Banner = () => {
   const sliders = [
     {
       img: "https://source.unsplash.com/1200x540/?fastFoods",
+      // img: "https://source.unsplash.com/1200x540/?avatar",
       title: "Quick Bites Galore",
       des: "Explore Our Range of Lip-Smacking Fast Food Options, Perfect for When You're on the Go or Craving Something Deliciously Familiar.",
     },

@@ -4,7 +4,7 @@ import { getData } from "../Hooks/apiUtils";
 import Rating from "./Rating";
 import { ThemeContext } from "../useContext/allContext";
 import Spinner from "./Spinner";
-import Avatar from "./../assets/images/Avatar.avif";
+import Avatar from "./../assets/images/Avatar.png";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
