@@ -22,6 +22,7 @@ import { postData } from "../../Hooks/apiUtils";
 import usePageTitle from "../../Hooks/usePageTitle";
 import { ThemeContext } from "../../useContext/allContext";
 import { Modal } from "../../SharedComponents/Modal";
+import RenderedEmptyMessage from "../../SharedComponents/RenderedEmptyMessage";
 
 const Menu = () => {
 
@@ -114,7 +115,7 @@ const Menu = () => {
     const details = form.details.value;
     const image = form.image.files[0];
     const price = parseInt(priceInStr);
-    console.log(image);
+    // console.log(image);
 
     //creating the dish
     try {
@@ -126,8 +127,9 @@ const Menu = () => {
         details,
         image,
       };
-      const response = await postData("allItems", anItem);
-      console.log("Posting item is: ", response);
+      await postData("allItems", anItem);
+      // Clear the form fields after successful submission
+      form.reset();
       toast.success("Successfully ordered!");
     } catch (error) {
       console.error("Error confirming order:", error);
@@ -175,13 +177,13 @@ const Menu = () => {
           ))}
         </div>
 
-        <div
-          className={`${
-            darkMode ? "bg-gray-700" : "bg-white"
-          } my-20 shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto`}
-        >
+        <div className="my-20">
           {user ? (
-            <div>
+            <div
+              className={`
+          ${darkMode ? "bg-gray-700" : "bg-white"} 
+           shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto`}
+            >
               <SectionTitle
                 heading={"Upload Your Dishes"}
                 subHeading={"Showcase Your Culinary Delights"}
@@ -271,19 +273,16 @@ const Menu = () => {
             </div>
           ) : (
             // if user does not exist then it will inform the user that the user can add a dish in our menu
-            <div className="text-center ">
-              <SectionTitle
-                heading={"Exciting News!"}
-                subHeading={"You can add your signature dish to our Menu!"}
-              ></SectionTitle>
-              <p className="mt-4 w-full md:w-3/4 mx-auto text-gray-500  ">
-                Attention Food Connoisseurs! Share your culinary creations and
-                influence our menu with your culinary artistry. Let your
-                signature dish shine and delight taste buds everywhere!
-              </p>
-              <p className="font-semibold my-2 ">So, let's go for logged in</p>
-              <PrimaryButton value={"Log in"} link={"/logIn"}></PrimaryButton>
-            </div>
+            <RenderedEmptyMessage
+              heading={"Exciting News!"}
+              subHeading={"You can add your signature dish to our Menu!"}
+              message={
+                "Attention Food Connoisseurs! Share your culinary creations and influence our menu with your culinary artistry. Let your signature dish shine and delight taste buds everywhere!"
+              }
+              directionMessage={"So, let's go for logged in"}
+              btnValue={"Log in"}
+              btnLink={"/logIn"}
+            ></RenderedEmptyMessage>
           )}
         </div>
       </div>
