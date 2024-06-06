@@ -24,6 +24,10 @@ import Reservation from "../Pages/Reservation/Reservation";
 import Payment from "../Pages/Payment/Payment";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashBoardCart from "../Pages/Dashboard/Pages/DashBoardCart";
+import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
+import DashboardUsers from './../Pages/Dashboard/Pages/DashboardUsers';
+import DashboardPayments from "../Pages/Dashboard/Pages/DashboardPayments";
+import DashboardReviews from './../Pages/Dashboard/Pages/DashboardReviews';
 
 const MainRoute = createBrowserRouter([
   {
@@ -155,19 +159,48 @@ const MainRoute = createBrowserRouter([
         path: "/shoppingCart/payment",
         element: <Payment></Payment>,
       },
+      // {
+      //   path: "dashboard",
+      //   element: <Dashboard></Dashboard>,
+      // },
+      // {
+      //   path: "/cart",
+      //   element: <DashBoardCart></DashBoardCart>,
+      // },
+      // {
+      //   path: "/dashboard/allUser",
+      //   element: <AllUser></AllUser>,
+      // },
     ],
   },
+
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
     children: [
       {
-        path: "cart",
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/dashboard/payments",
+        element: <DashboardPayments></DashboardPayments>,
+      },
+      {
+        path: "/dashboard/reviews",
+        element: <DashboardReviews></DashboardReviews>,
+      },
+      {
+        path: "/dashboard/cart",
         element: <DashBoardCart></DashBoardCart>,
+      },
+      {
+        path: "/dashboard/users",
+        element: <DashboardUsers></DashboardUsers>,
       },
     ],
   },

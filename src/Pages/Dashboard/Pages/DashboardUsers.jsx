@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../useContext/allContext";
 
-const DashBoardCart = () => {
+const DashboardUsers = () => {
   const { darkMode } = useContext(ThemeContext);
 
     return (
@@ -10,9 +10,9 @@ const DashBoardCart = () => {
           darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
         } min-h-screen flex-1  `}
       >
-        <h1>Dashboard Cart</h1>
+        <h1>Users</h1>
       </div>
     );
 };
 
-export default DashBoardCart;
+export default DashboardUsers;
