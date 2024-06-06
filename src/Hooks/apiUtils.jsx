@@ -7,13 +7,15 @@ const BASE_URL = "http://localhost:3000";
 export const getData = async (endpoint) => {
   try {
       const response = await axios.get(`${BASE_URL}/${endpoint}`);
-    //   console.log("data is: ", response.data);
+      // console.log("data is: ", response.data);
       return response.data?.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 };
+
+
 
 // Function to post data
 // export const postData = async (endpoint, data) => {

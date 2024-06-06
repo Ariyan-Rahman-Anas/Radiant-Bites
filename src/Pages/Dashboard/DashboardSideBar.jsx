@@ -5,7 +5,7 @@ import { ThemeContext } from "../../useContext/allContext";
 import { useContext } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { RiDashboardFill } from "react-icons/ri";
-import { FaUsers, FaCartPlus } from "react-icons/fa";
+import { FaUsers, FaCartPlus, FaCheckCircle } from "react-icons/fa";
 import { PiNewspaperFill } from "react-icons/pi";
 import { MdPayments } from "react-icons/md";
 
@@ -16,14 +16,12 @@ const DashboardSideBar = () => {
 
     return (
       <div
-        className={` ${
-          darkMode ? "bg-gray-700 text-gray-400 " : "bg-green-50"
-        } sidebar min-h-screen w-[20rem] shadow-md px-2 text-center `}
+        className={`sidebar bg-gray-800 text-gray-400 min-h-screen w-[20rem] shadow-r-md px-2 text-center `}
       >
         <div className="w-[10rem] border-b-2 border-primary px-4 pb-1 rounded-md mt-4 mb-5 mx-auto ">
           <Link to={"/"}>
             <img
-              src={darkMode ? logo2 : logo1}
+              src={logo2 }
               alt="Radiant Bites's Logo"
               className="w-full"
             />
@@ -40,7 +38,10 @@ const DashboardSideBar = () => {
             />
           </div>
           <div className="mt-3">
-            <h1>{user?.displayName}</h1>
+            <div className="flex items-center justify-center gap-2 text-gray-100 ">
+              <h1 className="font-semibold">{user?.displayName}</h1>
+              <FaCheckCircle className="text-sm"></FaCheckCircle>
+            </div>
             <h2 className="text-sm mt-1.5 -1 ">{user?.email} </h2>
             <h3>Admin ID: 12334455</h3>
           </div>
@@ -48,7 +49,7 @@ const DashboardSideBar = () => {
         {/* admin */}
 
         <div className="mt-5 ">
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 px-2 ">
             <li className="group">
               <NavLink
                 to={"/dashboard"}

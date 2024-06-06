@@ -57,7 +57,7 @@ const LogIn = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
         };
-        await postData("allUser", newUserOrNot);
+        await postData("users", newUserOrNot);
         navigate(location?.state ? location?.state : "/");
         toast.success("Login Successfully!");
       })

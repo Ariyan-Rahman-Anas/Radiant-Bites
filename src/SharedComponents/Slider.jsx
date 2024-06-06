@@ -28,6 +28,7 @@ const Slider = () => {
   const rates = reviews.map((review) => review.rate);
   const dates = reviews.map((review) => review.reviewingDateIs);
 
+  //getting reviews
   useEffect(() => {
     const fetchData = async () => {
       try {

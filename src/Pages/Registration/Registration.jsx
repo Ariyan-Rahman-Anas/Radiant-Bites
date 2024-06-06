@@ -46,7 +46,7 @@ const Registration = () => {
           name: data.name,
           email: data.email,
         };
-        await postData("allUser", aNewUser);
+        await postData("users", aNewUser);
 
         toast.success("Registration Successful!");
         setRegisterError("");
@@ -64,7 +64,7 @@ const Registration = () => {
           name: result?.user?.displayName,
           email: result?.user?.email,
         };
-        await postData("allUser", newUserOrNot);
+        await postData("users", newUserOrNot);
         navigate("/");
         toast.success("Registration Successful!");
       })
