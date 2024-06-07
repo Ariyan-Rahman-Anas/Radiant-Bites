@@ -53,11 +53,16 @@ const LogIn = () => {
   const handleGoogleLogIn = () => {
     googleSignIn()
       .then(async (result) => {
-        const newUserOrNot = {
-          name: result?.user?.displayName,
-          email: result?.user?.email,
+        const userData = {
+          name: result.user.displayName
+            ? result.user.displayName
+            : "Mr. Not Given",
+          email: result.user.email ? result.user.email : "MrNotGiven@ng.com",
+          userImage: result.user.photoURL ? result.user.photoURL : null,
         };
-        await postData("users", newUserOrNot);
+
+        //if the user is new in here, than it will store the user data in the DB
+        await postData("users", userData);
         navigate(location?.state ? location?.state : "/");
         toast.success("Login Successfully!");
       })

@@ -31,23 +31,16 @@ const DashboardUsers = () => {
   // Update user role
   const updateUserRole = async (userId) => {
     try {
-      const theUserMakingAdmin = users.find(user => user._id === userId)
-      console.log(theUserMakingAdmin)
-
+      const makingTheUserAsAdmin = users.find((user) => user._id === userId);
       const makingAdmin = {
-        name: theUserMakingAdmin?.name,
-        email: theUserMakingAdmin?.email,
+        name: makingTheUserAsAdmin?.name,
+        email: makingTheUserAsAdmin?.email,
+        adminImage: makingTheUserAsAdmin?.userImage,
       };
-
       await postData(`admins`, makingAdmin);
       await deleteData("users", userId);
       const remainingUserAfterMakeAnAdmin = users.filter(user => user._id !== userId)
       setUsers(remainingUserAfterMakeAnAdmin)
-      // setUsers(
-      //   users.map((user) =>
-      //     user.id === userId ? { ...user, role: newRole } : user
-      //   )
-      // );
     } catch (error) {
       console.error("Error updating user role:", error);
     }
