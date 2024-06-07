@@ -29,14 +29,25 @@ const DashboardUsers = () => {
   }, []);
 
   // Update user role
-  const updateUserRole = async (userId, newRole) => {
+  const updateUserRole = async (userId) => {
     try {
-      await postData(`users/${userId}/role`, { role: newRole });
-      setUsers(
-        users.map((user) =>
-          user.id === userId ? { ...user, role: newRole } : user
-        )
-      );
+      const theUserMakingAdmin = users.find(user => user._id === userId)
+      console.log(theUserMakingAdmin)
+
+      const makingAdmin = {
+        name: theUserMakingAdmin?.name,
+        email: theUserMakingAdmin?.email,
+      };
+
+      await postData(`admins`, makingAdmin);
+      await deleteData("users", userId);
+      const remainingUserAfterMakeAnAdmin = users.filter(user => user._id !== userId)
+      setUsers(remainingUserAfterMakeAnAdmin)
+      // setUsers(
+      //   users.map((user) =>
+      //     user.id === userId ? { ...user, role: newRole } : user
+      //   )
+      // );
     } catch (error) {
       console.error("Error updating user role:", error);
     }
@@ -170,21 +181,12 @@ const DashboardUsers = () => {
                             darkMode ? "border-gray-700" : "border-gray-200"
                           }  px-4 border-b`}
                         >
-                          {user.role !== "admin" ? (
-                            <button
-                              className="px-2 py-1 rounded-md mr-2 bg-primary text-white  hover:bg-green-600 duration-500"
-                              onClick={() => updateUserRole(user._id, "admin")}
-                            >
-                              Make Admin
-                            </button>
-                          ) : (
-                            <button
-                              className="px-2 py-1 rounded-md bg-primary text-white hover:bg-green-600 duration-500"
-                              onClick={() => updateUserRole(user?._id, "user")}
-                            >
-                              Make User
-                            </button>
-                          )}
+                          <button
+                            className="px-2 py-1 rounded-md mr-2 bg-primary text-white  hover:bg-green-600 duration-500"
+                            onClick={() => updateUserRole(user._id)}
+                          >
+                            Make Admin
+                          </button>
                         </td>
                         <td
                           className={`${

@@ -5,7 +5,7 @@ import logo2 from "./../../assets/Logos/2.svg";
 import { ThemeContext } from "../../useContext/allContext";
 import { useContext, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import { RiDashboardFill } from "react-icons/ri";
+import { RiDashboardFill, RiReservedFill, RiAdminFill } from "react-icons/ri";
 import { FaUsers, FaCartPlus, FaCheckCircle } from "react-icons/fa";
 import { PiNewspaperFill } from "react-icons/pi";
 import { MdPayments } from "react-icons/md";
@@ -57,7 +57,7 @@ const DashboardSideBar = () => {
           </div>
           {/* admin */}
 
-          <div className="mt-5 ">
+          <div className="mt-5 py-5 ">
             <ul className="flex flex-col gap-2 px-2 ">
               <li className="group">
                 <NavLink
@@ -70,6 +70,19 @@ const DashboardSideBar = () => {
                 >
                   <RiDashboardFill></RiDashboardFill>
                   Dashboard
+                </NavLink>
+              </li>
+              <li className="group">
+                <NavLink
+                  to={"/dashboard/reservation"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/dashboard/reservation"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <RiReservedFill></RiReservedFill>
+                  Reservation
                 </NavLink>
               </li>
               <li className=" group">
@@ -96,6 +109,19 @@ const DashboardSideBar = () => {
                 >
                   <PiNewspaperFill></PiNewspaperFill>
                   Reviews
+                </NavLink>
+              </li>
+              <li className=" group">
+                <NavLink
+                  to={"/dashboard/admins"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/dashboard/admins"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <RiAdminFill></RiAdminFill>
+                  Admins
                 </NavLink>
               </li>
               <li className=" group">
