@@ -9,9 +9,9 @@ const Dashboard = () => {
     <div
       className={` ${
         darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
-      } min-h-screen flex-1  `}
+      } md:min-h-screen flex-1 w-full z-10 `}
     >
-      <h1>h1</h1>
+      <h1>h1dddddddd</h1>
     </div>
   );
 };

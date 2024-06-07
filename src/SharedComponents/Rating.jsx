@@ -5,7 +5,7 @@ const Rating = ({ rateValue }) => {
   const [userRating, setUserRating] = useState(1);
 
   return (
-    <div className="flex items-center text-center justify-center gap-2 my-2 ">
+    <div className="flex items-center text-center justify-center gap-2 my2 ">
       {[1, 2, 3, 4, 5].map((star) => (
         <FaRegStar
           onClick={() => setUserRating(star)}

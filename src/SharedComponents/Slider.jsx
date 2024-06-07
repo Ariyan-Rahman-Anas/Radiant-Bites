@@ -103,7 +103,7 @@ const Slider = () => {
           onMouseLeave={handleMouseLeave}
         >
           <div className="slider flex justify-center items-center  ">
-            <div className="border-">
+            <div className="">
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                 <div className="reviewer-image text-center absolute -top-7 ">
                   <img
@@ -120,7 +120,7 @@ const Slider = () => {
 
               <div className="text-center mt-4 ">
                 <p>{comments[currentSlide]}</p>
-                <p className="mt-1">{dates[currentSlide]}</p>
+                <p className="m-2">{dates[currentSlide]}</p>
                 <Rating value={rates[currentSlide]} rateValue={5}></Rating>
               </div>
 
@@ -143,10 +143,10 @@ const Slider = () => {
 
             {/* Navigation buttons */}
             <div className="flex items-center justify-between">
-              <button onClick={prevSlide} className="absolute left-0 ">
+              <button onClick={prevSlide} className="absolute left-2 ">
                 <GrPrevious className="text-2xl md:text-4xl hover:text-primary duration-300 "></GrPrevious>
               </button>
-              <button onClick={nextSlide} className="absolute right-0">
+              <button onClick={nextSlide} className="absolute right-2">
                 <GrNext className="text-2xl md:text-4xl hover:text-primary duration-300 "></GrNext>
               </button>
             </div>

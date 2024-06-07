@@ -57,7 +57,7 @@ const DashboardUsers = () => {
     <div
       className={` ${
         darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
-      } min-h-screen flex-1  `}
+      } min-h-screen flex-1 w-full `}
     >
       <div>
         {loading ? (
@@ -76,7 +76,7 @@ const DashboardUsers = () => {
                 darkMode ? "bg-gray-700" : ""
               } m-6 p-4 shadow-md rounded-md  `}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between font-semibold text-xl">
                 <h1>Total Users: {users?.length}</h1>
                 <h2>Radiant Bites</h2>
               </div>
