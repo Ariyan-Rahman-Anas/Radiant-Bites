@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../useContext/allContext";
-import { getData, postData } from "../../../Hooks/apiUtils";
+import { deleteData, getData, postData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
 import SectionTitle from './../../../SharedComponents/SectionTitle';
+import { toast } from "react-hot-toast";
 
 const DashboardUsers = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -19,7 +20,7 @@ const DashboardUsers = () => {
         const responseData = await getData("users");
         setUsers(responseData);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -48,9 +49,15 @@ const DashboardUsers = () => {
   };
 
   // Handle delete user
-  const handleDeleteUser = (userId) => {
-    console.log(`Delete user with ID: ${userId}`);
-    // Add your delete user logic here
+  const handleDeleteUser = async(userId) => {
+    try {
+      await deleteData("users", userId);
+      const remainingUser = users.filter(user => user._id !== userId)
+      setUsers(remainingUser)
+      toast.success("Deleted the user");
+    } catch (error) {
+      setError(error.message)
+    }
   };
 
   return (
@@ -128,7 +135,7 @@ const DashboardUsers = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {users.map((user, index) => (
+                    {users?.map((user, index) => (
                       <tr
                         key={user._id}
                         className={`${
@@ -149,14 +156,14 @@ const DashboardUsers = () => {
                             darkMode ? "border-gray-700" : "border-gray-200"
                           } px-4 border-b`}
                         >
-                          {user.name}
+                          {user?.name}
                         </td>
                         <td
                           className={`${
                             darkMode ? "border-gray-700" : "border-gray-200"
                           }  px-4 border-b`}
                         >
-                          {user.email}
+                          {user?.email}
                         </td>
                         <td
                           className={`${
@@ -165,15 +172,15 @@ const DashboardUsers = () => {
                         >
                           {user.role !== "admin" ? (
                             <button
-                              className="bg-primary text-white px-2 py-1 rounded-md mr-2"
-                              onClick={() => updateUserRole(user.id, "admin")}
+                              className="px-2 py-1 rounded-md mr-2 bg-primary text-white  hover:bg-green-600 duration-500"
+                              onClick={() => updateUserRole(user._id, "admin")}
                             >
                               Make Admin
                             </button>
                           ) : (
                             <button
-                              className="bg-primary text-white px-2 py-1 rounded-md"
-                              onClick={() => updateUserRole(user.id, "user")}
+                              className="px-2 py-1 rounded-md bg-primary text-white hover:bg-green-600 duration-500"
+                              onClick={() => updateUserRole(user?._id, "user")}
                             >
                               Make User
                             </button>
@@ -185,14 +192,14 @@ const DashboardUsers = () => {
                           }  px-4 border-b`}
                         >
                           <button
-                            className="bg-yellow-500 text-white px-2 py-1 rounded-md m-2"
-                            onClick={() => handleEditUser(user.id)}
+                            className=" px-2 py-1 rounded-md m-2 bg-yellow-500 text-white hover:bg-yellow-600 duration-500"
+                            onClick={() => handleEditUser(user?._id)}
                           >
                             Edit
                           </button>
                           <button
-                            className="bg-red-500 text-white px-2 py-1 rounded-md"
-                            onClick={() => handleDeleteUser(user.id)}
+                            className="px-2 py-1 rounded-md text-white bg-danger hover:bg-red-600 duration-500"
+                            onClick={() => handleDeleteUser(user?._id)}
                           >
                             Delete
                           </button>

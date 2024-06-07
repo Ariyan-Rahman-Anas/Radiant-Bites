@@ -21,7 +21,6 @@ const DashboardReviews = () => {
       try {
         setLoading(true);
         const responseData = await getData("reviews");
-        console.log(responseData);
         setReviews(responseData);
       } catch (error) {
         setError(error);
@@ -67,7 +66,7 @@ const DashboardReviews = () => {
             <div
               className={`${
                 darkMode ? "bg-gray-700" : ""
-              } m-0 md:m-6 mt-10 p-5 md:p-6 shadow-md rounded-md  `}
+              } m-0 md:m-6 mt-10 p-5 md:p-6 shadow-md rounded-md `}
             >
               <div className="flex items-center justify-between font-semibold text-xl ">
                 <h1>Total reviews earned: {reviews?.length}</h1>
@@ -90,10 +89,11 @@ const DashboardReviews = () => {
                       />
                     </div>
                     <LiaCutSolid
-                      onClick={()=>handleDeleteAReview(review._id)}
+                      title="Delete Review"
+                      onClick={() => handleDeleteAReview(review._id)}
                       className="text-4xl text-primary absolute -right-2 -top-2 cursor-pointer hover:text-danger duration-500 "
                     ></LiaCutSolid>
-                    <div className="the-review pt-16 ">
+                    <div className="the-review pt-16  overflow-x-hidden ">
                       <h1 className="font-semibold text-lg text-gray-300 ">
                         {review?.name}
                       </h1>
@@ -102,7 +102,7 @@ const DashboardReviews = () => {
                       <div className="text-left w-fit ">
                         <Rating value={review?.rate} rateValue={5}></Rating>
                       </div>
-                      <h3 className=" mb-3">{review?.email}</h3>
+                      <h3 className=" mb-3 text-sm">{review?.email}</h3>
                       <p className="text-sm pb-8">{review?.comment}</p>
                       <h5 className="absolute bottom-3">
                         Date: {review?.reviewingDateIs}
