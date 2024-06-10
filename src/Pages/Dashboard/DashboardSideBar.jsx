@@ -192,6 +192,19 @@ const DashboardSideBar = () => {
                     Dashboard
                   </NavLink>
                 </li>
+                <li onClick={handleHidingMenu} className="group">
+                  <NavLink
+                    to={"/dashboard/reservation"}
+                    className={({ isActive }) =>
+                      isActive && location.pathname === "/dashboard/reservation"
+                        ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                        : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                    }
+                  >
+                    <RiReservedFill></RiReservedFill>
+                    Reservation
+                  </NavLink>
+                </li>
                 <li onClick={handleHidingMenu} className=" group">
                   <NavLink
                     to={"/dashboard/payments"}
@@ -216,6 +229,19 @@ const DashboardSideBar = () => {
                   >
                     <PiNewspaperFill></PiNewspaperFill>
                     Reviews
+                  </NavLink>
+                </li>
+                <li onClick={handleHidingMenu} className=" group">
+                  <NavLink
+                    to={"/dashboard/admins"}
+                    className={({ isActive }) =>
+                      isActive && location.pathname === "/dashboard/admins"
+                        ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                        : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                    }
+                  >
+                    <RiAdminFill></RiAdminFill>
+                    Admins
                   </NavLink>
                 </li>
                 <li onClick={handleHidingMenu} className=" group">

@@ -1,20 +1,31 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000"; 
+const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "https://radiant-bites-back-end.vercel.app";
 
 // Function to fetch data
 export const getData = async (endpoint) => {
   try {
-      const response = await axios.get(`${BASE_URL}/${endpoint}`);
-      // console.log("data is: ", response.data);
-      return response.data?.data;
+    const response = await axios.get(`${BASE_URL}/${endpoint}`);
+    // console.log("data is: ", response.data);
+    return response.data?.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 };
 
+
+// Function to get users by role
+export const getUsersByRole = async (role) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/users/role/${role}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching users with role ${role}:`, error);
+    throw error;
+  }
+};
 
 
 // Function to post data
@@ -35,7 +46,7 @@ export const postData = async (endpoint, data) => {
         // Add your headers here
         // Example:
         // 'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     console.log(response?.data);
@@ -47,9 +58,19 @@ export const postData = async (endpoint, data) => {
 };
 
 // Function to update data
+// export const updateData = async (endpoint, id, data) => {
+//   try {
+//     const response = await axios.put(`${BASE_URL}/${endpoint}/${id}`, data);
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error updating data:", error);
+//     throw error;
+//   }
+// };
+// Function to update data
 export const updateData = async (endpoint, id, data) => {
   try {
-    const response = await axios.put(`${BASE_URL}/${endpoint}/${id}`, data);
+    const response = await axios.patch(`${BASE_URL}/${endpoint}/${id}`, data);
     return response.data;
   } catch (error) {
     console.error("Error updating data:", error);

@@ -2,7 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../useContext/allContext";
 import Spinner from "../../../SharedComponents/Spinner";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
-import { deleteData, getData, postData } from "../../../Hooks/apiUtils";
+import {
+  deleteData,
+  getUsersByRole,
+  updateData,
+} from "../../../Hooks/apiUtils";
+import Avatar from "./../../../assets/images/Avatar.png";
 import { toast } from "react-hot-toast";
 
 const DashboardAdmins = () => {
@@ -11,39 +16,30 @@ const DashboardAdmins = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  //getting admins
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUsersByRole = async () => {
       try {
-        setLoading(true);
-        const responseData = await getData("admins");
-        setAdmins(responseData);
+        const responseData = await getUsersByRole("admin");
+        setAdmins(responseData.data); 
       } catch (error) {
-        setError(error.message);
+        console.error(`Error fetching users with role admin:`, error);
       } finally {
         setLoading(false);
       }
     };
-    fetchData();
+    fetchUsersByRole();
   }, []);
 
   //handling user role
   const updateUserRole = async (userId) => {
     try {
-      const makingTheAdminAsUser = admins.find((user) => user._id === userId);
-      const makingUser = {
-        name: makingTheAdminAsUser?.name,
-        email: makingTheAdminAsUser?.email,
-        adminImage: makingTheAdminAsUser?.userImage,
-      };
-      await postData(`users`, makingUser);
-      await deleteData("admins", userId);
-      const remainingAdminsAfterMakeAnUser = admins.filter(
-        (user) => user._id !== userId
-      );
-      setAdmins(remainingAdminsAfterMakeAnUser);
+      setLoading(true)
+      await updateData("users", userId, { role: "user" });
     } catch (error) {
       console.error("Error updating user role:", error);
+    } finally {
+      setLoading(false);
+      
     }
   };
 
@@ -108,6 +104,13 @@ const DashboardAdmins = () => {
                           darkMode ? "border-gray-700" : "border-gray-200"
                         }  px-4 border-b`}
                       >
+                        Picture
+                      </th>
+                      <th
+                        className={`${
+                          darkMode ? "border-gray-700" : "border-gray-200"
+                        }  px-4 border-b`}
+                      >
                         Name
                       </th>
                       <th
@@ -149,6 +152,19 @@ const DashboardAdmins = () => {
                           } py-5 px-4 border-b`}
                         >
                           {index + 1}
+                        </td>
+                        <td
+                          className={`${
+                            darkMode ? "border-gray-700" : "border-gray-200"
+                          } px-4 border-b`}
+                        >
+                          <div className="w-[2.5rem] mx-auto ">
+                            <img
+                              src={admin.image ? admin.image : Avatar}
+                              alt="admin's image"
+                              className="w-full h-full rounded-full"
+                            />
+                          </div>
                         </td>
                         <td
                           className={`${

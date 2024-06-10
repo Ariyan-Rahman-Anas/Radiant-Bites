@@ -1,10 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { PiShoppingCart } from "react-icons/pi";
 import { toast } from "react-hot-toast";
 import { IoMenuOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
 import logo1 from "./../assets/Logos/1.svg";
 import logo2 from "./../assets/Logos/2.svg";
@@ -18,7 +18,17 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [toggleOpen, setToggleOpen] = useState(false);
+  const [eligibleForDashB, setEligibleForDashB] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const location  = useLocation()
+
+  // checking the eligibility for admin dashboard
+  useEffect(() => {
+    const isEligibleForDashboard =
+      user?.email === "admininfo@rb.com" ||
+      user?.email === "mohammadariyanrahmananas@gmail.com";
+    setEligibleForDashB(isEligibleForDashboard);
+  }, [user?.email]);
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
@@ -85,47 +95,88 @@ const Navbar = () => {
             }  duration-700 z-10 `}
           >
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/"} className="group-hover:text-primary ">
-                Home
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/"
+                    ? "border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "border-b-2 border-b-transparent duration-500"
+                }
+                // className={({ isActive }) =>
+                //   isActive && location.pathname === "/"
+                //     ? "px-2 py-1 rounded-sm text-white bg-green-500 duration-500 "
+                //     : "px-2 py-1 group-hover:text-primary"
+                // }
+              >
+                Homes
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300 "></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/about"} className="group-hover:text-primary">
+              <NavLink
+                to={"/about"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/about"
+                    ? "border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "border-b-2 border-b-transparent duration-500 "
+                }
+              >
                 About Us
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/menu"} className="group-hover:text-primary">
+              <NavLink
+                to={"/menu"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/menu"
+                    ? "border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "border-b-2 border-b-transparent duration-500 "
+                }
+              >
                 Menu
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/blog"} className="group-hover:text-primary">
+              <NavLink
+                to={"/blog"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/blog"
+                    ? "border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "border-b-2 border-b-transparent duration-500 "
+                }
+              >
                 Blogs
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li onClick={hidingMenu} className="tex-white relative group">
-              <NavLink to={"/reservation"} className="group-hover:text-primary">
+              <NavLink
+                to={"/reservation"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/reservation"
+                    ? "border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "border-b-2 border-b-transparent duration-500 "
+                }
+              >
                 Reservation
                 <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
               </NavLink>
             </li>
             <li className="hidden md:block">
-              <NavLink to={"/shoppingCart"}>
-                <div
-                  className={`${
-                    darkMode ? "bg-gray-700 " : "bg-white"
-                  } p-1.5 rounded-md flex items-center gap-2`}
-                >
-                  <PiShoppingCart className="text-xl"></PiShoppingCart>
-                  <p className="bg-primary text-white text-sm font-semibold px-1 rounded-md ">
-                    {`+${cartItems.length}`}
-                  </p>
-                </div>
+              <NavLink
+                to={"/shoppingCart"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/shoppingCart"
+                    ? "flex items-center gap-2 border-b-2 border-b-primary rounded-sm text-primary duration-500 "
+                    : "flex items-center gap-2 border-b-2 border-b-transparent duration-500 "
+                }
+              >
+                <PiShoppingCart className="text-xl"></PiShoppingCart>
+                <p className="text-white bg-primary  text-sm font-semibold px-1 rounded-md ">
+                  {`+${cartItems.length}`}
+                </p>
               </NavLink>
             </li>
             <li
@@ -161,7 +212,12 @@ const Navbar = () => {
                     <h2 className="mb-3">
                       {user ? user.email : "mrNotGiven@email.com"}
                     </h2>
-                    <NavLink to={"/dashboard"}>Dashboard</NavLink> <br />
+                    {eligibleForDashB ? (
+                      <NavLink to={"/dashboard"}>Dashboard</NavLink>
+                    ) : (
+                      ""
+                    )}
+                    <br />
                     <button onClick={handleLogOut} className="mt-5">
                       <PrimaryButton
                         value={"Logout"}
@@ -172,12 +228,13 @@ const Navbar = () => {
                 </div>
               </div>
             ) : (
-              <li className="tex-white relative group">
-                <NavLink to={"/logIn"} className="group-hover:text-primary">
-                  Sign in
-                  <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
-                </NavLink>
-              </li>
+              // <li className="tex-white relative group">
+              //   <NavLink to={"/logIn"} className="group-hover:text-primary">
+              //     Sign in
+              //     <span className="absolute left-0 right-0 bottom-0 top-[1.35rem] h-[.14rem] w-full rounded-md bg-primary transform scale-x-0 origin-bottom transition-transform group-hover:scale-x-100 duration-300"></span>
+              //   </NavLink>
+              // </li>
+              <PrimaryButton value={"Log In"} link={"/logIn"}></PrimaryButton>
             )}
           </ul>
         </div>

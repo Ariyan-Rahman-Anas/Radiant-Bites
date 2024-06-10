@@ -58,7 +58,8 @@ const LogIn = () => {
             ? result.user.displayName
             : "Mr. Not Given",
           email: result.user.email ? result.user.email : "MrNotGiven@ng.com",
-          userImage: result.user.photoURL ? result.user.photoURL : null,
+          image: result.user.photoURL ? result.user.photoURL : null,
+          role: "user",
         };
 
         //if the user is new in here, than it will store the user data in the DB

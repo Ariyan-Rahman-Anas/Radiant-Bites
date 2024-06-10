@@ -22,13 +22,12 @@ import { postData } from "../../Hooks/apiUtils";
 const Registration = () => {
   //updating the page title
   usePageTitle("Registration - Menu");
-
   const [registerError, setRegisterError] = useState("");
   const [showEye, setShowEye] = useState(false);
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const { darkMode } = useContext(ThemeContext);
-  const { createUser, googleSignIn } = useAuth();
+  const { createUser, googleSignIn, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
@@ -39,16 +38,16 @@ const Registration = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then(async () => {
+        await updateUserProfile(data.name, null);
         navigate("/");
-
         //storing user data in DB
         const aNewUser = {
           name: data.name ? data.name : "Mr. Not Given",
           email: data.email ? data.email : "MrNotGiven@ng.com",
-          userImage: null,
+          image: null,
+          role: "user",
         };
         await postData("users", aNewUser);
-
         toast.success("Registration Successful!");
         setRegisterError("");
       })
@@ -66,9 +65,10 @@ const Registration = () => {
             ? result.user.displayName
             : "Mr. Not Given",
           email: result.user.email ? result.user.email : "MrNotGiven@ng.com",
-          userImage: result.user.photoURL ? result.user.photoURL : null,
+          image: result.user.photoURL ? result.user.photoURL : null,
+          role: "user",
         };
-        
+
         //if the user is new in here, than it will store the user data in the DB
         await postData("users", userData);
         navigate("/");

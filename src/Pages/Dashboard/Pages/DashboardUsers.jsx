@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../useContext/allContext";
-import { deleteData, getData, postData } from "../../../Hooks/apiUtils";
+import { deleteData, getData, updateData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
 import SectionTitle from './../../../SharedComponents/SectionTitle';
 import { toast } from "react-hot-toast";
@@ -31,18 +31,14 @@ const DashboardUsers = () => {
   // Update user role
   const updateUserRole = async (userId) => {
     try {
-      const makingTheUserAsAdmin = users.find((user) => user._id === userId);
-      const makingAdmin = {
-        name: makingTheUserAsAdmin?.name,
-        email: makingTheUserAsAdmin?.email,
-        adminImage: makingTheUserAsAdmin?.userImage,
-      };
-      await postData(`admins`, makingAdmin);
-      await deleteData("users", userId);
-      const remainingUserAfterMakeAnAdmin = users.filter(user => user._id !== userId)
-      setUsers(remainingUserAfterMakeAnAdmin)
+      setLoading(true)
+      await updateData("users", userId, { role: "admin" });
     } catch (error) {
       console.error("Error updating user role:", error);
+    } finally {
+      const remainingUser = users.map((user) => user?.role !== "admin");
+      setUsers(remainingUser)
+      setLoading(false);
     }
   };
 
@@ -174,12 +170,22 @@ const DashboardUsers = () => {
                             darkMode ? "border-gray-700" : "border-gray-200"
                           }  px-4 border-b`}
                         >
-                          <button
-                            className="px-2 py-1 rounded-md mr-2 bg-primary text-white  hover:bg-green-600 duration-500"
-                            onClick={() => updateUserRole(user._id)}
-                          >
-                            Make Admin
-                          </button>
+                          {user?.role === "user" ? (
+                            <button
+                              className="px-2 py-1 rounded-md mr-2 bg-primary text-white  hover:bg-green-600 duration-500"
+                              onClick={() => updateUserRole(user._id)}
+                            >
+                              Make Admin
+                            </button>
+                          ) : (
+                            <button
+                              disabled
+                              className="px-2 py-1 rounded-md mr-2 bg-gray-400 text-white  hover:bg-green-600 duration-500"
+                              onClick={() => updateUserRole(user._id)}
+                            >
+                              Admin
+                            </button>
+                          )}
                         </td>
                         <td
                           className={`${

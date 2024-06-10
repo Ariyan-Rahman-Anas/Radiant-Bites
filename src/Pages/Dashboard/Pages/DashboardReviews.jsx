@@ -94,7 +94,11 @@ const DashboardReviews = () => {
                       className="text-4xl text-primary absolute -right-2 -top-2 cursor-pointer hover:text-danger duration-500 "
                     ></LiaCutSolid>
                     <div className="the-review pt-16  overflow-x-hidden ">
-                      <h1 className="font-semibold text-lg text-gray-300 ">
+                      <h1
+                        className={`${
+                          darkMode ? "text-gray-300" : "text-gray-800"
+                        } font-semibold text-lg `}
+                      >
                         {review?.name}
                       </h1>
                       <h2 className="text-sm mb-5 ">{review?.profession}</h2>

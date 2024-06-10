@@ -186,7 +186,11 @@ const MainRoute = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/reservation",
