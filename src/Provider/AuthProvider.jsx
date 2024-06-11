@@ -10,6 +10,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "./../Firebase/firebase.config";
+import { postData } from "../Hooks/apiUtils";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -37,6 +39,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+
   //observing the current user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -48,6 +51,7 @@ const AuthProvider = ({ children }) => {
       return unSubscribe;
     };
   }, []);
+  
 
   //updating the user profile
   const updateUserProfile = (name, photo) => {
@@ -63,7 +67,15 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const AuthInfo = {user, loading, createUser, signInUser, googleSignIn, updateUserProfile, logOut };
+  const AuthInfo = {
+    user,
+    loading,
+    createUser,
+    signInUser,
+    googleSignIn,
+    updateUserProfile,
+    logOut,
+  };
 
   return (
     <div>

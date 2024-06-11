@@ -35,6 +35,12 @@ const DashboardAdmins = () => {
     try {
       setLoading(true)
       await updateData("users", userId, { role: "user" });
+        alert("okay");
+      const currentAdmin = admins?.map((admin) => admin._id === userId);
+      console.log(currentAdmin?.role);
+      if (currentAdmin.role === "user") {
+        toast.success(`${currentAdmin?.name} is now an user`);
+      }
     } catch (error) {
       console.error("Error updating user role:", error);
     } finally {

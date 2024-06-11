@@ -11,7 +11,6 @@ const DashboardUsers = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
   //getting users
   useEffect(() => {
     const fetchData = async () => {
@@ -31,32 +30,27 @@ const DashboardUsers = () => {
   // Update user role
   const updateUserRole = async (userId) => {
     try {
-      setLoading(true)
+      setLoading(true);
       await updateData("users", userId, { role: "admin" });
+      toast.success(`this is now an user`);
     } catch (error) {
       console.error("Error updating user role:", error);
     } finally {
-      const remainingUser = users.map((user) => user?.role !== "admin");
-      setUsers(remainingUser)
       setLoading(false);
     }
   };
 
-  // Handle edit user
-  const handleEditUser = (userId) => {
-    console.log(`Edit user with ID: ${userId}`);
-    // Add your edit user logic here
-  };
+
 
   // Handle delete user
-  const handleDeleteUser = async(userId) => {
+  const handleDeleteUser = async (userId) => {
     try {
       await deleteData("users", userId);
-      const remainingUser = users.filter(user => user._id !== userId)
-      setUsers(remainingUser)
+      const remainingUser = users.filter((user) => user._id !== userId);
+      setUsers(remainingUser);
       toast.success("Deleted the user");
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     }
   };
 

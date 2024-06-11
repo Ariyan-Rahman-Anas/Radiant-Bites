@@ -11,24 +11,42 @@ import logo2 from "./../assets/Logos/2.svg";
 import useAuth from "../Hooks/useAuth";
 import { CartContext, ThemeContext } from "../useContext/allContext";
 import Avatar from "./../assets/images/Avatar.png";
+import { getData } from "../Hooks/apiUtils";
 
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [userFromDB, setUserFromDB] = useState([])
   const [menu, setMenu] = useState(false);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [toggleOpen, setToggleOpen] = useState(false);
   const [eligibleForDashB, setEligibleForDashB] = useState(false);
   const { cartItems } = useContext(CartContext);
-  const location  = useLocation()
+  const location = useLocation()
+  
+
+//fetching all users from db to get the logged in user
+  useEffect(() => {
+    const fetchData = async () => {
+    try {
+      const responseData = await getData("users")
+      setUserFromDB(responseData)
+    } catch (error) {
+      console.log("error is: ", error)
+    }
+  };
+    fetchData();
+  }, [])
+
+//catching the user by find
+  const catchingCurrentUserByDB = userFromDB?.find(currentUser => currentUser?.email === user?.email)
 
   // checking the eligibility for admin dashboard
   useEffect(() => {
-    const isEligibleForDashboard =
-      user?.email === "admininfo@rb.com" ||
-      user?.email === "mohammadariyanrahmananas@gmail.com";
+    const isEligibleForDashboard = catchingCurrentUserByDB?.role === "admin";
     setEligibleForDashB(isEligibleForDashboard);
-  }, [user?.email]);
+  }, [catchingCurrentUserByDB?.role]);
+
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
