@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { PiNewspaperFill } from "react-icons/pi";
 import { ThemeContext } from "../../../useContext/allContext";
 import Spinner from "../../../SharedComponents/Spinner";
 import { deleteData, getData } from "../../../Hooks/apiUtils";
@@ -7,6 +8,7 @@ import Avatar from "./../../../assets/images/Avatar.png";
 import Rating from "../../../SharedComponents/Rating";
 import { LiaCutSolid } from "react-icons/lia";
 import { toast } from "react-hot-toast";
+import DashboardPageTitle from './../../../SharedComponents/DashboardPageTitle';
 
 
 const DashboardReviews = () => {
@@ -57,7 +59,12 @@ const DashboardReviews = () => {
         ) : error ? (
           <h1>{error}</h1>
         ) : (
-          <div className="px-2 py-6 ">
+          <div className="px-2 py-3 ">
+            <DashboardPageTitle
+              icon={<PiNewspaperFill></PiNewspaperFill>}
+              value={"Reviews"}
+            ></DashboardPageTitle>
+
             <SectionTitle
               heading={"Reviews of Radiant Bites"}
               subHeading={"Manage all feedback that user given"}
@@ -66,7 +73,7 @@ const DashboardReviews = () => {
             <div
               className={`${
                 darkMode ? "bg-gray-700" : ""
-              } m-0 md:m-6 mt-10 p-5 md:p-6 shadow-md rounded-md `}
+              } m-0 md:m-3 mt10 p-5 md:p-6 shadow-md rounded-md `}
             >
               <div className="flex items-center justify-between font-semibold text-xl ">
                 <h1>Total reviews earned: {reviews?.length}</h1>

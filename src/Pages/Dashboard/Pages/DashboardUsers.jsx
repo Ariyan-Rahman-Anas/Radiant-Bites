@@ -40,8 +40,6 @@ const DashboardUsers = () => {
     }
   };
 
-
-
   // Handle delete user
   const handleDeleteUser = async (userId) => {
     try {

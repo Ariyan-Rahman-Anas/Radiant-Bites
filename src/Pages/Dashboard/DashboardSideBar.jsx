@@ -7,8 +7,10 @@ import { useContext, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { RiDashboardFill, RiReservedFill, RiAdminFill } from "react-icons/ri";
 import { FaUsers, FaCartPlus, FaCheckCircle } from "react-icons/fa";
+import {  } from "react-icons/md";
 import { PiNewspaperFill } from "react-icons/pi";
-import { MdPayments } from "react-icons/md";
+import { GrUserWorker } from "react-icons/gr";
+import { MdPayments, MdRamenDining } from "react-icons/md";
 import Avatar from "./../../assets/images/Avatar.png";
 
 const DashboardSideBar = () => {
@@ -74,6 +76,19 @@ const DashboardSideBar = () => {
               </li>
               <li className="group">
                 <NavLink
+                  to={"/dashboard/pending-orders"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/dashboard"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <MdRamenDining></MdRamenDining>
+                  Pending Orders
+                </NavLink>
+              </li>
+              <li className="group">
+                <NavLink
                   to={"/dashboard/reservation"}
                   className={({ isActive }) =>
                     isActive && location.pathname === "/dashboard/reservation"
@@ -135,6 +150,19 @@ const DashboardSideBar = () => {
                 >
                   <FaUsers></FaUsers>
                   Users
+                </NavLink>
+              </li>
+              <li className=" group">
+                <NavLink
+                  to={"/dashboard/staff"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/dashboard/cart"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <GrUserWorker></GrUserWorker>
+                  Staff
                 </NavLink>
               </li>
               <li className=" group">

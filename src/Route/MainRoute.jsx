@@ -30,6 +30,8 @@ import DashboardPayments from "../Pages/Dashboard/Pages/DashboardPayments";
 import DashboardReviews from './../Pages/Dashboard/Pages/DashboardReviews';
 import DashboardAdmins from './../Pages/Dashboard/Pages/DashboardAdmins';
 import DashboardReservation from './../Pages/Dashboard/Pages/DashboardReservation';
+import DashboardPendingOrders from './../Pages/Dashboard/Pages/DashboardPendingOrders';
+import DashboardStaff from './../Pages/Dashboard/Pages/DashboardStaff';
 
 const MainRoute = createBrowserRouter([
   {
@@ -193,6 +195,10 @@ const MainRoute = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/pending-orders",
+        element: <DashboardPendingOrders></DashboardPendingOrders>,
+      },
+      {
         path: "/dashboard/reservation",
         element: <DashboardReservation></DashboardReservation>,
       },
@@ -211,6 +217,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/dashboard/users",
         element: <DashboardUsers></DashboardUsers>,
+      },
+      {
+        path: "/dashboard/staff",
+        element: <DashboardStaff></DashboardStaff>,
       },
       {
         path: "/dashboard/cart",
