@@ -3,7 +3,7 @@ import { useContext, useRef } from "react";
 import { toast } from "react-hot-toast";
 
 import PageHeadBanner from "../../SharedComponents/PageHeadBanner";
-import menuImg from "./../../assets/images//Menu.png";
+import menuImg from "./../../assets/images/Menu.png";
 import chefSpecials from "./../../assets/Menu Card/17.png";
 import todayOffers from "./../../assets/Menu Card/18.png";
 import bdTraditional from "./../../assets/Menu Card/19.png";
