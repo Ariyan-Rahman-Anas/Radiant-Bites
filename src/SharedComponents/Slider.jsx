@@ -96,7 +96,7 @@ const Slider = () => {
           ref={sliderRef}
           className={`${
             darkMode ? "bg-gray-700" : ""
-          } flex items-center justify-center text-center w-full md:w-10/12 mx-auto mt-14 py-10 px-5 md:px-16 md:h-80 rounded-md shadow-md relative cursor-grabbing `}
+          } flex items-center justify-center text-center w-full md:w-[85vw] mx-auto mt-14 py-10 px-5 md:px-16 md:h-80 rounded-md shadow-md relative cursor-grabbing `}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}

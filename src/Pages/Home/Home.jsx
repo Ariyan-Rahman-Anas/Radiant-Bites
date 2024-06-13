@@ -5,6 +5,7 @@ import { OnlineOrder } from "./OnlineOrder";
 import ReadMore from "./ReadMore";
 import Review from "./Review";
 import usePageTitle from './../../Hooks/usePageTitle';
+import Subscription from "./Subscription";
 
 const Home = () => {
   //updating the page title, here title is default title for home page
@@ -18,6 +19,7 @@ const Home = () => {
       <FromOurMenu></FromOurMenu>
       <ReadMore></ReadMore>
       <Review></Review>
+      <Subscription></Subscription>
     </div>
   );
 };
