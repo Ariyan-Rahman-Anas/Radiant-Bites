@@ -77,6 +77,7 @@ const ShoppingCart = () => {
               <h1>{error}</h1>
             ) : items?.length < 1 ? (
               <RenderedEmptyMessage
+                // width="0vw"
                 heading={"Oops!"}
                 subHeading={"You did not order any food yet!"}
                 message={

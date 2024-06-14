@@ -15,7 +15,6 @@ export const getData = async (endpoint) => {
   }
 };
 
-
 // Function to get users by role
 export const getUsersByRole = async (role) => {
   try {
@@ -27,25 +26,11 @@ export const getUsersByRole = async (role) => {
   }
 };
 
-
-// Function to post data
-// export const postData = async (endpoint, data) => {
-//   try {
-//     const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
-//     console.log(response?.data)
-//     return response?.data;
-//   } catch (error) {
-//     console.error("Error posting data:", error);
-//     throw error;
-//   }
-// };
+//postData
 export const postData = async (endpoint, data) => {
   try {
     const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
       headers: {
-        // Add your headers here
-        // Example:
-        // 'Authorization': `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
     });
@@ -57,6 +42,38 @@ export const postData = async (endpoint, data) => {
   }
 };
 
+//postData with file
+/**
+ * Function to post data with file, handling both JSON and multipart/form-data
+ * @param {string} endpoint - The API endpoint to post to
+ * @param {object} data - The data to be posted
+ * @param {boolean} hasFile - Flag to indicate if the data includes a file
+ * @returns {object} - The response data from the server
+ */
+export const postDataWithFile = async (endpoint, data, hasFile = false) => {
+  try {
+    let response;
+    if (hasFile) {
+      response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    } else {
+      response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+    return response?.data;
+  } catch (error) {
+    console.error("Error posting data:", error);
+    throw error;
+  }
+};
+
+
 // Function to update data
 // export const updateData = async (endpoint, id, data) => {
 //   try {
@@ -67,6 +84,8 @@ export const postData = async (endpoint, data) => {
 //     throw error;
 //   }
 // };
+
+
 // Function to update data
 export const updateData = async (endpoint, id, data) => {
   try {

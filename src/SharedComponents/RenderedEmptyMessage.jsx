@@ -3,7 +3,7 @@ import PrimaryButton from "./PrimaryButton";
 import SectionTitle from "./SectionTitle";
 import { ThemeContext } from "../useContext/allContext";
 
-const RenderedEmptyMessage = ({ heading, subHeading, message, directionMessage, btnValue, btnLink }) => {
+const RenderedEmptyMessage = ({width, heading, subHeading, message, directionMessage, btnValue, btnLink }) => {
   
   const {darkMode} = useContext(ThemeContext)
 
@@ -11,7 +11,7 @@ const RenderedEmptyMessage = ({ heading, subHeading, message, directionMessage, 
       <div
         className={`${
           darkMode ? "bg-gray-700" : "bg-white"
-        } text-center p-8 shadow-md rounded-md w-full md:w-[85vw] mx-auto  `}
+        } text-center p-8 shadow-md rounded-md w-full md:w-[${width}] mx-auto  `}
       >
         <SectionTitle heading={heading} subHeading={subHeading}></SectionTitle>
         <p className={`text-gray-500 mt-4 w-full md:w-3/4 mx-auto `}>

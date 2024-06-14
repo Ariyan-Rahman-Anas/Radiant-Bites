@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useRef } from "react";
 import { toast } from "react-hot-toast";
-
 import PageHeadBanner from "../../SharedComponents/PageHeadBanner";
 import menuImg from "./../../assets/images/Menu.png";
 import chefSpecials from "./../../assets/Menu Card/17.png";
@@ -18,11 +17,11 @@ import seaFood from "./../../assets/Menu Card/27.png";
 import PrimaryButton from "../../SharedComponents/PrimaryButton";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
-import { postData } from "../../Hooks/apiUtils";
 import usePageTitle from "../../Hooks/usePageTitle";
 import { ThemeContext } from "../../useContext/allContext";
 import { Modal } from "../../SharedComponents/Modal";
 import RenderedEmptyMessage from "../../SharedComponents/RenderedEmptyMessage";
+import { postDataWithFile } from './../../Hooks/apiUtils';
 
 const Menu = () => {
 
@@ -104,7 +103,7 @@ const Menu = () => {
   const { user } = useAuth();
   const formRef = useRef(null);
 
-  //handling uploading new dish for a authentic user. A user can share his dish in our menu
+  //handling uploading new dish, for a logged in user. A user can share his dish in our menu
   const handleUploadItem = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -115,9 +114,8 @@ const Menu = () => {
     const details = form.details.value;
     const image = form.image.files[0];
     const price = parseInt(priceInStr);
-    // console.log(image);
 
-    //creating the dish
+    //creating am item
     try {
       const anItem = {
         foodCategory,
@@ -127,10 +125,15 @@ const Menu = () => {
         details,
         image,
       };
-      await postData("allItems", anItem);
-      // Clear the form fields after successful submission
+      const hasFile = !!form.image.files[0]; // Check for file presence
+      try {
+        const result = await postDataWithFile("allItems", anItem, hasFile);
+        console.log("Blog posted successfully:", result);
+      } catch (error) {
+        console.error("Error posting blog:", error);
+      }
       form.reset();
-      toast.success("Successfully ordered!");
+      toast.success("Thanks for your Contribution!");
     } catch (error) {
       console.error("Error confirming order:", error);
     }
@@ -274,6 +277,7 @@ const Menu = () => {
           ) : (
             // if user does not exist then it will inform the user that the user can add a dish in our menu
             <RenderedEmptyMessage
+              width="85vw"
               heading={"Exciting News!"}
               subHeading={"You can add your signature dish to our Menu!"}
               message={

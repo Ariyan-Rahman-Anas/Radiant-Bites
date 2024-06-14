@@ -78,7 +78,8 @@ const DashboardSideBar = () => {
                 <NavLink
                   to={"/dashboard/pending-orders"}
                   className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard"
+                    isActive &&
+                    location.pathname === "/dashboard/pending-orders"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }
@@ -141,6 +142,19 @@ const DashboardSideBar = () => {
               </li>
               <li className=" group">
                 <NavLink
+                  to={"/dashboard/subscribers"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/dashboard/subscribers"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <FaUsers></FaUsers>
+                  Subscribers
+                </NavLink>
+              </li>
+              <li className=" group">
+                <NavLink
                   to={"/dashboard/users"}
                   className={({ isActive }) =>
                     isActive && location.pathname === "/dashboard/users"
@@ -156,7 +170,7 @@ const DashboardSideBar = () => {
                 <NavLink
                   to={"/dashboard/staff"}
                   className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/cart"
+                    isActive && location.pathname === "/dashboard/staff"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }

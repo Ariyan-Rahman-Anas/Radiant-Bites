@@ -19,7 +19,10 @@ const Dashboard = () => {
         darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
       } md:min-h-screen flex-1 w-full z-10 p-3 `}
     >
-      <DashboardPageTitle icon={<RiDashboardFill></RiDashboardFill>} value={"Dashboard"}></DashboardPageTitle>
+      <DashboardPageTitle
+        icon={<RiDashboardFill></RiDashboardFill>}
+        value={"Dashboard"}
+      ></DashboardPageTitle>
       <div className="top-section text-sm flex flex-col md:flex-row items-center justify-between gap-3 ">
         <div
           className={` ${
@@ -36,7 +39,9 @@ const Dashboard = () => {
                 darkMode ? "bg-gray-600" : ""
               } p-1 rounded-sm shadow-md `}
             >
-              <BiFoodMenu></BiFoodMenu>
+              <BiFoodMenu
+                className={`${darkMode ? "" : "text-primary"} text-lg`}
+              ></BiFoodMenu>
             </div>
           </div>
           <ProgressBar value={45}></ProgressBar>
@@ -56,7 +61,9 @@ const Dashboard = () => {
                 darkMode ? "bg-gray-600" : ""
               } p-1 rounded-sm shadow-md `}
             >
-              <BsInboxes></BsInboxes>
+              <BsInboxes
+                className={`${darkMode ? "" : "text-primary"} text-lg `}
+              ></BsInboxes>
             </div>
           </div>
           <ProgressBar value={62}></ProgressBar>
@@ -76,7 +83,9 @@ const Dashboard = () => {
                 darkMode ? "bg-gray-600" : ""
               } p-1 rounded-sm shadow-md `}
             >
-              <FaUsers />
+              <FaUsers
+                className={`${darkMode ? "" : "text-primary"} text-lg `}
+              />
             </div>
           </div>
           <ProgressBar value={80}></ProgressBar>
@@ -84,7 +93,7 @@ const Dashboard = () => {
         <div
           className={` ${
             darkMode ? "bg-gray-700 text-gray-400 " : "bg-green-50"
-          } box-1 p-4 shadow-md rounded-md w-full `}
+          } box-d p-4 shadow-md rounded-md w-full `}
         >
           <div className="flex items-start justify-between ">
             <div>
@@ -96,7 +105,9 @@ const Dashboard = () => {
                 darkMode ? "bg-gray-600" : ""
               } p-1 rounded-sm shadow-md `}
             >
-              <GiProgression />
+              <GiProgression
+                className={`${darkMode ? "" : "text-primary"} text-lg `}
+              />
             </div>
           </div>
           <ProgressBar value={85}></ProgressBar>

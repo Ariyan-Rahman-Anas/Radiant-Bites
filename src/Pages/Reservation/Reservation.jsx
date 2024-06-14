@@ -6,7 +6,6 @@ import { ThemeContext } from "../../useContext/allContext";
 import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
 import { postData } from "../../Hooks/apiUtils";
-import Avatar from "./../../assets/images/Avatar.png";
 import Review from "../Home/Review";
 import FAQs from "../../SharedComponents/FAQs";
 
@@ -59,8 +58,8 @@ const Reservation = () => {
     <div>
       <PageHeadBanner
         sectionImg={reserveImg}
-        subHeading={"Would you like to try a dish?"}
         heading={"Reservation"}
+        subHeading={"Would you like to try a dish?"}
       ></PageHeadBanner>
       {/* ... */}
 
@@ -68,7 +67,7 @@ const Reservation = () => {
         <div
           className={`
           ${darkMode ? "bg-gray-700" : "bg-white"} 
-           shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto my-20 `}
+           shadow-md rounded-md p-2 py-6 md:p-8 w-full md:w-[85vw] mx-auto my-20 `}
         >
           <SectionTitle
             heading={"Reservation Form"}

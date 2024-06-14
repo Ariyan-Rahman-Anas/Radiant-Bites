@@ -32,6 +32,7 @@ import DashboardAdmins from './../Pages/Dashboard/Pages/DashboardAdmins';
 import DashboardReservation from './../Pages/Dashboard/Pages/DashboardReservation';
 import DashboardPendingOrders from './../Pages/Dashboard/Pages/DashboardPendingOrders';
 import DashboardStaff from './../Pages/Dashboard/Pages/DashboardStaff';
+import DashboardSubscribers from "../Pages/Dashboard/Pages/DashboardSubscribers";
 
 const MainRoute = createBrowserRouter([
   {
@@ -213,6 +214,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/dashboard/admins",
         element: <DashboardAdmins></DashboardAdmins>,
+      },
+      {
+        path: "/dashboard/subscribers",
+        element: <DashboardSubscribers></DashboardSubscribers>,
       },
       {
         path: "/dashboard/users",

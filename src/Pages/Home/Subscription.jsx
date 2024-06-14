@@ -15,21 +15,17 @@ const Subscription = () => {
       e.preventDefault();
       const form = e.target;
       const name = form.name.value;
-      const profession = form.profession.value;
       const email = form.email.value;
-      const rate = form.rate.value;
       const comment = form.comment.value;
 
       try {
         const aSubscription = {
           name,
-          profession,
           comment,
           email,
-          rate,
         };
         await postData("subscribers", aSubscription);
-        toast.success("Thanks for your Feedback!");
+        toast.success("Thanks for your Subscription!");
         // Clear the form fields after successful submission
         form.reset();
       } catch (error) {
@@ -42,7 +38,7 @@ const Subscription = () => {
         <div
           className={`
           ${darkMode ? "bg-gray-700" : "bg-white"} 
-          my20 shadow-md rounded-md p-8 w-full md:w-[85vw] mx-auto`}
+          my20 shadow-md rounded-md p-2 py-6 md:p-8 w-full md:w-[85vw] mx-auto`}
         >
           <SectionTitle
             heading={"Subscription"}

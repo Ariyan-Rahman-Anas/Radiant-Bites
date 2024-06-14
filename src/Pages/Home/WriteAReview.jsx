@@ -50,8 +50,7 @@ const WriteAReview = () => {
   };
 
   return (
-    <div className="my-20"
-    >
+    <div className="my-20">
       <div>
         {user ? (
           <div
@@ -134,6 +133,7 @@ const WriteAReview = () => {
           </div>
         ) : (
           <RenderedEmptyMessage
+            width="85vw"
             heading={"Your Feedback"}
             subHeading={"We are exited to hear from you!"}
             message={
