@@ -44,7 +44,7 @@ const Appetizers = () => {
         const responseData = await getData("allItems/menu/appetizers");
 
         // Update state with fetched data
-        setAppetizer(responseData);
+        setAppetizer(responseData.data);
       } catch (error) {
         // If an error occurs, set the error state
         setError(error);

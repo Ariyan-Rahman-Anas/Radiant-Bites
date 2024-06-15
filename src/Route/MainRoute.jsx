@@ -33,6 +33,7 @@ import DashboardReservation from './../Pages/Dashboard/Pages/DashboardReservatio
 import DashboardPendingOrders from './../Pages/Dashboard/Pages/DashboardPendingOrders';
 import DashboardStaff from './../Pages/Dashboard/Pages/DashboardStaff';
 import DashboardSubscribers from "../Pages/Dashboard/Pages/DashboardSubscribers";
+import BlogDetails from './../Pages/Blog/BlogDetails';
 
 const MainRoute = createBrowserRouter([
   {
@@ -143,6 +144,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/blog/blog-details/:id",
+        element: <BlogDetails></BlogDetails>,
       },
       {
         path: "/reservation",

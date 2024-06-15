@@ -18,6 +18,7 @@ const BlogPostForm = () => {
     setFeaturedImage(e.target.files[0]);
   };
 
+  const authorImage = user?.photoURL ? user.photoURL : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ const BlogPostForm = () => {
     formData.append("keywords", e.target.keywords.value);
     formData.append("postStatus", e.target.postStatus.value);
     formData.append("allowComments", allowComments);
+    formData.append("authorImage", authorImage);
 
     const hasFile = !!e.target.featuredImage.files[0]; // Check for file presence
     try {
@@ -81,9 +83,25 @@ const BlogPostForm = () => {
               } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary`}
             >
               <option value="">Select a category</option>
-              <option value="recipes">Recipes</option>
-              <option value="nutrition-tips">Nutrition Tips</option>
-              <option value="health-stories">Health Stories</option>
+              <option value="foodRecipe">Food Recipe</option>
+              <option value="cookingTipsTechniques">
+                Cooking Tips and Techniques
+              </option>
+              <option value="nutritionWellness">Nutrition and Wellness</option>
+              <option value="restaurantReviews">Restaurant Reviews</option>
+              <option value="foodAndCulture">Food and Culture</option>
+              <option value="ingredientSpotlights">
+                Ingredient Spotlights
+              </option>
+              <option value="foodAndTravel">Food and Travel</option>
+              <option value="Special Diets">Special Diets</option>
+              <option value="foodPhotographyAndStyling">
+                Food Photography and Styling
+              </option>
+              <option value="foodIndustryNewsAndTrends">
+                Food Industry News and Trends
+              </option>
+              <option value="other">Other</option>
             </select>
           </div>
 

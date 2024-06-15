@@ -17,7 +17,7 @@ const FromOurMenu = () => {
       try {
         setLoading(true)
         const responseData = await getData("allItems")
-        setItems(responseData)
+        setItems(responseData.data)
       } catch (error) {
         setError(error)
       } finally {

@@ -22,7 +22,7 @@ const Chicken = () => {
       try {
         setLoading(true);
         const responseData = await getData("allItems/menu/chicken");
-        setDishes(responseData);
+        setDishes(responseData.data);
       } catch (error) {
         setError(error);
       } finally {
@@ -51,7 +51,7 @@ const Chicken = () => {
             <div>
               <SectionTitle
                 heading={"Chicken Delights"}
-                subHeading={"Savor a variety of mouthwatering chicken dishes."}
+                subHeading={"Savor a variety of mouthwatering chicken dishes"}
               ></SectionTitle>
               <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
                 {dishes.map((dish) => (

@@ -22,7 +22,7 @@ const ChefSpecial = () => {
       try {
         setLoading(true);
         const responseData = await getData("allItems/menu/chefSpecial");
-        setDishes(responseData);
+        setDishes(responseData.data);
       } catch (error) {
         setError(error);
       } finally {

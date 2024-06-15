@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const Banner = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
+
   const sliders = [
     {
       img: "https://source.unsplash.com/1200x540/?fastFoods",

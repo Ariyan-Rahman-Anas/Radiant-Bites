@@ -29,7 +29,7 @@ const Navbar = () => {
     const fetchData = async () => {
     try {
       const responseData = await getData("users")
-      setUserFromDB(responseData)
+      setUserFromDB(responseData.data);
     } catch (error) {
       console.log("error is: ", error)
     }

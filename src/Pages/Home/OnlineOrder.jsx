@@ -8,37 +8,45 @@ export const OnlineOrder = () => {
   const [currentSlider, setCurrentSlider] = useState(0);      
   const { darkMode } = useContext(ThemeContext);
 
+  // const sliders = [
+  //   {
+  //     img: "https://source.unsplash.com/900x900/?pizza",
+  //     name: "Pizza",
+  //     details:
+  //       "Delicious pizza varieties freshly baked to perfection, topped with premium ingredients.",
+  //   },
+  //   {
+  //     img: "https://source.unsplash.com/900x900/?kebab",
+  //     name: "Kebab",
+  //     details:
+  //       "Juicy kebabs grilled to perfection, marinated with our special blend of spices for an explosion of flavor.",
+  //   },
+  //   {
+  //     img: "https://source.unsplash.com/900x900/?salad",
+  //     name: "Salad",
+  //     details:
+  //       "Fresh and vibrant salads made from locally sourced ingredients, bursting with nutrition and flavor.",
+  //   },
+  //   {
+  //     img: "https://source.unsplash.com/900x900/?steak",
+  //     name: "Steak",
+  //     details:
+  //       "Succulent steaks cooked to your preference, tender and juicy, served with mouthwatering sides.",
+  //   },
+  //   {
+  //     img: "https://source.unsplash.com/900x900/?seafood",
+  //     name: "Sea Food",
+  //     details:
+  //       "Exquisite seafood dishes crafted with the freshest catch, prepared to tantalize your taste buds.",
+  //   },
+  // ];
+
   const sliders = [
-    {
-      img: "https://source.unsplash.com/900x900/?pizza",
-      name: "Pizza",
-      details:
-        "Delicious pizza varieties freshly baked to perfection, topped with premium ingredients.",
-    },
-    {
-      img: "https://source.unsplash.com/900x900/?kebab",
-      name: "Kebab",
-      details:
-        "Juicy kebabs grilled to perfection, marinated with our special blend of spices for an explosion of flavor.",
-    },
-    {
-      img: "https://source.unsplash.com/900x900/?salad",
-      name: "Salad",
-      details:
-        "Fresh and vibrant salads made from locally sourced ingredients, bursting with nutrition and flavor.",
-    },
-    {
-      img: "https://source.unsplash.com/900x900/?steak",
-      name: "Steak",
-      details:
-        "Succulent steaks cooked to your preference, tender and juicy, served with mouthwatering sides.",
-    },
-    {
-      img: "https://source.unsplash.com/900x900/?seafood",
-      name: "Sea Food",
-      details:
-        "Exquisite seafood dishes crafted with the freshest catch, prepared to tantalize your taste buds.",
-    },
+    { img: "https://source.unsplash.com/600x600/?bedroom" },
+    { img: "https://source.unsplash.com/600x600/?room" },
+    { img: "https://source.unsplash.com/600x600/?livingrooms" },
+    { img: "https://source.unsplash.com/600x600/?livingroom" },
+    { img: "https://source.unsplash.com/600x600/?bedrooms" },
   ];
 
   const prevSlider = () =>
