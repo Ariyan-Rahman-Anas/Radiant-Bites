@@ -23,7 +23,7 @@ const DashboardReviews = () => {
       try {
         setLoading(true);
         const responseData = await getData("reviews");
-        setReviews(responseData);
+        setReviews(responseData.data);
       } catch (error) {
         setError(error);
       } finally {

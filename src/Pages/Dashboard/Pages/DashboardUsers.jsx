@@ -17,7 +17,7 @@ const DashboardUsers = () => {
       try {
         setLoading(true);
         const responseData = await getData("users");
-        setUsers(responseData);
+        setUsers(responseData.data);
       } catch (error) {
         setError(error.message);
       } finally {

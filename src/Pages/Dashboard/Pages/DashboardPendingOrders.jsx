@@ -17,7 +17,7 @@ const DashboardPendingOrders = () => {
       try {
         setLoading(true)
         const responseData = await getData("orderedItems");
-        setOrders(responseData)
+        setOrders(responseData.data)
       } catch (error) {
         setError(error)
       } finally {

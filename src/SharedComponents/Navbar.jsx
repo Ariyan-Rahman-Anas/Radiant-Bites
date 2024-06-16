@@ -24,14 +24,14 @@ const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   const location = useLocation()
   
-//fetching all users from db to get the logged in user
+//fetching users from db to get the logged in user
   useEffect(() => {
     const fetchData = async () => {
     try {
       const responseData = await getData("users")
       setUserFromDB(responseData.data);
     } catch (error) {
-      console.log("error is: ", error)
+      // console.log("error is: ", error)
     }
   };
     fetchData();

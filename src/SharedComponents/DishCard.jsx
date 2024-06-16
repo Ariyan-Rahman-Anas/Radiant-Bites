@@ -26,14 +26,13 @@ const DishCard = ({ dish }) => {
     setItemsPrice(itemsPrice - price);
   };
 
-  //confirming order with storing the data in LS
+  //confirming order with storing the data in Local Storage
   const handleConfirmOrder = () => {
     setOpenModal(false);
     const totalItems = plusItem;
     const totalPrice = itemsPrice;
 
     const confirmAnOrder = {
-      // _id,
       id: new Date().getTime().toString(),
       image,
       name,

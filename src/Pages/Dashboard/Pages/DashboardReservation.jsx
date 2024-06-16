@@ -18,7 +18,7 @@ const DashboardReservation = () => {
       try {
         setLoading(true)
         const responseData = await getData("reservations");
-        setReservations(responseData)
+        setReservations(responseData.data)
       } catch (error) {
         setError(error.message)
       } finally {

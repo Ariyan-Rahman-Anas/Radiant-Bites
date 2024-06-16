@@ -18,7 +18,7 @@ const DashboardSubscribers = () => {
       try {
         setLoading(true)
         const responseData = await getData("subscribers");
-        setSubscribers(responseData)
+        setSubscribers(responseData.data)
       } catch (error) {
         setError(error.message)
       } finally {
@@ -41,8 +41,8 @@ const DashboardSubscribers = () => {
 
       <div className='mt-8 mb-6'>
         <SectionTitle
-          heading={"Reservations"}
-          subHeading={"Manage all Reservations"}
+          heading={"Subscription"}
+          subHeading={"Manage all Subscribers"}
         ></SectionTitle>
       </div>
 

@@ -60,5 +60,4 @@ const BlogCard = ({ blog }) => {
     </Link>
   );
 };
-
 export default BlogCard;

@@ -10,6 +10,8 @@ import {  CartContext, ThemeContext } from "../../useContext/allContext";
 import RenderedEmptyMessage from "./../../SharedComponents/RenderedEmptyMessage";
 import PrimaryButton from "../../SharedComponents/PrimaryButton";
 import usePageTitle from "../../Hooks/usePageTitle";
+import DangerButton from "../../SharedComponents/DangerButton";
+
 
 const ShoppingCart = () => {
   usePageTitle("Cart");
@@ -32,7 +34,6 @@ const ShoppingCart = () => {
   const [cartPayable, setCartPayable] = useState(0);
   const { darkMode } = useContext(ThemeContext);
 
-
   useEffect(() => {
     calculateCartPayable(items);
   }, [items]);
@@ -44,16 +45,24 @@ const ShoppingCart = () => {
 
   //deleting an item from the cart
   const deleteCartItem = (itemId) => {
-    removeItemFromCart(itemId)
+    removeItemFromCart(itemId);
     const remainingItems = items.filter((item) => item.id !== itemId);
     setItems(remainingItems);
     updateLocalStorage(remainingItems);
     toast.success("Item Cancelled!");
   };
 
-  //updating the cart after delete
+  //updating the cart after delete an item
   const updateLocalStorage = (items) => {
     localStorage.setItem("orderedItems", JSON.stringify(items));
+  };
+
+  // Deleting all items from the cart
+  const clearOrderedItems = () => {
+    localStorage.removeItem("orderedItems");
+    setItems([]);
+    toast.success("All Items Cancelled!");
+    window.location.reload()
   };
 
   return (
@@ -88,57 +97,72 @@ const ShoppingCart = () => {
               ></RenderedEmptyMessage>
             ) : (
               items?.map((item) => (
-                <div key={item._id} className=" ">
-                  <div
-                    className={`${
-                      darkMode
-                        ? "bg-gray-700 hover:bg-gray-600 "
-                        : "hover:bg-green-100"
-                    }  my-[.8rem] shadow-md py-5 md:py-0 rounded-md pr-2 md:pr-5 hover:shadow- duration-700 `}
-                  >
-                    <div className="flex items-center justify-between group ">
-                      <div className="flex flex-co md:flex-row items-center gap-3 w-fit ">
-                        <div className="w-12 md:w-24 h-[100%]">
-                          <img
-                            src={item?.image}
-                            alt="ordered food image"
-                            className="w-full h-full rounded-l-md"
-                          />
-                        </div>
-                        <div className="y-2">
-                          <h1
-                            className={`${
-                              darkMode ? "text-gray-300" : ""
-                            } font-semibold`}
-                          >
-                            {item?.name}
-                          </h1>
-                          <div className="mt-1 text-sm flex items-center justify-start gap-6">
-                            <p>
-                              <span>Quantity: </span>
-                              {item?.totalItems}
-                            </p>
-                            <p>
-                              <span>Price: </span>${item?.totalPrice}
-                            </p>
+                <div key={item.id}>
+                  <div className=" ">
+                    <div
+                      className={`${
+                        darkMode
+                          ? "bg-gray-700 hover:bg-gray-600 "
+                          : "hover:bg-green-100"
+                      }  my-[.8rem] shadow-md py-5 md:py-0 rounded-md pr-2 md:pr-5 hover:shadow- duration-700 `}
+                    >
+                      <div className="flex items-center justify-between group ">
+                        <div className="flex flex-co md:flex-row items-center gap-3 w-fit ">
+                          <div className="w-12 md:w-24 h-[100%]">
+                            <img
+                              src={item?.image}
+                              alt="ordered food image"
+                              className="w-full h-full rounded-l-md"
+                            />
+                          </div>
+                          <div className="y-2">
+                            <h1
+                              className={`${
+                                darkMode ? "text-gray-300" : ""
+                              } font-semibold`}
+                            >
+                              {item?.name}
+                            </h1>
+                            <div className="mt-1 text-sm flex items-center justify-start gap-6">
+                              <p>
+                                <span>Quantity: </span>
+                                {item?.totalItems}
+                              </p>
+                              <p>
+                                <span>Price: </span>${item?.totalPrice}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="border- flex items-center justify-center ">
-                        <button
-                          title="Delete item"
-                          onClick={() => deleteCartItem(item?.id)}
-                          className=""
-                        >
-                          <FiMinusCircle className="text-xl text-gray-400 hover:bg-danger rounded-full hover:text-white duration-500 "></FiMinusCircle>
-                        </button>
+                        <div className="border- flex items-center justify-center ">
+                          <button
+                            title="Delete item"
+                            onClick={() => deleteCartItem(item?.id)}
+                            className=""
+                          >
+                            <FiMinusCircle className="text-xl text-gray-400 hover:bg-danger rounded-full hover:text-white duration-500 "></FiMinusCircle>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))
             )}
+            {items?.length >= 1 && (
+              <div className="flex items-center justify-between ">
+                <DangerButton
+                  value={"Clear Cart"}
+                  onClickFunc={clearOrderedItems}
+                ></DangerButton>
+                <PrimaryButton
+                  value={"Continue Purchase"}
+                  link={"/menu"}
+                ></PrimaryButton>
+              </div>
+            )}
           </div>
+
           <div
             className={`${
               darkMode ? "bg-gray-700" : ""
@@ -165,7 +189,7 @@ const ShoppingCart = () => {
                     <div className="border-b-2 pb-1 mb-2 ">
                       {items?.map((item) => (
                         <div
-                          key={item?._id}
+                          key={item?.id}
                           className="flex items-start justify-between"
                         >
                           <div>

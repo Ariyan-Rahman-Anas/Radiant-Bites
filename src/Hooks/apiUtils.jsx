@@ -4,22 +4,10 @@ const BASE_URL = "http://localhost:3000";
 // const BASE_URL = "https://radiant-bites-back-end.vercel.app";
 
 // Function to fetch data
-// export const getData = async (endpoint) => {
-//   try {
-//     const response = await axios.get(`${BASE_URL}/${endpoint}`);
-//     // console.log("data is: ", response.data);
-//     return response.data?.data;
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     throw error;
-//   }
-// };
 export const getData = async (endpoint) => {
   try {
     const response = await axios.get(`${BASE_URL}/${endpoint}`);
-     console.log("API response:", response);
-    return response?.data; // Adjusted to return the response data directly
-    // return response?.data?.data; // Adjusted to return the response data directly
+    return response?.data; 
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
