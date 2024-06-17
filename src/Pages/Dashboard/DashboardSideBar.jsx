@@ -5,7 +5,7 @@ import logo2 from "./../../assets/Logos/2.svg";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { RiDashboardFill, RiReservedFill, RiAdminFill } from "react-icons/ri";
-import { FaUsers, FaCartPlus, FaCheckCircle } from "react-icons/fa";
+import { FaUsers, FaCheckCircle } from "react-icons/fa";
 import {  } from "react-icons/md";
 import { PiNewspaperFill } from "react-icons/pi";
 import { GrUserWorker } from "react-icons/gr";
@@ -175,19 +175,6 @@ const DashboardSideBar = () => {
                 Staff
               </NavLink>
             </li>
-            <li className=" group">
-              <NavLink
-                to={"/dashboard/cart"}
-                className={({ isActive }) =>
-                  isActive && location.pathname === "/dashboard/cart"
-                    ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                    : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                }
-              >
-                <FaCartPlus></FaCartPlus>
-                Cart
-              </NavLink>
-            </li>
           </ul>
         </div>
       </div>
@@ -336,19 +323,6 @@ const DashboardSideBar = () => {
                 >
                   <GrUserWorker></GrUserWorker>
                   Staff
-                </NavLink>
-              </li>
-              <li onClick={handleHidingMenu} className=" group">
-                <NavLink
-                  to={"/dashboard/cart"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/cart"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <FaCartPlus></FaCartPlus>
-                  Cart
                 </NavLink>
               </li>
             </ul>

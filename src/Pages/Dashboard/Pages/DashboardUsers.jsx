@@ -4,6 +4,8 @@ import { deleteData, getData, updateData } from "../../../Hooks/apiUtils";
 import Spinner from "../../../SharedComponents/Spinner";
 import SectionTitle from './../../../SharedComponents/SectionTitle';
 import { toast } from "react-hot-toast";
+import DashboardPageTitle from "../../../SharedComponents/DashboardPageTitle";
+import { FaUsers } from "react-icons/fa";
 
 const DashboardUsers = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -58,6 +60,11 @@ const DashboardUsers = () => {
         darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
       } min-h-screen flex-1 w-full `}
     >
+      <DashboardPageTitle
+        icon={<FaUsers></FaUsers>}
+        value={"Users"}
+      ></DashboardPageTitle>
+
       <div>
         {loading ? (
           <Spinner></Spinner>

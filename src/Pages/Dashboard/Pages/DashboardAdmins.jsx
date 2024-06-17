@@ -9,6 +9,9 @@ import {
 } from "../../../Hooks/apiUtils";
 import Avatar from "./../../../assets/images/Avatar.png";
 import { toast } from "react-hot-toast";
+import DashboardPageTitle from './../../../SharedComponents/DashboardPageTitle';
+import { RiAdminFill } from "react-icons/ri";
+
 
 const DashboardAdmins = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -67,6 +70,11 @@ const DashboardAdmins = () => {
         darkMode ? "bg-gray-900 text-gray-400 " : "bg-green-50"
       } min-h-screen flex-1 w-full `}
     >
+      <DashboardPageTitle
+        icon={<RiAdminFill></RiAdminFill>}
+        value={"Admins"}
+      ></DashboardPageTitle>
+
       <div>
         {loading ? (
           <Spinner></Spinner>

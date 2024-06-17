@@ -105,3 +105,45 @@ export const deleteData = async (endpoint, id) => {
     throw error;
   }
 };
+
+
+
+
+const imageCache = {}; // Cache to store fetched images
+
+export const fetchRandomImageUrl = async (query = "") => {
+  if (imageCache[query]) {
+    console.log(`Serving cached image for query: ${query}`);
+    return imageCache[query];
+  }
+
+  // const client_id = "mDR5ewUO0kTaA1RNhC4k3DR4IxQohhq5BjOUDuPSqU0";
+  const client_id = "mDR5ewUO0kTaA1RNhC4k3DR4IxQohhq5BjOUDuPSqU0";
+  let url = `https://api.unsplash.com/photos/random?client_id=${client_id}`;
+
+  if (query) {
+    url += `&query=${query}`;
+  }
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Accept-Version": "v1",
+      },
+    });
+
+    if (!response.ok) {
+      console.error(`Error fetching image: ${response.statusText}`);
+      return `https://source.unsplash.com/1200x540/?${query}`; // Use source.unsplash.com as fallback
+    }
+
+    const data = await response.json();
+    const imageUrl = data.urls.regular;
+    imageCache[query] = imageUrl; // Cache the image URL
+    console.log(`Fetched and cached image URL: ${imageUrl}`);
+    return imageUrl;
+  } catch (error) {
+    console.error("Error fetching random image:", error);
+    return `https://source.unsplash.com/1200x540/?${query}`; // Use source.unsplash.com as fallback
+  }
+};

@@ -1,11 +1,11 @@
 import RadiantAds from "../../SharedComponents/RadiantAds";
-import Banner from "./Banner";
 import FromOurMenu from "./FromOurMenu";
 import { OnlineOrder } from "./OnlineOrder";
 import ReadMore from "./ReadMore";
 import Review from "./Review";
 import usePageTitle from './../../Hooks/usePageTitle';
 import Subscription from "./Subscription";
+import Banner from "./Banner";
 
 const Home = () => {
   //updating the page title, here title is default title for home page
