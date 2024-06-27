@@ -98,7 +98,7 @@ export const OnlineOrder = () => {
       {/* previous controller */}
       <div
         onClick={prevSlider}
-        className="child left-controller absolute left-2 top-1/2 rounded-full p-1 hover:text-gray-200 hover:bg-primary hover:border-transparent duration-500"
+        className="child left-controller absolute left-2 top-1/2 rounded-full p-1 hover:text-gray-200 hover:bg-primary hover:border-transparent duration-500 cursor-pointer"
       >
         <SlArrowLeft className="text-2xl" />
       </div>
@@ -106,7 +106,7 @@ export const OnlineOrder = () => {
       {/* next controller */}
       <div
         onClick={nextSlider}
-        className="child right-controller absolute right-2 top-1/2 rounded-full p-1 hover:text-gray-200 hover:bg-primary hover:border-transparent duration-500"
+        className="child right-controller absolute right-2 top-1/2 rounded-full p-1 hover:text-gray-200 hover:bg-primary hover:border-transparent duration-500 cursor-pointer"
       >
         <SlArrowRight className="text-2xl" />
       </div>
@@ -127,7 +127,7 @@ export const OnlineOrder = () => {
               key={inx}
               className={`${
                 currentSlider === inx ? "md:pb-6 " : "scale-95 opacity-40 "
-              } md:h-[300px] min-w-[100%] md:min-w-[50%] w-full duration-200 text-center mt-8 pb-2`}
+              } md:h-[350px] min-w-[100%] md:min-w-[50%] w-full duration-200 text-center mt-8 pb-2`}
               style={{ perspective: "150px" }}
             >
               <img

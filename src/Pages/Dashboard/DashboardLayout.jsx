@@ -6,7 +6,7 @@ const DashboardLayout = () => {
   //updating the page title
   usePageTitle("Dashboard");
   return (
-    <div className="flex flex-col md:flex-row items-start gap- ">
+    <div className="flex flex-col md:flex-row items-start  ">
       <DashboardSideBar></DashboardSideBar>
       <Outlet></Outlet>
     </div>

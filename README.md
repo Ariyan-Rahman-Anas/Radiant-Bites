@@ -1,7 +1,8 @@
 # Radiant Bites
 # Developed by Ariyan Rahman Anas
 
-Welcome to Radiant Bites! This is a full-stack restaurant-based web application providing users with an interactive platform to explore menu items, place orders, write blogs, make reservations, and more. The application features comprehensive functionalities for both users and administrators.
+Welcome to Radiant Bites!
+This is a full-stack restaurant-based web application providing users with an interactive platform to explore menu items, place orders, write blogs, make reservations, and more. The application features comprehensive functionalities for both users and administrators.
 
 
 ## Features

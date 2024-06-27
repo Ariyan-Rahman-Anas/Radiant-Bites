@@ -204,6 +204,7 @@ const Menu = () => {
                       } w-full p-2 rounded-md border-y-4 border-transparent focus:outline-none focus:border-b-primary `}
                     >
                       <option value="chefSpecial">Chef Special</option>
+                      <option value="todayOffer">Today Offer</option>
                       <option value="bdTraditional">BD Traditional</option>
                       <option value="appetizers">Appetizers</option>
                       <option value="desserts">Desserts</option>

@@ -99,6 +99,7 @@ const Blog = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 type="text"
                 name="searchBar"
+                required
                 placeholder="Search a blog..."
                 className={`${
                   darkMode ? "bg-gray-600" : "bg-green-100"

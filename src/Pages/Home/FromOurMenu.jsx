@@ -29,55 +29,57 @@ const FromOurMenu = () => {
 
 
   return (
-    <div className="my-20 px-2 text-center ">
+    <div className="my-20 px-2 text-center w-full md:w-[85vw] mx-auto ">
       <SectionTitle
         heading={"Check it out"}
         subHeading={"FROM OUR MENU"}
       ></SectionTitle>
 
       {/* fetching some items for medium devices */}
-      <div className="hidden mt-5 md:grid grid-cols-1 md:grid-cols-2 gap-4 text-start mb-8 ">
+      <div>
         {loading ? (
           <Spinner></Spinner>
         ) : error ? (
           <h1>{error}</h1>
         ) : (
-          items?.slice(0, 6)?.map((item) => (
-            <div
-              key={item._id}
-              className={` ${
-                darkMode ? "bg-gray-700" : ""
-              } shadow-md rounded-md p-4 grid md:grid-cols-10 gap-5 `}
-            >
-              <div className="mx-auto flex flex-col col-span-10 md:col-span-2 border2 text-center capitalize ">
-                <img
-                  src={item.image}
-                  alt="food picture"
-                  className="w-full rounded-full rounded-tl-none "
-                />{" "}
-                <p
-                  className={` ${
-                    darkMode ? "" : "text-gray-500"
-                  } font-semibold text-gray500 `}
-                >
-                  {item.foodCategory}
-                </p>
-              </div>
-              <div className="col-span-8 flex flex-col md:flex-row items-center justify-between gap-7 ">
-                <div>
-                  <h1 className="text-xl">{item.name}</h1>
+          <div className="hidden mt-5 md:grid grid-cols-1 md:grid-cols-2 gap-4 text-start mb-8 ">
+            {items?.slice(0, 6)?.map((item) => (
+              <div
+                key={item._id}
+                className={` ${
+                  darkMode ? "bg-gray-700" : ""
+                } shadow-md rounded-md p-4 grid md:grid-cols-10 gap-5 `}
+              >
+                <div className="mx-auto flex flex-col col-span-10 md:col-span-2 border2 text-center capitalize ">
+                  <img
+                    src={item.image}
+                    alt="food picture"
+                    className="w-full rounded-full rounded-tl-none "
+                  />{" "}
                   <p
                     className={` ${
-                      darkMode ? "" : "text-gray-600"
-                    } text-sm mt-1 `}
+                      darkMode ? "" : "text-gray-500"
+                    } font-semibold text-gray500 `}
                   >
-                    {item.recipe}
+                    {item.foodCategory}
                   </p>
                 </div>
-                <p className="font-semibold">${item.price}</p>
+                <div className="col-span-8 flex flex-col md:flex-row items-center justify-between gap-7 ">
+                  <div>
+                    <h1 className="text-xl">{item.name}</h1>
+                    <p
+                      className={` ${
+                        darkMode ? "" : "text-gray-600"
+                      } text-sm mt-1 `}
+                    >
+                      {item.recipe}
+                    </p>
+                  </div>
+                  <p className="font-semibold">${item.price}</p>
+                </div>
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </div>
       {/* fetching of medium devices is ends here */}

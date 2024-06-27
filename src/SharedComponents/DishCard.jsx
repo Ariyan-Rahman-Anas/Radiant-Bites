@@ -78,67 +78,71 @@ const DishCard = ({ dish }) => {
               onClick={() => setOpenModal(false)}
               className={`fixed z-[100] flex items-center justify-center ${
                 openModal ? "visible opacity-100" : "invisible opacity-0"
-              } inset-0 bg-black/20 backdrop-blur-sm duration-100 dark:bg-white/10`}
+              } inset-0 bg-black/20 backdrop-blur-sm duration-500 px-2 `}
             >
               <div
                 onClick={(e_) => e_.stopPropagation()}
-                className={`text- absolute max-w-md rounded-lg p-6 drop-shadow-md mx-2 bg-black text-gray-300 ${
+                className={`flex items-center justify-center absolute max-wmd w-[98%] md:w-2/3 h-fi h-[60vh] overflow-auto rounded-lg p-8 drop-shadow-md mx-2 bg-black text-gray-300 ${
                   openModal
                     ? "scale-1 opacity-1 duration-700"
                     : "scale-0 opacity-0 duration-700"
                 }`}
               >
-                <h1 className="mb-2 text-2xl font-semibold text-white ">
-                  {name}
-                </h1>
-                <p className="mb-5">
-                  <span className="text-white font-semibold">Recipe: </span>
-                  {recipe}
-                </p>
-                <p className="mb-2 ">
-                  <span className="text-white font-semibold">Details: </span>
-                  {details}
-                </p>
-                <div className="my-4 flex items-center justify-between">
-                  <div className="flex items-center justify-between gap-5">
-                    <p>
-                      <span className="font-semibold text-white">Items: </span>
-                      {plusItem}
-                    </p>
-                    <div className="text-4xl mx-auto text-center flex items-center text-black justify-between gap-3 ">
-                      <div
-                        onClick={handleMinusItem}
-                        id="minusBtn"
-                        className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
-                      >
-                        <button disabled={plusItem === 1}>-</button>
-                      </div>
-                      <div
-                        onClick={handlePlusItem}
-                        className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
-                      >
-                        <button>+</button>
+                <div className="dish-details">
+                  <h1 className="mb-2 text-2xl font-semibold text-white ">
+                    {name}
+                  </h1>
+                  <p className="mb-5">
+                    <span className="text-white font-semibold">Recipe: </span>
+                    {recipe}
+                  </p>
+                  <p className="mb-2 ">
+                    <span className="text-white font-semibold">Details: </span>
+                    {details}
+                  </p>
+                  <div className="my-4 flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-5">
+                      <p>
+                        <span className="font-semibold text-white">
+                          Items:{" "}
+                        </span>
+                        {plusItem}
+                      </p>
+                      <div className="text-4xl mx-auto text-center flex items-center text-black justify-between gap-3 ">
+                        <div
+                          onClick={handleMinusItem}
+                          id="minusBtn"
+                          className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
+                        >
+                          <button disabled={plusItem === 1}>-</button>
+                        </div>
+                        <div
+                          onClick={handlePlusItem}
+                          className="bg-gray-300 w-8 h-8 rounded-md leading-6 cursor-pointer "
+                        >
+                          <button>+</button>
+                        </div>
                       </div>
                     </div>
+                    <p className="mb-4">
+                      <span className="font-semibold text-white">Price: </span>$
+                      {itemsPrice}
+                    </p>
                   </div>
-                  <p className="mb-4">
-                    <span className="font-semibold text-white">Price: </span>$
-                    {itemsPrice}
-                  </p>
-                </div>
-                <div className="flex justify-between">
-                  <button
-                    onClick={() => setOpenModal(false)}
-                    className="px-[1.2rem] py-1 rounded-full w-fit text-white bg-danger border-[.09rem] border-transparent hover:border-danger hover:text-danger hover:bg-white duration-500"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleConfirmOrder}
-                    className="px-[1.2rem] py-1 rounded-full w-fit text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white duration-500"
-                  >
-                    Confirm
-                  </button>
+                  <div className="cancel-confirm-btn flex justify-between">
+                    <button
+                      onClick={() => setOpenModal(false)}
+                      className="px-[1.2rem] py-1 rounded-full w-fit text-white bg-danger border-[.09rem] border-transparent hover:border-danger hover:text-danger hover:bg-white duration-500"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleConfirmOrder}
+                      className="px-[1.2rem] py-1 rounded-full w-fit text-white bg-primary border-[.09rem] border-transparent hover:border-primary hover:text-primary hover:bg-white duration-500"
+                    >
+                      Confirm
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

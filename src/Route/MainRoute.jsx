@@ -34,6 +34,9 @@ import DashboardPendingOrders from './../Pages/Dashboard/Pages/DashboardPendingO
 import DashboardStaff from './../Pages/Dashboard/Pages/DashboardStaff';
 import DashboardSubscribers from "../Pages/Dashboard/Pages/DashboardSubscribers";
 import BlogDetails from './../Pages/Blog/BlogDetails';
+import UserDashboard from "../Pages/User Dashboard/UserDashboard";
+import UserDashboardLayout from './../Pages/User Dashboard/UserDashboardLayout';
+import Orders from "../Pages/User Dashboard/Pages/Orders";
 
 const MainRoute = createBrowserRouter([
   {
@@ -169,21 +172,10 @@ const MainRoute = createBrowserRouter([
         path: "/shoppingCart/payment",
         element: <Payment></Payment>,
       },
-      // {
-      //   path: "dashboard",
-      //   element: <Dashboard></Dashboard>,
-      // },
-      // {
-      //   path: "/cart",
-      //   element: <DashBoardCart></DashBoardCart>,
-      // },
-      // {
-      //   path: "/dashboard/allUser",
-      //   element: <AllUser></AllUser>,
-      // },
     ],
   },
 
+  //admin dashboard
   {
     path: "/dashboard",
     element: (
@@ -235,6 +227,30 @@ const MainRoute = createBrowserRouter([
       {
         path: "/dashboard/cart",
         element: <DashBoardCart></DashBoardCart>,
+      },
+    ],
+  },
+
+  //user dashboard
+  {
+    path: "/user-dashboard",
+    element: (
+      <PrivateRoute>
+        <UserDashboardLayout></UserDashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/user-dashboard",
+        element: (
+          <PrivateRoute>
+            <UserDashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/user-dashboard/orders",
+        element:<Orders></Orders>
       },
     ],
   },
