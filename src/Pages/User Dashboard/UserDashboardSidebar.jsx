@@ -4,12 +4,10 @@ import { RxCross2 } from "react-icons/rx";
 import logo2 from "./../../assets/Logos/2.svg";
 import { useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
-import { RiDashboardFill, RiReservedFill, RiAdminFill } from "react-icons/ri";
-import { FaUsers, FaCheckCircle, FaBlog } from "react-icons/fa";
+import { RiDashboardFill, RiReservedFill } from "react-icons/ri";
+import { FaCheckCircle, FaBlog } from "react-icons/fa";
 import {} from "react-icons/md";
-import { PiNewspaperFill, PiBowlFoodFill } from "react-icons/pi";
-import { GrUserWorker } from "react-icons/gr";
-import { MdPayments, MdRamenDining } from "react-icons/md";
+import {  PiBowlFoodFill } from "react-icons/pi";
 import Avatar from "./../../assets/images/Avatar.png";
 
 const UserDashboardSidebar = () => {
@@ -110,19 +108,6 @@ const UserDashboardSidebar = () => {
                 Blogs
               </NavLink>
             </li>
-            <li className=" group">
-              <NavLink
-                to={"/dashboard/users"}
-                className={({ isActive }) =>
-                  isActive && location.pathname === "/dashboard/users"
-                    ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                    : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                }
-              >
-                <FaUsers></FaUsers>
-                Users
-              </NavLink>
-            </li>
           </ul>
         </div>
       </div>
@@ -155,11 +140,13 @@ const UserDashboardSidebar = () => {
         >
           <div className="mx- rounded-b-md bg-gray-800 p-5 shadow-md shadow-gray-200">
             <ul className="flex flex-col gap-2 px-2  ">
+
+              {/* .... */}
               <li onClick={handleHidingMenu} className="group">
                 <NavLink
-                  to={"/dashboard"}
+                  to={"/user-dashboard"}
                   className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard"
+                    isActive && location.pathname === "/user-dashboard"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }
@@ -170,109 +157,44 @@ const UserDashboardSidebar = () => {
               </li>
               <li onClick={handleHidingMenu} className="group">
                 <NavLink
-                  to={"/dashboard/pending-orders"}
+                  to={"/user-dashboard/orders"}
                   className={({ isActive }) =>
-                    isActive &&
-                    location.pathname === "/dashboard/pending-orders"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <MdRamenDining></MdRamenDining>
-                  Pending Orders
-                </NavLink>
-              </li>
-              <li onClick={handleHidingMenu} className="group">
-                <NavLink
-                  to={"/dashboard/reservation"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/reservation"
+                    isActive && location.pathname === "/user-dashboard/orders"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }
                 >
                   <RiReservedFill></RiReservedFill>
-                  Reservation
+                  Orders
                 </NavLink>
               </li>
               <li onClick={handleHidingMenu} className=" group">
                 <NavLink
-                  to={"/dashboard/payments"}
+                  to={"/user-dashboard/dishes"}
                   className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/payments"
+                    isActive && location.pathname === "/user-dashboard/dishes"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }
                 >
-                  <MdPayments></MdPayments>
-                  Payments
+                  <PiBowlFoodFill />
+                  Dishes
                 </NavLink>
               </li>
               <li onClick={handleHidingMenu} className=" group">
                 <NavLink
-                  to={"/dashboard/reviews"}
+                  to={"/user-dashboard/blogs"}
                   className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/reviews"
+                    isActive && location.pathname === "/user-dashboard/blogs"
                       ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                       : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                   }
                 >
-                  <PiNewspaperFill></PiNewspaperFill>
-                  Reviews
+                  <FaBlog />
+                  Blogs
                 </NavLink>
               </li>
-              <li onClick={handleHidingMenu} className=" group">
-                <NavLink
-                  to={"/dashboard/admins"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/admins"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <RiAdminFill></RiAdminFill>
-                  Admins
-                </NavLink>
-              </li>
-              <li onClick={handleHidingMenu} className=" group">
-                <NavLink
-                  to={"/dashboard/subscribers"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/subscribers"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <FaUsers></FaUsers>
-                  Subscribers
-                </NavLink>
-              </li>
-              <li onClick={handleHidingMenu} className=" group">
-                <NavLink
-                  to={"/dashboard/users"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/users"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <FaUsers></FaUsers>
-                  Users
-                </NavLink>
-              </li>
-              <li onClick={handleHidingMenu} className=" group">
-                <NavLink
-                  to={"/dashboard/staff"}
-                  className={({ isActive }) =>
-                    isActive && location.pathname === "/dashboard/staff"
-                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
-                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
-                  }
-                >
-                  <GrUserWorker></GrUserWorker>
-                  Staff
-                </NavLink>
-              </li>
+              {/* .... */}
             </ul>
           </div>
           {/* admin */}

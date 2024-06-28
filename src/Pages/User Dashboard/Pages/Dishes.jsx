@@ -4,10 +4,11 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import { ThemeContext } from "../../../useContext/allContext";
 import DashboardPageTitle from "../../../SharedComponents/DashboardPageTitle";
-import { getData } from "../../../Hooks/apiUtils";
+import { deleteData, getData } from "../../../Hooks/apiUtils";
 import useAuth from "../../../Hooks/useAuth";
 import Spinner from "../../../SharedComponents/Spinner";
 import SectionTitle from "../../../SharedComponents/SectionTitle";
+import { toast } from "react-hot-toast";
 
 const Dishes = () => {
     const {user} = useAuth()
@@ -32,6 +33,19 @@ const Dishes = () => {
         };
         fetchingData();
     }, [user?.email]);
+  
+  //handle deleting a dish
+  const handleDeleteADish = async (dishId) => {
+    try {
+      await deleteData("allItems", dishId);
+      const remainingDishes = dishes?.filter((dish) => dish._id !== dishId);
+      setDishes(remainingDishes);
+      toast.success("Deleted Successfully!");
+    } catch (error) {
+      setError(error);
+    }
+  }
+  
 
   return (
     <div
@@ -84,7 +98,7 @@ const Dishes = () => {
                           <FaRegEdit />
                         </button>
                         <button
-                          //   onClick={() => handleDeleteOrderHistory(order._id)}
+                          onClick={() => handleDeleteADish(dish._id)}
                           className="hover:text-white hover:bg-danger rounded-md p-1 duration-500 "
                         >
                           <AiOutlineDelete />
