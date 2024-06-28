@@ -78,11 +78,11 @@ const DishCard = ({ dish }) => {
               onClick={() => setOpenModal(false)}
               className={`fixed z-[100] flex items-center justify-center ${
                 openModal ? "visible opacity-100" : "invisible opacity-0"
-              } inset-0 bg-black/20 backdrop-blur-sm duration-500 px-2 `}
+              } inset-0 bg-black/10 backdrop-blur-sm duration-500 px-2 `}
             >
               <div
                 onClick={(e_) => e_.stopPropagation()}
-                className={`flex items-center justify-center absolute max-wmd w-[98%] md:w-2/3 h-[60vh] overflow-auto rounded-lg shadow-md shadow-gray-300 p-8 drop-shadow-md mx-2 bg-black text-gray-300 ${
+                className={`flex items-center justify-center absolute max-wmd w-[98%] md:w-2/3 h-[60vh] overflow-auto rounded-lg shadow shadow-gray-300 p-8 drop-shadow-md mx-2 bg-black text-gray-300 ${
                   openModal
                     ? "scale-1 opacity-1 duration-700"
                     : "scale-0 opacity-0 duration-700"
