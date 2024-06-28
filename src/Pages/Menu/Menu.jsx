@@ -25,6 +25,9 @@ import { postDataWithFile } from './../../Hooks/apiUtils';
 
 const Menu = () => {
 
+  const { user } = useAuth();
+  const formRef = useRef(null);
+
   //updating the page title
   usePageTitle("Menu");
 
@@ -100,9 +103,6 @@ const Menu = () => {
     },
   ];
 
-  const { user } = useAuth();
-  const formRef = useRef(null);
-
   //handling uploading new dish, for a logged in user. A user can share his dish in our menu
   const handleUploadItem = async (e) => {
     e.preventDefault();
@@ -118,6 +118,8 @@ const Menu = () => {
     //creating am item
     try {
       const anItem = {
+        authorName: user?.displayName,
+        email: user?.email,
         foodCategory,
         name,
         price,
@@ -125,6 +127,9 @@ const Menu = () => {
         details,
         image,
       };
+
+      console.log("item: ", anItem)
+
       const hasFile = !!form.image.files[0]; // Check for file presence
       try {
         const result = await postDataWithFile("allItems", anItem, hasFile);

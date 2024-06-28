@@ -5,9 +5,9 @@ import logo2 from "./../../assets/Logos/2.svg";
 import { useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
 import { RiDashboardFill, RiReservedFill, RiAdminFill } from "react-icons/ri";
-import { FaUsers, FaCheckCircle } from "react-icons/fa";
+import { FaUsers, FaCheckCircle, FaBlog } from "react-icons/fa";
 import {} from "react-icons/md";
-import { PiNewspaperFill } from "react-icons/pi";
+import { PiNewspaperFill, PiBowlFoodFill } from "react-icons/pi";
 import { GrUserWorker } from "react-icons/gr";
 import { MdPayments, MdRamenDining } from "react-icons/md";
 import Avatar from "./../../assets/images/Avatar.png";
@@ -75,8 +75,7 @@ const UserDashboardSidebar = () => {
               <NavLink
                 to={"/user-dashboard/orders"}
                 className={({ isActive }) =>
-                  isActive &&
-                  location.pathname === "/user-dashboard/orders"
+                  isActive && location.pathname === "/user-dashboard/orders"
                     ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                     : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                 }
@@ -87,28 +86,28 @@ const UserDashboardSidebar = () => {
             </li>
             <li className=" group">
               <NavLink
-                to={"/dashboard/reviews"}
+                to={"/user-dashboard/dishes"}
                 className={({ isActive }) =>
-                  isActive && location.pathname === "/dashboard/reviews"
+                  isActive && location.pathname === "/user-dashboard/dishes"
                     ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                     : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                 }
               >
-                <PiNewspaperFill></PiNewspaperFill>
-                Reviews
+                <PiBowlFoodFill />
+                Dishes
               </NavLink>
             </li>
             <li className=" group">
               <NavLink
-                to={"/dashboard/subscribers"}
+                to={"/user-dashboard/blogs"}
                 className={({ isActive }) =>
-                  isActive && location.pathname === "/dashboard/subscribers"
+                  isActive && location.pathname === "/user-dashboard/blogs"
                     ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
                     : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
                 }
               >
-                <FaUsers></FaUsers>
-                Subscribers
+                <FaBlog />
+                Blogs
               </NavLink>
             </li>
             <li className=" group">

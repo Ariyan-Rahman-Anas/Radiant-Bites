@@ -37,6 +37,8 @@ import BlogDetails from './../Pages/Blog/BlogDetails';
 import UserDashboard from "../Pages/User Dashboard/UserDashboard";
 import UserDashboardLayout from './../Pages/User Dashboard/UserDashboardLayout';
 import Orders from "../Pages/User Dashboard/Pages/Orders";
+import Dishes from "../Pages/User Dashboard/Pages/Dishes";
+import Blogs from "../Pages/User Dashboard/Pages/Blogs";
 
 const MainRoute = createBrowserRouter([
   {
@@ -250,7 +252,15 @@ const MainRoute = createBrowserRouter([
       },
       {
         path: "/user-dashboard/orders",
-        element:<Orders></Orders>
+        element: <Orders></Orders>,
+      },
+      {
+        path: "/user-dashboard/dishes",
+        element: <Dishes></Dishes>,
+      },
+      {
+        path: "/user-dashboard/blogs",
+        element: <Blogs></Blogs>,
       },
     ],
   },

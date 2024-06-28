@@ -14,7 +14,7 @@ import SectionTitle from "../../SharedComponents/SectionTitle";
 import useAuth from "../../Hooks/useAuth";
 import welcome from "./../../assets/images/welcome.svg"
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import { getData } from "../../Hooks/apiUtils";
+import { deleteData, getData } from "../../Hooks/apiUtils";
 
 const UserDashboard = () => {
   const { user } = useAuth();
@@ -34,7 +34,7 @@ const UserDashboard = () => {
     fetchData();
   }, []);
 
-  //catching the user by find
+  //catching current user by find for user data
   const catchingCurrentUserByDB = userFromDB?.find(
     (currentUser) => currentUser?.email === user?.email
   );
@@ -63,7 +63,7 @@ const UserDashboard = () => {
               <h1
                 className={`${
                   darkMode ? "text-gray-400" : "text-gray-500"
-                }  text-2xl font-semibold `}
+                }  text-2xl  `}
               >
                 Hey,{" "}
                 <span className="font-semibold text-2xl">

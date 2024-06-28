@@ -82,14 +82,14 @@ const DishCard = ({ dish }) => {
             >
               <div
                 onClick={(e_) => e_.stopPropagation()}
-                className={`flex items-center justify-center absolute max-wmd w-[98%] md:w-2/3 h-fi h-[60vh] overflow-auto rounded-lg p-8 drop-shadow-md mx-2 bg-black text-gray-300 ${
+                className={`flex items-center justify-center absolute max-wmd w-[98%] md:w-2/3 h-[60vh] overflow-auto rounded-lg shadow-md shadow-gray-300 p-8 drop-shadow-md mx-2 bg-black text-gray-300 ${
                   openModal
                     ? "scale-1 opacity-1 duration-700"
                     : "scale-0 opacity-0 duration-700"
                 }`}
               >
                 <div className="dish-details">
-                  <h1 className="mb-2 text-2xl font-semibold text-white ">
+                  <h1 className="mb-2 mt-[10rem] md:mt-20  text-2xl font-semibold text-white ">
                     {name}
                   </h1>
                   <p className="mb-5">

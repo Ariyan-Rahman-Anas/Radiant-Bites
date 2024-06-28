@@ -43,7 +43,6 @@ const DashboardReviews = () => {
     toast.success("Deleted the review!")
   } catch (error) {
     setError(error);
-    console.log(error)
   }    
   }
 

@@ -29,7 +29,7 @@ const Chicken = () => {
         setLoading(false);
       }
     };
-    fetchData(); // Call the function to fetch data when the component mounts
+    fetchData(); 
   }, []);
 
   return (
