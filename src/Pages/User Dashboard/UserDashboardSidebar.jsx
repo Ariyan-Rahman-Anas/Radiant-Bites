@@ -6,9 +6,9 @@ import { useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
 import { RiDashboardFill, RiReservedFill } from "react-icons/ri";
 import { FaCheckCircle, FaBlog } from "react-icons/fa";
-import {} from "react-icons/md";
 import {  PiBowlFoodFill } from "react-icons/pi";
 import Avatar from "./../../assets/images/Avatar.png";
+import { MdReviews } from "react-icons/md";
 
 const UserDashboardSidebar = () => {
   const location = useLocation();
@@ -23,7 +23,7 @@ const UserDashboardSidebar = () => {
   return (
     <>
       <div
-        className={`hidden md:block sidebar bg-gray-800 text-gray-400 min-h-screen w-[20rem] shadow-r-md px-2 text-center `}
+        className={`hidden md:block sidebar bg-gray-800 text-gray-400 min-h-svh w-[20rem] shadow-r-md px-2 text-center `}
       >
         <div className="w-[10rem] border-b-2 border-primary px-4 pb-1 rounded-md mt-4 mb-5 mx-auto ">
           <Link to={"/"}>
@@ -108,6 +108,19 @@ const UserDashboardSidebar = () => {
                 Blogs
               </NavLink>
             </li>
+            <li className=" group">
+              <NavLink
+                to={"/user-dashboard/reviews"}
+                className={({ isActive }) =>
+                  isActive && location.pathname === "/user-dashboard/reviews"
+                    ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                    : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                }
+              >
+                <MdReviews />
+                Review
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
@@ -140,7 +153,6 @@ const UserDashboardSidebar = () => {
         >
           <div className="mx- rounded-b-md bg-gray-800 p-5 shadow-md shadow-gray-200">
             <ul className="flex flex-col gap-2 px-2  ">
-
               {/* .... */}
               <li onClick={handleHidingMenu} className="group">
                 <NavLink
@@ -192,6 +204,19 @@ const UserDashboardSidebar = () => {
                 >
                   <FaBlog />
                   Blogs
+                </NavLink>
+              </li>
+              <li onClick={handleHidingMenu} className=" group">
+                <NavLink
+                  to={"/user-dashboard/reviews"}
+                  className={({ isActive }) =>
+                    isActive && location.pathname === "/user-dashboard/reviews"
+                      ? "px-4 py-1.5 rounded-md text-primary bg-white flex items-center gap-3 duration-500"
+                      : "px-4 py-1.5 rounded-md group-hover:text-white flex items-center gap-3 duration-500"
+                  }
+                >
+                  <MdReviews />
+                  Reviews
                 </NavLink>
               </li>
               {/* .... */}

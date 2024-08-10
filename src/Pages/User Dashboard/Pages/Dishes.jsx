@@ -73,8 +73,33 @@ const Dishes = () => {
         {loading ? (
           <Spinner />
         ) : error ? (
-          <h1>{error}</h1>
-        ) : dishes.length > 0 ? (
+          <div>
+            {dishes?.length <=0 ? (
+              <div className="flex items-center justify-center text-center w-full min-h-[80vh] ">
+                <div>
+                  <h1 className="text-4xl font-semibold ">Oops...</h1>
+                  <h2 className="text-xl italic ">
+                    You do not have any Dishes!
+                  </h2>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center text-center w-full min-h-[80vh] ">
+                <div>
+                  <h1 className="text-4xl font-semibold ">Oops...</h1>
+                  <h1 className="text-xl mt-2 ">{error}!</h1>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : dishes.length === 0 ? (
+          <div className="flex items-center justify-center text-center w-full min-h-[80vh] ">
+            <div>
+              <h1 className="text-4xl font-semibold ">Oops...</h1>
+              <h2 className="text-xl italic ">You do not have any Dishes!</h2>
+            </div>
+          </div>
+        ) : (
           <div>
             <SectionTitle
               heading={"Dishes"}
@@ -124,13 +149,6 @@ const Dishes = () => {
               ))}
             </div>
           </div>
-        ) : (
-          <div className="flex items-center justify-center text-center w-full min-h-[80vh] ">
-            <div>
-              <h1 className="text-4xl font-semibold ">Oops...</h1>
-              <h2 className="text-xl italic ">You do not have any Dishes!</h2>
-            </div>
-          </div>
         )}
       </div>
 
@@ -143,5 +161,4 @@ const Dishes = () => {
     </div>
   );
 };
-
 export default Dishes;

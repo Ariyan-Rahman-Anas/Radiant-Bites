@@ -12,7 +12,7 @@ import FAQs from "../../SharedComponents/FAQs";
 const Reservation = () => {
   const { darkMode } = useContext(ThemeContext);
   const { user } = useAuth();
-  const formRef = useRef(null);
+  const formRef  = useRef(null);
 
   //tracking the user picture
   const reserverPicture = user?.photoURL ? user?.photoURL : null;

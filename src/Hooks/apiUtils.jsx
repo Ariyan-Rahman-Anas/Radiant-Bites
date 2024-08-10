@@ -6,7 +6,7 @@ const BASE_URL = "https://radiant-bites-back-end.vercel.app";
 // Function to fetch data
 export const getData = async (endpoint) => {
   try {
-    const response = await axios.get(`${BASE_URL}/${endpoint}`);
+    const response = await axios.get(`${BASE_URL}/${endpoint}`, { withCredentials: true} );
     return response?.data; 
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -71,7 +71,6 @@ export const postDataWithFile = async (endpoint, data, hasFile = false) => {
     throw error;
   }
 };
-
 
 // Function to update data
 export const updateData = async (endpoint, id, data) => {

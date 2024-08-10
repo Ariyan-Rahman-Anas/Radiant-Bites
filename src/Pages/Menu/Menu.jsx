@@ -127,7 +127,6 @@ const Menu = () => {
         details,
         image,
       };
-
       console.log("item: ", anItem)
 
       const hasFile = !!form.image.files[0]; // Check for file presence

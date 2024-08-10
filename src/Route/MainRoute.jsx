@@ -262,6 +262,10 @@ const MainRoute = createBrowserRouter([
         path: "/user-dashboard/blogs",
         element: <Blogs></Blogs>,
       },
+      {
+        path: "/user-dashboard/reviews",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
 ]);
